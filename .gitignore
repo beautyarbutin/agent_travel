@@ -1,0 +1,48 @@
+# OpenAgents 旅行小助手项目
+
+# 忽略的数据目录
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# 忽略日志
+*.log
+logs/
+openagents.log
+
+# 忽略临时文件
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Python 相关
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# 环境变量（包含密钥）
+config/agent_env/travel.json
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# 操作系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 其他
+.env
+node_modules/
