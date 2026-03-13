@@ -218,7 +218,10 @@ network/
 │   ├── spot_agent.yaml          # 景点智能体
 │   └── plan_agent.yaml          # 行程智能体
 ├── docs/
-│   └── travel_assistant_design.md
+│   ├── RAG_interview_guide.md
+│   ├── lora_interview_notes.md
+│   ├── lora_rag_work_summary_2026-03-12.md
+│   └── transformer_llm_interview_notes.md
 └── network.yaml
 ```
 
