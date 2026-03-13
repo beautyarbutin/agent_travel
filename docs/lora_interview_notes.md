@@ -470,3 +470,354 @@ r(d_out + d_in)
 4. `rank 控制容量，alpha 控制更新强度，dropout 控制正则化。`
 5. `LoRA 适合任务定向微调，不适合替代实时工具和最新知识。`
 6. `在我的项目里 router 和 spot 适合 LoRA，weather 不适合，plan 现阶段也不急。`
+
+## 13. 面试追问版：rank、alpha 和 target_module
+
+这一节是老师最容易继续往下追问的地方。
+
+### 13.1 为什么 rank 常见是 8、16？
+
+`rank` 不只是影响显存，它也直接影响 LoRA 更新的表达能力。
+
+可以把 LoRA 理解成给原模型贴一个“小补丁”：
+
+- `rank` 小：补丁更薄，更省显存，但容量更小
+- `rank` 大：补丁更厚，能学到更复杂的变化，但参数更多，也更容易过拟合
+
+所以 `rank=8`、`rank=16` 常见，不是因为这两个数字神秘，而是因为它们通常是：
+
+- 表达能力
+- 显存成本
+- 训练稳定性
+
+之间比较均衡的折中。
+
+实际经验上：
+
+- `4 -> 8` 有时提升比较明显
+- `8 -> 16` 可能还有提升，但不一定大
+- `16 -> 32` 往往开始收益递减
+
+一句话面试回答：
+
+> rank 决定 LoRA 低秩更新的容量，不只是影响显存，也会影响模型能学到多复杂的任务变化。8 和 16 是工程上常见的折中值。
+
+### 13.2 为什么 alpha 常常设成 rank 的两倍？
+
+LoRA 常见公式是：
+
+```text
+W' = W + (alpha / r)BA
+```
+
+真正控制 LoRA 更新强度的，关键不只是 `alpha`，而是：
+
+```text
+alpha / r
+```
+
+所以很多人喜欢设：
+
+- `r=8, alpha=16`
+- `r=16, alpha=32`
+
+这样做的直觉是：
+
+- 当你改动 `rank` 时，更新强度不会乱掉太多
+- 因为 `alpha / r` 保持在一个相对稳定的比例
+
+你这次项目里：
+
+```text
+r = 8
+alpha = 16
+alpha / r = 2
+```
+
+这就是很常见的经验设定。
+
+重点要会说：
+
+> `alpha = 2r` 不是数学定理，只是常见经验值。它的目的，是让 `alpha / r` 落在一个比较稳的范围里。
+
+### 13.3 target_module 到底是什么？
+
+`target_module` 指的是：
+
+> LoRA 要挂到模型的哪些层上。
+
+LoRA 不是给整个模型所有参数都加补丁，而是只给一部分关键线性层加低秩更新。
+
+常见目标层包括：
+
+- 注意力相关层：`q_proj`、`k_proj`、`v_proj`、`o_proj`
+- 前馈网络层：`up_proj`、`down_proj`、`gate_proj`
+- 或者直接用 `all`
+
+### 13.4 q / k / v / o 分别起什么作用？
+
+可以用特别白话的话记：
+
+- `q`：我现在想找什么
+- `k`：我这里有什么可被匹配
+- `v`：真正被取出来传过去的内容
+- `o`：把多个注意力头的结果整合回主干
+
+更接近技术表达的理解：
+
+- `q_proj`：更影响模型“关注哪里”
+- `k_proj`：更影响匹配关系
+- `v_proj`：更影响传递出来的内容
+- `o_proj`：更影响注意力结果如何重新投影回隐藏状态
+
+所以：
+
+- 只改 `q`：更偏改变注意力方向
+- 改 `q + v`：是很常见的轻量方案
+- 改 `q + k + v + o`：更全面，但也更重
+
+### 13.5 只加 qv 和加 qkvo 有什么区别？
+
+可以这么理解：
+
+- `qv`：够轻量，常常已经能明显改变模型行为
+- `qkvo`：改得更全面，表达更强，但参数也更多
+
+很多时候：
+
+- 工具调用
+- 指令遵循
+- 路由行为
+
+用 attention 相关层就已经很有效。
+
+如果任务更偏：
+
+- 内容生成
+- 领域表达
+- 风格迁移
+
+那 FFN/MLP 层也常常很重要。
+
+### 13.6 为什么有人说“知识更多在 FFN”？
+
+这是一种很常见的经验说法，不是严格定理。
+
+直觉上：
+
+- 注意力层更像在做“信息交互、对齐、检索”
+- FFN/MLP 更像在做“非线性变换、模式加工、知识表达”
+
+所以：
+
+- 如果你想改行为、改工具调用方式，attention 层常常很关键
+- 如果你想做知识注入、领域表达、风格生成，FFN/MLP 层也很重要
+
+## 14. 你这个项目里的两个 LoRA，实际打到了哪些层
+
+这部分不是概念，而是你本地配置文件里的真实结果。
+
+我查看了：
+
+- [router adapter_config.json](/D:/20251224/AI_Study/OpenAgents/models/router_lora_2026-03-12/adapter_config.json)
+- [spot adapter_config.json](/D:/20251224/AI_Study/OpenAgents/models/spot_lora_2026-03-12/adapter_config.json)
+
+你的两个 LoRA 都是：
+
+- `r = 8`
+- `alpha = 16`
+- `dropout = 0.05`
+- `lora_target = all`
+
+这意味着它们并不是只打在 `qkvo` 上，而是挂到了模型里大多数关键线性层。
+
+### 14.1 router LoRA 实际 target_modules
+
+包括：
+
+- 注意力相关：
+  - `q_proj`
+  - `k_proj`
+  - `v_proj`
+  - `o_proj`
+  - `qkv`
+  - `out_proj`
+  - `attn.proj`
+- FFN / MLP 相关：
+  - `gate_proj`
+  - `up_proj`
+  - `down_proj`
+  - `linear_fc1`
+  - `linear_fc2`
+- Qwen3.5 模型特有的一些投影层：
+  - `in_proj_a`
+  - `in_proj_b`
+  - `in_proj_qkv`
+  - `in_proj_z`
+
+### 14.2 spot LoRA 实际 target_modules
+
+spot LoRA 的模块集合和 router 非常接近，也覆盖了：
+
+- 注意力相关层
+- FFN / MLP 相关层
+- Qwen3.5 特有的一些 `in_proj_*` 结构
+
+这也说明你这两个 LoRA 都不是“只改一点点 qv”，而是使用了比较全面的 `all` 策略。
+
+### 14.3 这对你的两个任务意味着什么
+
+#### router LoRA
+
+router 的目标是：
+
+- 意图识别
+- 工具路由
+- 参数构造
+
+这更偏“行为变化”，所以 attention 相关层非常重要；而 `all` 又让它连 FFN 一起调，适配会更全面。
+
+#### spot LoRA
+
+spot 的目标是：
+
+- 景点介绍
+- 推荐表达
+- 内容组织
+
+这比 router 更偏内容生成，所以同时覆盖 attention 和 FFN/MLP 是合理的。
+
+一句话可以这样答：
+
+> 我的两个 LoRA 都不是只挂在 qkvo 上，而是用了 `lora_target=all`，因此实际覆盖了 attention 投影层、FFN/MLP 层，以及 Qwen3.5 的一些模型特有投影层。
+
+## 15. train loss 和 eval loss 的区别
+
+这个问题面试也很容易问，而且你项目里正好真做过。
+
+### 15.1 train loss 是什么
+
+`train loss` 就是：
+
+> 模型在训练集上的错误程度。
+
+训练时模型看的是“已经拿来学习的数据”，所以：
+
+- `train loss` 下降
+- 说明模型越来越会做训练里见过的题
+
+### 15.2 eval loss 是什么
+
+`eval loss` 就是：
+
+> 模型在验证集上的错误程度。
+
+验证集不参与训练，只拿来考模型，所以它更接近“模型对新样本的泛化能力”。
+
+### 15.3 为什么不能只看 train loss
+
+因为模型可能只是把训练集背下来了。
+
+典型过拟合现象：
+
+- `train loss` 继续下降
+- `eval loss` 不再下降，甚至升高
+
+这就说明：
+
+- 模型越来越会做训练题
+- 但不一定越来越会做新题
+
+### 15.4 结合你自己的项目怎么说
+
+你的项目里：
+
+- `router_lora` 最终不是选 final，而是根据 `eval_loss` 选了更优 checkpoint
+- `spot_lora` 则是因为 `eval_loss` 持续下降，所以最终选了 final
+
+这正好说明你不是只看训练曲线，而是在用验证集做 checkpoint 选择。
+
+## 16. function-calling 和 tool-calling 是什么
+
+这两个词在你的项目里非常重要。
+
+### 16.1 最白话的理解
+
+它们的核心意思是：
+
+> 模型不只是直接说话，而是先决定调用哪个函数/工具，再根据工具返回结果继续回答。
+
+比如用户问：
+
+`帮我查一下衡水天气`
+
+模型不应该直接瞎编天气，而应该先决定：
+
+```json
+{
+  "name": "get_weather",
+  "arguments": {
+    "city": "衡水"
+  }
+}
+```
+
+这就是 function-calling / tool-calling。
+
+### 16.2 两个词的区别
+
+- `function-calling`：更偏“函数调用”这个说法
+- `tool-calling`：更偏“工具调用”这个说法
+
+在你的项目里，它们基本可以理解成一回事。
+
+### 16.3 你项目里的 function-calling 是什么
+
+你的旅游助手里会调用这些能力：
+
+- 天气查询
+- 景点检索
+- 驾车路线
+- 本地知识库查询
+- 读取上下文记忆
+- 保存上下文记忆
+- 转发给子 Agent
+
+所以你简历里写 `Function Calling` 是说得通的。
+
+更准确一点也可以说：
+
+> 基于 Tool Calling / Function Calling 的多工具调度与参数构造。
+
+### 16.4 router 为什么特别像 function-calling 任务
+
+因为 router 的核心不是“生成很漂亮的自然语言”，而是：
+
+- 识别用户意图
+- 决定调用哪个工具或子 Agent
+- 正确构造参数
+- 必要时读写上下文
+
+这本质上就是函数调用链路学习。
+
+## 17. 你可以直接背的几句面试话术
+
+### 17.1 关于 rank
+
+> rank 不只是影响显存，也决定 LoRA 更新的容量。太小可能学不够，太大又容易增加成本和过拟合，所以 8 和 16 是工程上比较常见的折中值。
+
+### 17.2 关于 alpha
+
+> alpha 控制 LoRA 更新的缩放强度，真正关键的是 `alpha / rank` 这个比例。把 alpha 设成 rank 的两倍是一种常见经验做法，不是理论硬规定。
+
+### 17.3 关于 target_module
+
+> target_module 表示 LoRA 挂到哪些层上。attention 投影层更偏行为和信息交互，FFN/MLP 层更偏内容加工和知识表达。不同任务适合的挂法不一样。
+
+### 17.4 关于你自己的 LoRA
+
+> 我这两个 LoRA 不是只改 qkvo，而是使用了 `lora_target=all`，实际覆盖了 attention、FFN/MLP 以及 Qwen3.5 模型特有的一些投影层。router 更偏行为定向，spot 更偏内容生成。
+
+### 17.5 关于 train/eval loss
+
+> train loss 反映模型对训练集的拟合程度，eval loss 更能反映泛化能力。我的 router 和 spot 两个 LoRA 都是结合 eval loss 来做 checkpoint 判断，而不是只看 train loss。
