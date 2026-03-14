@@ -696,3 +696,234 @@ RAG / 知识库相关：
 - `spot_lora`：用 `final / checkpoint-523`
 - `spot_lora` 不适合直接当全局共享模型回答路线问题
 - 当前项目如果不改架构，优先测试 `router` 方向模型，而不是 `spot` 方向模型
+
+## 十二、`lora_target=all` 在 Qwen3.5-4B 上到底是什么意思
+
+这个问题很容易被问到，而且很多人会把 `all` 误解成“整个模型所有参数都训练了”。  
+你这次项目里，`all` 不是这个意思。
+
+### 1. 先说结论
+
+在你的 `router_lora` 和 `spot_lora` 里：
+
+- 原模型参数依然是冻结的
+- LoRA 只挂在“可匹配到的主要线性/投影层”上
+- 不是把 embedding、norm、lm_head 这些都拿去训练
+
+也就是说：
+
+- `lora_target=all`
+  = “把模型里主要的线性层都纳入 LoRA 适配范围”
+- 不等于
+  - “整个模型所有参数都训练”
+  - “全参数微调”
+
+你的配置文件可以直接证明这一点：
+
+- [router adapter_config.json](/D:/20251224/AI_Study/OpenAgents/models/router_lora_2026-03-12/adapter_config.json)
+- [spot adapter_config.json](/D:/20251224/AI_Study/OpenAgents/models/spot_lora_2026-03-12/adapter_config.json)
+
+### 2. Qwen3.5-4B 这种 Transformer，大体有哪些层
+
+可以先把模型想象成三大部分：
+
+1. `Embedding`
+   - 把输入 token 变成向量
+2. 一堆重复的 `Transformer Block`
+   - 每个 block 里通常有：
+     - `Self-Attention`
+     - `MLP / FFN`
+     - `Norm`
+3. 输出层
+   - `final norm`
+   - `lm_head`
+
+你平时听到的“隐藏层”，更像是在说：
+
+- 模型在这些 block 之间流动的中间向量表示
+- 不是某一个具体模块名
+
+### 3. 什么是线性层
+
+LoRA 最喜欢挂的是“线性层”。
+
+线性层你可以简单理解成：
+
+- 一次矩阵乘法
+- 形式类似：
+  - `y = Wx + b`
+
+Transformer 里很多关键模块，本质上都是这种投影/线性层。
+
+LoRA 做的事就是：
+
+- 不直接改原来的 `W`
+- 而是在 `W` 上额外挂一个低秩增量
+
+### 4. Attention 里有哪些常见层
+
+最常见的是这四个：
+
+- `q_proj`
+- `k_proj`
+- `v_proj`
+- `o_proj`
+
+白话理解：
+
+- `q_proj`
+  - 我现在要关注什么
+- `k_proj`
+  - 别人拿什么来和我匹配
+- `v_proj`
+  - 真正被取出来传递的内容是什么
+- `o_proj`
+  - 把注意力结果整合回主干
+
+### 5. MLP / FFN 里有哪些常见层
+
+你这次配置里也会看到这些：
+
+- `gate_proj`
+- `up_proj`
+- `down_proj`
+- `linear_fc1`
+- `linear_fc2`
+
+这些更像是在做：
+
+- 信息变换
+- 模式重组
+- 内容表达
+
+很多经验里会认为：
+
+- attention 更偏“行为和关注方式”
+- MLP / FFN 更偏“表达和内容组织”
+
+### 6. 你这次 `all` 实际命中了哪些层
+
+你本地两个 LoRA 的 `target_modules` 几乎一致，实际包括：
+
+```text
+k_proj
+o_proj
+qkv
+linear_fc2
+in_proj_b
+linear_fc1
+q_proj
+in_proj_a
+in_proj_qkv
+gate_proj
+in_proj_z
+attn.proj
+v_proj
+out_proj
+up_proj
+down_proj
+```
+
+可以把它们分成三组理解。
+
+#### 第一组：Attention 相关层
+
+- `q_proj`
+- `k_proj`
+- `v_proj`
+- `o_proj`
+- `qkv`
+- `out_proj`
+- `attn.proj`
+- `in_proj_qkv`
+
+这些都可以理解成注意力里的投影层。
+
+#### 第二组：MLP / FFN 相关层
+
+- `gate_proj`
+- `up_proj`
+- `down_proj`
+- `linear_fc1`
+- `linear_fc2`
+
+这些是前馈网络里的线性层。
+
+#### 第三组：Qwen / 实现细节相关的投影层
+
+- `in_proj_a`
+- `in_proj_b`
+- `in_proj_z`
+
+这些不是最常见的教科书名字，但本质上也还是模型实现里的投影层。
+
+### 7. 什么没有被 LoRA 打到
+
+你这次没有把 LoRA 直接挂到这些部分上：
+
+- `embedding`
+- `norm`
+- `lm_head`
+- 大多数 `bias`
+
+因为你的配置里就是：
+
+- `bias: "none"`
+
+所以它仍然不是全参训练。
+
+### 8. 为什么 `all` 会比只打 `q_proj,v_proj` 更重
+
+因为 `all` 覆盖更广：
+
+- attention 改
+- mlp 也改
+- 一些特殊投影也改
+
+好处：
+
+- 适配更全面
+- 能同时改“行为”和“表达”
+
+代价：
+
+- 参数更多
+- 显存更高
+- 更容易过拟合
+
+### 9. 结合你这个项目，为什么 `all` 还能讲得通
+
+你的两个 LoRA 目标其实不一样：
+
+#### `router_lora`
+
+更偏：
+
+- 意图识别
+- 工具路由
+- 参数构造
+- 上下文记忆顺序
+
+所以 attention 相关层会很重要。
+
+#### `spot_lora`
+
+更偏：
+
+- 景点介绍
+- 推荐表达
+- 回答组织
+
+所以除了 attention，MLP / FFN 也很重要。
+
+因此你这次用 `all`，可以解释成：
+
+- 这是一个偏“全面适配”的 LoRA 方案
+- 不是最省的方案
+- 但对 router 和 spot 这两种任务都更通用
+
+### 10. 面试时可以直接怎么说
+
+> 我这次 LoRA 的 `all` 不是指把整个模型所有参数都训练，而是让 LLaMA-Factory 对 Qwen3.5-4B 中可匹配到的主要线性层都挂上 LoRA。  
+> 这些层主要包括 attention 里的 q/k/v/o 等投影层、MLP / FFN 里的 gate/up/down 和 fc 层，以及模型实现里的少量特殊投影层。  
+> embedding、norm、lm_head 并没有作为 LoRA 主体去训练，所以它依然是参数高效微调，而不是全参数微调。
