@@ -1,0 +1,7394 @@
+[
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "帮我看下苏州今天冷不冷"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "帮我看下苏州今天冷不冷"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "苏州"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "成都周末会下雨吗"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "成都周末会下雨吗"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "成都"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "查看青岛明天气温"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "查看青岛明天气温"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "青岛"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "昆明最近天气怎么样"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "昆明最近天气怎么样"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "昆明"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "深圳今天适合穿短袖吗"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "深圳今天适合穿短袖吗"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "深圳"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "厦门下周天气如何"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "厦门下周天气如何"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "厦门"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "推荐一下西安适合带爸妈逛的景点"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "推荐一下西安适合带爸妈逛的景点"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "西安",
+              "travel_party": "带父母"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "北京有什么适合拍照的景点"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "北京有什么适合拍照的景点"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "北京"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "杭州西湖值得去吗"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "杭州西湖值得去吗"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "杭州",
+              "current_spot": "西湖"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "重庆适合夜游的地方有哪些"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "重庆适合夜游的地方有哪些"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "重庆"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "帮我找找青岛看海的景点"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "帮我找找青岛看海的景点"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "青岛"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "洛阳龙门石窟怎么玩"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "洛阳龙门石窟怎么玩"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "洛阳",
+              "current_spot": "龙门石窟"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "帮我规划一下上海两日游"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "帮我规划一下上海两日游"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "上海",
+              "notes": "两日游"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "预算2000，安排个成都三天行程"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "预算2000，安排个成都三天行程"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "成都",
+              "notes": "预算2000，三天行程"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "从衡水到如皋怎么走"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "从衡水到如皋怎么走"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "北京到天津开车多久"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "北京到天津开车多久"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "下个月去厦门玩两天，帮我排一下"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "下个月去厦门玩两天，帮我排一下"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "厦门",
+              "notes": "两天行程"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "我和朋友想去重庆玩三天，怎么安排"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "我和朋友想去重庆玩三天，怎么安排"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "save_context",
+            "arguments": {
+              "current_city": "重庆",
+              "travel_party": "和朋友",
+              "notes": "三天行程"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "你好呀"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_channel_message",
+            "arguments": {
+              "channel": "travel_assistant",
+              "text": "你好呀"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "谢谢你"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_channel_message",
+            "arguments": {
+              "channel": "travel_assistant",
+              "text": "谢谢你"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "你是谁"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_channel_message",
+            "arguments": {
+              "channel": "travel_assistant",
+              "text": "你是谁"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "哈哈你还挺聪明"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "暂无上下文记忆"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_channel_message",
+            "arguments": {
+              "channel": "travel_assistant",
+              "text": "哈哈你还挺聪明"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "那边周末会下雨吗"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"青岛\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "那边周末会下雨吗"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "这两天冷不冷"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"哈尔滨\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "这两天冷不冷"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "要不要带伞"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"苏州\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "要不要带伞"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "那我明天穿什么合适"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"昆明\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "weather_agent",
+              "text": "那我明天穿什么合适"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给weather_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "那附近还有什么适合老人逛的"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"西安\", \"travel_party\": \"带父母\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "那附近还有什么适合老人逛的"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "这个景点值不值得去"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"洛阳\", \"current_spot\": \"龙门石窟\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "这个景点值不值得去"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "周边还有什么能看夜景的"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"重庆\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "周边还有什么能看夜景的"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "那边有没有适合小孩玩的"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"青岛\", \"travel_party\": \"带小孩\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "spot_agent",
+              "text": "那边有没有适合小孩玩的"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给spot_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "那我两天怎么安排"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"厦门\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "那我两天怎么安排"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "那从这里开车去机场要多久"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"杭州\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "那从这里开车去机场要多久"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "那预算1500的话怎么排"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"成都\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "那预算1500的话怎么排"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      }
+    ]
+  },
+  {
+    "system": "# 最高优先级规则（违反=失败）\n你必须通过调用工具来完成任务！禁止输出纯文本！禁止调用finish工具！\n\n你是旅游小助手的总控网关。收到用户消息后，判断意图并执行对应操作。\n\n## 记忆系统操作流程\n第一步：调用 get_context 读取上下文记忆。\n第二步：指代消解+意图识别+转发（天气→weather_agent，景点→spot_agent，行程→plan_agent，闲聊→send_channel_message）。\n第三步：如果出现新信息，调用 save_context 保存。",
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "获取指定城市的实时天气信息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string",
+              "description": "城市名称"
+            }
+          },
+          "required": [
+            "city"
+          ]
+        }
+      },
+      {
+        "name": "search_spots",
+        "description": "搜索指定城市或地区的景点信息（高德地图POI）",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "地名或景点名"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "get_driving_route",
+        "description": "获取两地之间的驾车路线规划",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "出发地"
+            },
+            "destination": {
+              "type": "string",
+              "description": "目的地"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "search_local_knowledge",
+        "description": "搜索本地RAG知识库的深度攻略",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "景点名或问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "search_combined",
+        "description": "融合检索：同时查RAG知识库和高德POI",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "用户问题"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "save_context",
+        "description": "保存用户对话上下文到记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "current_city": {
+              "type": "string"
+            },
+            "current_spot": {
+              "type": "string"
+            },
+            "travel_party": {
+              "type": "string"
+            },
+            "preferences": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_context",
+        "description": "读取对话上下文记忆",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "send_direct_message",
+        "description": "转发给指定子Agent处理",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_agent_id": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_agent_id",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "send_channel_message",
+        "description": "发送消息到公共频道",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel",
+            "text"
+          ]
+        }
+      },
+      {
+        "name": "reply_channel_message",
+        "description": "回复频道消息",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    ],
+    "conversations": [
+      {
+        "from": "human",
+        "value": "我们三个人的话行程怎么调"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "get_context",
+            "arguments": {}
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "{\"current_city\": \"上海\", \"travel_party\": \"三个人\"}"
+      },
+      {
+        "from": "gpt",
+        "value": "",
+        "tool_calls": [
+          {
+            "name": "send_direct_message",
+            "arguments": {
+              "target_agent_id": "plan_agent",
+              "text": "我们三个人的话行程怎么调"
+            }
+          }
+        ]
+      },
+      {
+        "from": "observation",
+        "value": "消息已发送给plan_agent"
+      }
+    ]
+  }
+]

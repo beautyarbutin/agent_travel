@@ -46,3 +46,20 @@ desktop.ini
 # 其他
 .env
 node_modules/
+
+# 本地备份与评测产物
+0314eval/
+agents_backup_2026-03-16_rollback/
+branch_restore_backup_2026-03-16/
+reports/
+models/
+storage/
+agent_travel/
+_upstream_openagents/
+
+# 本地临时/下载文件
+tmp_*
+install_log*.txt
+log.txt
+*.lnk
+*.pdf

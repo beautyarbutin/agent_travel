@@ -1,0 +1,8969 @@
+[
+  {
+    "case_id": "crosswoz_crosswoz-train-3819_0",
+    "query": "你好，你帮我找一家2小时 - 3小时，票价是100-150元的景点吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "北京杜莎夫人蜡像馆",
+    "context": {
+      "spot_name": "北京杜莎夫人蜡像馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "145",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街18号；交通：崇文门地铁站A1口；电话：010-87559666；评分：4.8分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注北京杜莎夫人蜡像馆，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "北京杜莎夫人蜡像馆"
+      ],
+      "location": [
+        "北京市东城区前门大街18号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "145",
+        "145元",
+        "门票145元",
+        "145块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3819",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "我可以查到的符合你要求的景点只有北京杜莎夫人蜡像馆了。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1373_0",
+    "query": "你好，你能为我找一个票价是100-150元，游玩时长是2小时的景点吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "北京杜莎夫人蜡像馆",
+    "context": {
+      "spot_name": "北京杜莎夫人蜡像馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "145",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街18号；交通：崇文门地铁站A1口；电话：010-87559666；评分：4.8分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注北京杜莎夫人蜡像馆，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "北京杜莎夫人蜡像馆"
+      ],
+      "location": [
+        "北京市东城区前门大街18号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "145",
+        "145元",
+        "门票145元",
+        "145块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1373",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "北京杜莎夫人蜡像馆挺不错的，建议你去这里参观一下。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-65_0",
+    "query": "你好，你能帮我找一下可以玩3小时，免票的景点吗？评分最好是4.5分以上的就行。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "角楼",
+    "context": {
+      "spot_name": "角楼",
+      "city": "",
+      "district": "",
+      "duration": "0.2小时 - 0.3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区故宫博物院内；交通：灯市口地铁站A口；电话：010-85007421；评分：4.7分；周边景点：恭王府、天安门广场、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注角楼，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "角楼"
+      ],
+      "location": [
+        "北京市东城区故宫博物院内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "0.2小时 - 0.3小时",
+        "0.2小时-0.3小时",
+        "0.2小时到0.3小时",
+        "0.2小时至0.3小时",
+        "0.2到0.3小时",
+        "0.2至0.3小时",
+        "0.2-0.3小时",
+        "0.2~0.3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-65",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "那你去角楼吧。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4565_0",
+    "query": "你好，可以帮我推荐一个评分是5分，游玩时长是12小时 - 3天，票价免费的景点吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "798艺术区",
+    "context": {
+      "spot_name": "798艺术区",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区酒仙桥路2号；交通：望京南地铁站A口；电话：010-59789114；评分：4.4分；周边景点：尤伦斯当代艺术中心、白盒子艺术馆、观复博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注798艺术区，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "798艺术区"
+      ],
+      "location": [
+        "北京市朝阳区酒仙桥路2号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4565",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "对不起，没有查到符合条件的景点信息，给您推荐798艺术区，这是和您要求最接近的景点了，只是评分是4.4分，低了点，您看行吗？"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1549_0",
+    "query": "你好，帮我安排一个票价100-150元，游玩时长1小时，评分4.5分以上的景点可以吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "南宫地热博览园",
+    "context": {
+      "spot_name": "南宫地热博览园",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "70",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市丰台区王佐镇南宫村；交通：篱笆房地铁站A2口；电话：010-83318032;010-83318649；评分：4.6分",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注南宫地热博览园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "南宫地热博览园"
+      ],
+      "location": [
+        "北京市丰台区王佐镇南宫村",
+        "北京市",
+        "北京",
+        "北京市丰台区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "70",
+        "70元",
+        "门票70元",
+        "70块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1549",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "对不起没有查到符合条件的景点信息，给你推荐一个票价70元南宫地热博览园，你看行吗，这是跟你要求最接近的景点了。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3205_0",
+    "query": "你好，我想带女朋友去一个评分4.5分以上可以游玩时间1小时 - 2小时的景点游玩，给我推荐一个吧。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "清华大学",
+    "context": {
+      "spot_name": "清华大学",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区双清路30号；交通：知春里地铁站B口；电话：010-62793001；评分：4.6分；周边景点：北京大学、圆明园、水立方（国家游泳中心）",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注清华大学，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "清华大学"
+      ],
+      "location": [
+        "北京市海淀区双清路30号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3205",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "推荐您去清华大学游玩。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-912_0",
+    "query": "你好，我想带女朋友去一个评分4.5分以上的，可以游玩时间3小时 - 4小时的景点游玩，给我推荐一个吧。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "八达岭长城",
+    "context": {
+      "spot_name": "八达岭长城",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 4小时",
+      "budget": "35",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市延庆县京藏高速58号出口右转；电话：010-69121383,010-69121226；评分：4.6分；周边景点：八达岭野生动物世界、八达岭古长城（残长城）、中国长城博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注八达岭长城，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "八达岭长城"
+      ],
+      "location": [
+        "北京市延庆县京藏高速58号出口右转",
+        "北京市",
+        "北京",
+        "北京市延庆县"
+      ],
+      "duration": [
+        "3小时 - 4小时",
+        "3小时-4小时",
+        "3小时到4小时",
+        "3小时至4小时",
+        "3到4小时",
+        "3至4小时",
+        "3-4小时",
+        "3~4小时"
+      ],
+      "budget": [
+        "35",
+        "35元",
+        "门票35元",
+        "35块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-912",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "推荐您去八达岭长城游玩。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-2_0",
+    "query": "你好，我想带女朋友找一个评分4.5分以上可以游玩时间3天的景点游玩，给我推荐一个吧。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "北京欢乐谷",
+    "context": {
+      "spot_name": "北京欢乐谷",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "195",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)；交通：劲松地铁站D口；电话：010-67389898,010-67383333,010-67201818；评分：4.5分；周边景点：潘家园、今日美术馆、首都图书馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注北京欢乐谷，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "北京欢乐谷"
+      ],
+      "location": [
+        "北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "195",
+        "195元",
+        "门票195元",
+        "195块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-2",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "推荐您去北京欢乐谷游玩。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-275_0",
+    "query": "你好，我想带女朋友找一个门票价格200元以上的，可以游玩时间0.2小时 - 0.3小时的景点游玩，给我推荐一个吧。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "回音壁",
+    "context": {
+      "spot_name": "回音壁",
+      "city": "",
+      "district": "",
+      "duration": "0.2小时 - 0.3小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区天坛内东里7号天坛公园内；交通：崇文门地铁站A1口；电话：010-67028866；评分：4.5分；周边景点：前门大街、天安门广场、中国国家博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注回音壁，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "回音壁"
+      ],
+      "location": [
+        "北京市东城区天坛内东里7号天坛公园内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "0.2小时 - 0.3小时",
+        "0.2小时-0.3小时",
+        "0.2小时到0.3小时",
+        "0.2小时至0.3小时",
+        "0.2到0.3小时",
+        "0.2至0.3小时",
+        "0.2-0.3小时",
+        "0.2~0.3小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-275",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "抱歉，门票价格没有符合您要求的，推荐您去门票10元的回音壁游玩。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1286_0",
+    "query": "你好，我想找一个游玩时长2小时，评分4.5分以上的景点游玩，可以帮我推荐一个吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "北京国际雕塑公园",
+    "context": {
+      "spot_name": "北京国际雕塑公园",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市石景山区石景山路2号(地铁玉泉路A出口西侧)；交通：苹果园地铁站C口；电话：010-68650422;010-68638071；评分：5.0分；周边景点：欢乐水魔方水上乐园、石景山游乐园、太平洋海底世界博览馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注北京国际雕塑公园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "北京国际雕塑公园"
+      ],
+      "location": [
+        "北京市石景山区石景山路2号(地铁玉泉路A出口西侧)",
+        "北京市",
+        "北京",
+        "北京市石景山区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1286",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "你可以去张裕爱斐堡国际酒庄和北京国际雕塑公园。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-228_0",
+    "query": "你好，我想找一个评分是5分，票价免费的景点游玩，给推荐一个呗。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "御花园",
+    "context": {
+      "spot_name": "御花园",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区故宫博物院内；交通：灯市口地铁站A口；电话：010-85007421；评分：5.0分；周边景点：恭王府、天安门广场、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注御花园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "御花园"
+      ],
+      "location": [
+        "北京市东城区故宫博物院内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-228",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "梅兰芳大剧院，青龙山旅游区和御花园都挺好的，看你喜欢什么风格了。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1108_0",
+    "query": "你好，能帮我安排一个评分是4.5分以上的景点吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "世界公园",
+    "context": {
+      "spot_name": "世界公园",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "100",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：丰台区花乡丰葆路158号；交通：丰台科技园地铁站D口；电话：010-83613344,010-83613685；评分：4.5分；周边景点：北京汽车博物馆、紫谷伊甸园、世界公园美洲区",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注世界公园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "世界公园"
+      ],
+      "location": [
+        "丰台区花乡丰葆路158号",
+        "丰台区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "100",
+        "100元",
+        "门票100元",
+        "100块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1108",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "首都博物馆和世界公园怎么样？"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4836_0",
+    "query": "你好，能帮我找一个可以游玩1小时左右的免费景点吗？一会我想带儿子出去玩一玩。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "大栅栏",
+    "context": {
+      "spot_name": "大栅栏",
+      "city": "",
+      "district": "",
+      "duration": "0.5小时 - 1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：西城区前门大街大栅栏街6号；交通：崇文门地铁站A1口；电话：010-63109680；评分：4.0分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注大栅栏，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "大栅栏"
+      ],
+      "location": [
+        "西城区前门大街大栅栏街6号",
+        "西城区"
+      ],
+      "duration": [
+        "0.5小时 - 1小时",
+        "0.5小时-1小时",
+        "0.5小时到1小时",
+        "0.5小时至1小时",
+        "0.5到1小时",
+        "0.5至1小时",
+        "0.5-1小时",
+        "0.5~1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.0",
+        "4.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4836",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "建议您带儿子去大栅栏。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4503_0",
+    "query": "你好，请帮我推荐个可游玩1小时的景点，最好评分在4.5分以上，谢谢！",
+    "category": "CrossWOZ-名称",
+    "expected_id": "珍宝馆",
+    "context": {
+      "spot_name": "珍宝馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区故宫博物院宁寿宫内；交通：灯市口地铁站A口；电话：010-85007938,010-85007421；评分：4.5分；周边景点：天安门广场、天坛、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注珍宝馆，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "珍宝馆"
+      ],
+      "location": [
+        "北京市东城区故宫博物院宁寿宫内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4503",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "珍宝馆可以去看看哦，评分是4.5分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2029_0",
+    "query": "你好，请给我推荐一个评分4.5分以上，可以游玩时间2小时 - 4小时的景点游玩。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "恭王府",
+    "context": {
+      "spot_name": "恭王府",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 4小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区柳荫街甲14号；交通：灯市口地铁站A口；电话：010-83288149；评分：4.5分；周边景点：故宫、天安门广场、中国国家博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注恭王府，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "恭王府"
+      ],
+      "location": [
+        "北京市西城区柳荫街甲14号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时 - 4小时",
+        "2小时-4小时",
+        "2小时到4小时",
+        "2小时至4小时",
+        "2到4小时",
+        "2至4小时",
+        "2-4小时",
+        "2~4小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2029",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "推荐您去恭王府。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3624_14",
+    "query": "再给我介绍一个5分的景点吧？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "地坛",
+    "context": {
+      "spot_name": "地坛",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "2",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区安定门外大街东侧；交通：灯市口地铁站A口；电话：010-84257506,010-64214657；评分：5.0分；周边景点：簋街小吃、什刹海、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注地坛，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "地坛"
+      ],
+      "location": [
+        "北京市东城区安定门外大街东侧",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "2",
+        "2元",
+        "门票2元",
+        "2块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3624",
+      "turn_idx": 14,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "去地坛怎么样？"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-155_22",
+    "query": "吃完饭我想找个地方去游玩，帮我推荐一个游玩时长是3小时 - 4小时，票价是150-200元的景点呗！",
+    "category": "CrossWOZ-名称",
+    "expected_id": "梨园剧场",
+    "context": {
+      "spot_name": "梨园剧场",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 4小时",
+      "budget": "200",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区永安路175号前门建国饭店1楼（虎坊桥南侧）；交通：菜市口地铁站D口；电话：400-0829-115,010-65524990；评分：4.0分；周边景点：天安门广场、天坛、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注梨园剧场，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "梨园剧场"
+      ],
+      "location": [
+        "北京市西城区永安路175号前门建国饭店1楼（虎坊桥南侧）",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "3小时 - 4小时",
+        "3小时-4小时",
+        "3小时到4小时",
+        "3小时至4小时",
+        "3到4小时",
+        "3至4小时",
+        "3-4小时",
+        "3~4小时"
+      ],
+      "budget": [
+        "200",
+        "200元",
+        "门票200元",
+        "200块"
+      ],
+      "rating": [
+        "4.0",
+        "4.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-155",
+      "turn_idx": 22,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "嗯，那我推荐你去梨园剧场玩吧，非常不错呢！"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1138_6",
+    "query": "哦，有点遗憾呢，定好酒店，我打算找个评分是4分以上，票价免费的景点溜达溜达，你有什么好的去处吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "老舍茶馆",
+    "context": {
+      "spot_name": "老舍茶馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区前门西大街正阳市场3号楼；交通：崇文门地铁站A1口；电话：010-63036830；评分：4.5分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注老舍茶馆，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "老舍茶馆"
+      ],
+      "location": [
+        "北京市西城区前门西大街正阳市场3号楼",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1138",
+      "turn_idx": 6,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "如果只为了闲溜达，你可以去老舍茶馆，这里还是比较安静的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-91_18",
+    "query": "嗯。吃完饭想去游玩。请帮我找一个游玩时长是1小时 - 2小时的景点。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "纪晓岚故居",
+    "context": {
+      "spot_name": "纪晓岚故居",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "None",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区珠市口西大街241号；交通：菜市口地铁站D口；电话：010-68870866；评分：4.1分；周边景点：天安门广场、天坛、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注纪晓岚故居，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "纪晓岚故居"
+      ],
+      "location": [
+        "北京市西城区珠市口西大街241号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "None"
+      ],
+      "rating": [
+        "4.1",
+        "4.1分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-91",
+      "turn_idx": 18,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "好多的，推荐您去纪晓岚故居或苏州街。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4_6",
+    "query": "嗯我知道了，吃完饭我想找个评分是4.5分以上，票价免费的景点溜达一会，你能给我推荐一个吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "梅兰芳大剧院",
+    "context": {
+      "spot_name": "梅兰芳大剧院",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区平安里西大街32号；交通：知春路地铁站B口；电话：010-58331288,010-58331388；评分：5.0分；周边景点：恭王府、故宫、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注梅兰芳大剧院，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "梅兰芳大剧院"
+      ],
+      "location": [
+        "北京市西城区平安里西大街32号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4",
+      "turn_idx": 6,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "我觉得梅兰芳大剧院挺不错的，不知道你对这方面是否感兴趣？"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-94_12",
+    "query": "嗯，我想找一个门票50-100元的可以游玩时长0.5小时 - 1小时的景点游玩，给推荐一个好玩的景点吧。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "世界公园美洲区",
+    "context": {
+      "spot_name": "世界公园美洲区",
+      "city": "",
+      "district": "",
+      "duration": "0.5小时 - 1小时",
+      "budget": "100",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市丰台区丰葆路158号世界公园内；交通：丰台科技园地铁站D口；电话：010-83613344；周边景点：紫谷伊甸园、北京汽车博物馆、世界公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注世界公园美洲区，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "世界公园美洲区"
+      ],
+      "location": [
+        "北京市丰台区丰葆路158号世界公园内",
+        "北京市",
+        "北京",
+        "北京市丰台区"
+      ],
+      "duration": [
+        "0.5小时 - 1小时",
+        "0.5小时-1小时",
+        "0.5小时到1小时",
+        "0.5小时至1小时",
+        "0.5到1小时",
+        "0.5至1小时",
+        "0.5-1小时",
+        "0.5~1小时"
+      ],
+      "budget": [
+        "100",
+        "100元",
+        "门票100元",
+        "100块"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-94",
+      "turn_idx": 12,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "推荐您去世界公园美洲区游玩。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2922_2",
+    "query": "太好了，我安排好住宿后打算找个能玩2小时的景点，你给我推荐推荐呗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "故宫",
+    "context": {
+      "spot_name": "故宫",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区景山前街4号；交通：灯市口地铁站A口；电话：010-85007938；评分：4.7分；周边景点：天安门广场、恭王府、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注故宫，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "故宫"
+      ],
+      "location": [
+        "北京市东城区景山前街4号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2922",
+      "turn_idx": 2,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "这样的景点可太多了，不过我推荐你去故宫。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4251_12",
+    "query": "好吧，一会你能给我推荐一个评分4分以上，票价200元以上的景点吗，我打算明天去游玩。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "乐多港奇幻乐园",
+    "context": {
+      "spot_name": "乐多港奇幻乐园",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "220",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市昌平区城南街道旧西路（西关环岛西2公里）；交通：昌平地铁站A口；电话：010-57505288；评分：4.6分；周边景点：明皇文化艺术馆、明十三陵",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注乐多港奇幻乐园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "乐多港奇幻乐园"
+      ],
+      "location": [
+        "北京市昌平区城南街道旧西路（西关环岛西2公里）",
+        "北京市",
+        "北京",
+        "北京市昌平区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "220",
+        "220元",
+        "门票220元",
+        "220块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4251",
+      "turn_idx": 12,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "乐多港奇幻乐园是个非常好玩的地方，强烈推荐你去。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4142_6",
+    "query": "好的，我了解了。现在我想找个票价是100-150元的，评分在4.5分以上的景点逛逛，你看去哪儿好呢？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "北京杜莎夫人蜡像馆",
+    "context": {
+      "spot_name": "北京杜莎夫人蜡像馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "145",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街18号；交通：崇文门地铁站A1口；电话：010-87559666；评分：4.8分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注北京杜莎夫人蜡像馆，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "北京杜莎夫人蜡像馆"
+      ],
+      "location": [
+        "北京市东城区前门大街18号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "145",
+        "145元",
+        "门票145元",
+        "145块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4142",
+      "turn_idx": 6,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "这样的话我建议您去北京杜莎夫人蜡像馆，特别有趣。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4129_8",
+    "query": "好的，明天还要带家里人出去玩，能帮忙找一个评分是4.5分以上，门票价格是200元以上的景点吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "乐多港奇幻乐园",
+    "context": {
+      "spot_name": "乐多港奇幻乐园",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "220",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市昌平区城南街道旧西路（西关环岛西2公里）；交通：昌平地铁站A口；电话：010-57505288；评分：4.6分；周边景点：明皇文化艺术馆、明十三陵",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注乐多港奇幻乐园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "乐多港奇幻乐园"
+      ],
+      "location": [
+        "北京市昌平区城南街道旧西路（西关环岛西2公里）",
+        "北京市",
+        "北京",
+        "北京市昌平区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "220",
+        "220元",
+        "门票220元",
+        "220块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4129",
+      "turn_idx": 8,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "推荐您带家人去乐多港奇幻乐园，非常适合家里人一起去玩。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3524_0",
+    "query": "您好，请为我推荐一家票价是免费的景点，我想散散心，告诉我它的评分。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "798艺术区",
+    "context": {
+      "spot_name": "798艺术区",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区酒仙桥路2号；交通：望京南地铁站A口；电话：010-59789114；评分：4.4分；周边景点：尤伦斯当代艺术中心、白盒子艺术馆、观复博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注798艺术区，评分约4.4分。",
+    "expected_facts": {
+      "spot_name": [
+        "798艺术区"
+      ],
+      "location": [
+        "北京市朝阳区酒仙桥路2号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3524",
+      "turn_idx": 0,
+      "requested_slots": [
+        "名称",
+        "评分"
+      ],
+      "system_utterance": "你可以去798艺术区走走。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3616_4",
+    "query": "收到，定好酒店以后我要先找个票价是50-100元，评分是4分以上，游玩时长是1小时 - 2小时的景点游玩，有啥好地方给我推荐吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "定都阁",
+    "context": {
+      "spot_name": "定都阁",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "50",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：近郊 门头沟区潭柘寺镇定都峰上；交通：桥户营地铁站；电话：010-61869088；评分：4.5分；周边景点：潭柘寺、八奇洞、戒台寺",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注定都阁，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "定都阁"
+      ],
+      "location": [
+        "近郊 门头沟区潭柘寺镇定都峰上",
+        "近郊 门头沟区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "50",
+        "50元",
+        "门票50元",
+        "50块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3616",
+      "turn_idx": 4,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "定都阁完全符合你的要求，而且环境非常美丽，考虑不？"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2692_2",
+    "query": "景点的评分是在4.5分以上的吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "京东大溶洞",
+    "context": {
+      "spot_name": "京东大溶洞",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 5小时",
+      "budget": "85",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市平谷区黑豆峪村东侧；电话：010-60972518,010-60971708；评分：2.4分；周边景点：石林峡",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注京东大溶洞，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "京东大溶洞"
+      ],
+      "location": [
+        "北京市平谷区黑豆峪村东侧",
+        "北京市",
+        "北京",
+        "北京市平谷区"
+      ],
+      "duration": [
+        "3小时 - 5小时",
+        "3小时-5小时",
+        "3小时到5小时",
+        "3小时至5小时",
+        "3到5小时",
+        "3至5小时",
+        "3-5小时",
+        "3~5小时"
+      ],
+      "budget": [
+        "85",
+        "85元",
+        "门票85元",
+        "85块"
+      ],
+      "rating": [
+        "2.4",
+        "2.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2692",
+      "turn_idx": 2,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "那没有，评分只有2.4分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4840_12",
+    "query": "最后再帮我推荐一个能玩1个小时的景点，最好是免费的景点。",
+    "category": "CrossWOZ-名称",
+    "expected_id": "王府井天主教堂",
+    "context": {
+      "spot_name": "王府井天主教堂",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区王府井大街路东74号；交通：崇文门地铁站A1口；电话：010-65240634；评分：4.3分；周边景点：故宫、天安门广场、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注王府井天主教堂，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "王府井天主教堂"
+      ],
+      "location": [
+        "北京市东城区王府井大街路东74号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4840",
+      "turn_idx": 12,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "为您推荐王府井天主教堂。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4554_6",
+    "query": "营业时间有点短呀，吃完饭我打算去游玩，你能给我找一个票价免费，评分是5分的景点吗？",
+    "category": "CrossWOZ-名称",
+    "expected_id": "卧龙公园",
+    "context": {
+      "spot_name": "卧龙公园",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市顺义区西门外路北1号；交通：南法信地铁站B口；电话：010-69445460；评分：5.0分；周边景点：减河五彩园、怡园公园、奥林匹克水上公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "推荐你关注卧龙公园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "卧龙公园"
+      ],
+      "location": [
+        "北京市顺义区西门外路北1号",
+        "北京市",
+        "北京",
+        "北京市顺义区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4554",
+      "turn_idx": 6,
+      "requested_slots": [
+        "名称"
+      ],
+      "system_utterance": "那你可以去御花园和卧龙公园溜达溜达。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4779_2",
+    "query": "不错哦，在里面能玩多久，详细地址在哪？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "水立方嬉水乐园",
+    "context": {
+      "spot_name": "水立方嬉水乐园",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "200",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区天辰东路11号国家游泳中心1层；交通：北沙滩地铁站B2口；电话：010-84378966,010-84378963；评分：5.0分；周边景点：水立方（国家游泳中心）、国家奥林匹克体育中心、中国科学技术馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "水立方嬉水乐园，地址是北京市朝阳区天辰东路11号国家游泳中心1层，建议游玩时间是3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "水立方嬉水乐园"
+      ],
+      "location": [
+        "北京市朝阳区天辰东路11号国家游泳中心1层",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "200",
+        "200元",
+        "门票200元",
+        "200块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4779",
+      "turn_idx": 2,
+      "requested_slots": [
+        "地址",
+        "游玩时间"
+      ],
+      "system_utterance": "可以在里面玩3小时左右，地址在北京市朝阳区天辰东路11号国家游泳中心1层。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-682_0",
+    "query": "你好，我想去景点云佛山大溶洞，帮我查询下这个景点的地址和周边的酒店。",
+    "category": "CrossWOZ-地址",
+    "expected_id": "云佛山大溶洞",
+    "context": {
+      "spot_name": "云佛山大溶洞",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "25",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市密云区溪翁庄镇密溪路云佛山度假村内；电话：010-89032255；评分：2.0分；周边景点：冶仙塔旅游风景区、巴蜀文化园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "云佛山大溶洞，地址是北京市密云区溪翁庄镇密溪路云佛山度假村内。",
+    "expected_facts": {
+      "spot_name": [
+        "云佛山大溶洞"
+      ],
+      "location": [
+        "北京市密云区溪翁庄镇密溪路云佛山度假村内",
+        "北京市",
+        "北京",
+        "北京市密云区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "25",
+        "25元",
+        "门票25元",
+        "25块"
+      ],
+      "rating": [
+        "2.0",
+        "2.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-682",
+      "turn_idx": 0,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是北京市密云区溪翁庄镇密溪路云佛山度假村内，周边没有酒店。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1219_0",
+    "query": "你好，我想问下中国影视大乐园的地址在哪？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "中国影视大乐园",
+    "context": {
+      "spot_name": "中国影视大乐园",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "None",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市大兴区南五环西红门北兴路东段2号星光影视园内；交通：枣园地铁站B口；电话：010-57956100；周边景点：中国印刷博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国影视大乐园，地址是北京市大兴区南五环西红门北兴路东段2号星光影视园内。",
+    "expected_facts": {
+      "spot_name": [
+        "中国影视大乐园"
+      ],
+      "location": [
+        "北京市大兴区南五环西红门北兴路东段2号星光影视园内",
+        "北京市",
+        "北京",
+        "北京市大兴区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "None"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1219",
+      "turn_idx": 0,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址在北京市大兴区南五环西红门北兴路东段2号星光影视园内。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2844_4",
+    "query": "养心殿在哪?",
+    "category": "CrossWOZ-地址",
+    "expected_id": "养心殿",
+    "context": {
+      "spot_name": "养心殿",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区故宫博物院内；交通：灯市口地铁站A口；电话：010-85007422；评分：5.0分；周边景点：天安门广场、故宫、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "养心殿，地址是北京市东城区故宫博物院内。",
+    "expected_facts": {
+      "spot_name": [
+        "养心殿"
+      ],
+      "location": [
+        "北京市东城区故宫博物院内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2844",
+      "turn_idx": 4,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "它位于北京市东城区故宫博物院内。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-416_8",
+    "query": "北京海洋馆的地址是？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "北京海洋馆",
+    "context": {
+      "spot_name": "北京海洋馆",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "165",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区高粱桥斜街乙18号；交通：大钟寺地铁站B口；电话：010-62176655；评分：4.5分；周边景点：什刹海、恭王府、北海公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京海洋馆，地址是北京市海淀区高粱桥斜街乙18号。",
+    "expected_facts": {
+      "spot_name": [
+        "北京海洋馆"
+      ],
+      "location": [
+        "北京市海淀区高粱桥斜街乙18号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "165",
+        "165元",
+        "门票165元",
+        "165块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-416",
+      "turn_idx": 8,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "北京海洋馆的地址是北京市海淀区高粱桥斜街乙18号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3147_10",
+    "query": "可以，你有这个景点的地址吗？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "日坛公园",
+    "context": {
+      "spot_name": "日坛公园",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区朝阳门外日坛北路6号；交通：灯市口地铁站A口；电话：010-85616301；评分：4.5分；周边景点：中国国家博物馆、故宫、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "日坛公园，地址是北京市朝阳区朝阳门外日坛北路6号。",
+    "expected_facts": {
+      "spot_name": [
+        "日坛公园"
+      ],
+      "location": [
+        "北京市朝阳区朝阳门外日坛北路6号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3147",
+      "turn_idx": 10,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "必须有啊，地址是北京市朝阳区朝阳门外日坛北路6号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-65_12",
+    "query": "啊，那我去鸟巢（国家体育场），麻烦把它的地址给我一下。",
+    "category": "CrossWOZ-地址",
+    "expected_id": "鸟巢(国家体育场)",
+    "context": {
+      "spot_name": "鸟巢(国家体育场)",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区国家体育场南路1号；交通：奥林匹克公园地铁站E口；电话：010-84373008；评分：4.5分；周边景点：国家奥林匹克体育中心、中国科学技术馆、水立方嬉水乐园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "鸟巢(国家体育场)，地址是北京市朝阳区国家体育场南路1号。",
+    "expected_facts": {
+      "spot_name": [
+        "鸟巢(国家体育场)",
+        "鸟巢",
+        "国家体育场"
+      ],
+      "location": [
+        "北京市朝阳区国家体育场南路1号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-65",
+      "turn_idx": 12,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "它的地址是北京市朝阳区国家体育场南路1号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4485_12",
+    "query": "嗯嗯，太好了，这个景点的地址是在哪里呢？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "大水法",
+    "context": {
+      "spot_name": "大水法",
+      "city": "",
+      "district": "",
+      "duration": "0.3小时 - 0.5小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：海淀区圆明园遗址公园北侧；交通：圆明园地铁站C口；电话：010-62543673；评分：4.5分；周边景点：清华大学、北京大学、颐和园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "大水法，地址是海淀区圆明园遗址公园北侧。",
+    "expected_facts": {
+      "spot_name": [
+        "大水法"
+      ],
+      "location": [
+        "海淀区圆明园遗址公园北侧",
+        "海淀区"
+      ],
+      "duration": [
+        "0.3小时 - 0.5小时",
+        "0.3小时-0.5小时",
+        "0.3小时到0.5小时",
+        "0.3小时至0.5小时",
+        "0.3到0.5小时",
+        "0.3至0.5小时",
+        "0.3-0.5小时",
+        "0.3~0.5小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4485",
+      "turn_idx": 12,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是海淀区圆明园遗址公园北侧。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-325_6",
+    "query": "嗯，圆明园不错，麻烦您把它的地址和它周边还什么景点告诉我一下。",
+    "category": "CrossWOZ-地址",
+    "expected_id": "圆明园",
+    "context": {
+      "spot_name": "圆明园",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 6小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区清华西路28号；交通：圆明园地铁站C口；电话：010-62628501；评分：4.4分；周边景点：北京大学、清华大学、颐和园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "圆明园，地址是北京市海淀区清华西路28号。",
+    "expected_facts": {
+      "spot_name": [
+        "圆明园"
+      ],
+      "location": [
+        "北京市海淀区清华西路28号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时 - 6小时",
+        "3小时-6小时",
+        "3小时到6小时",
+        "3小时至6小时",
+        "3到6小时",
+        "3至6小时",
+        "3-6小时",
+        "3~6小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-325",
+      "turn_idx": 6,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是北京市海淀区清华西路28号，然后它周边的景点有北京大学, 清华大学, 颐和园, 苏州街, 清华大礼堂。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-449_12",
+    "query": "地址在哪？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "尤伦斯当代艺术中心",
+    "context": {
+      "spot_name": "尤伦斯当代艺术中心",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区酒仙桥路4号798艺术区4号路；交通：望京南地铁站A口；电话：010-57800200；周边景点：798艺术区、白盒子艺术馆、观复博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "尤伦斯当代艺术中心，地址是北京市朝阳区酒仙桥路4号798艺术区4号路。",
+    "expected_facts": {
+      "spot_name": [
+        "尤伦斯当代艺术中心"
+      ],
+      "location": [
+        "北京市朝阳区酒仙桥路4号798艺术区4号路",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-449",
+      "turn_idx": 12,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "在北京市朝阳区酒仙桥路4号798艺术区4号路。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3120_2",
+    "query": "天安门广场景点的电话是多少？地址在哪里？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "天安门广场",
+    "context": {
+      "spot_name": "天安门广场",
+      "city": "",
+      "district": "",
+      "duration": "0.5小时 - 1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区长安街（天安门和正阳门之间）；交通：灯市口地铁站A口；电话：010-65666606；评分：4.7分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "天安门广场，地址是北京市东城区长安街（天安门和正阳门之间）。",
+    "expected_facts": {
+      "spot_name": [
+        "天安门广场"
+      ],
+      "location": [
+        "北京市东城区长安街（天安门和正阳门之间）",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "0.5小时 - 1小时",
+        "0.5小时-1小时",
+        "0.5小时到1小时",
+        "0.5小时至1小时",
+        "0.5到1小时",
+        "0.5至1小时",
+        "0.5-1小时",
+        "0.5~1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3120",
+      "turn_idx": 2,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "电话是010-65666606；地址在北京市东城区长安街（天安门和正阳门之间）。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1165_8",
+    "query": "好呀，地址在哪？附近有什么酒店吗？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "颐和园",
+    "context": {
+      "spot_name": "颐和园",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 6小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区新建宫门路19号；交通：中关村地铁站E口；电话：010-62881144；评分：4.7分；周边景点：圆明园、北京大学、清华大学",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "颐和园，地址是北京市海淀区新建宫门路19号。",
+    "expected_facts": {
+      "spot_name": [
+        "颐和园"
+      ],
+      "location": [
+        "北京市海淀区新建宫门路19号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时 - 6小时",
+        "3小时-6小时",
+        "3小时到6小时",
+        "3小时至6小时",
+        "3到6小时",
+        "3至6小时",
+        "3-6小时",
+        "3~6小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1165",
+      "turn_idx": 8,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址在北京市海淀区新建宫门路19号，附近酒店有富驿时尚酒店(北京中关村店), 北京海润艾丽华酒店及服务公寓, 北京北大博雅国际酒店, 北京世纪星豪酒店, 北京燕山大酒店。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4166_6",
+    "query": "好，地址在哪？看完剧我们想在周边吃饭，有什么餐馆吗？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "梨园剧场",
+    "context": {
+      "spot_name": "梨园剧场",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 4小时",
+      "budget": "200",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区永安路175号前门建国饭店1楼（虎坊桥南侧）；交通：菜市口地铁站D口；电话：400-0829-115,010-65524990；评分：4.0分；周边景点：天安门广场、天坛、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "梨园剧场，地址是北京市西城区永安路175号前门建国饭店1楼（虎坊桥南侧）。",
+    "expected_facts": {
+      "spot_name": [
+        "梨园剧场"
+      ],
+      "location": [
+        "北京市西城区永安路175号前门建国饭店1楼（虎坊桥南侧）",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "3小时 - 4小时",
+        "3小时-4小时",
+        "3小时到4小时",
+        "3小时至4小时",
+        "3到4小时",
+        "3至4小时",
+        "3-4小时",
+        "3~4小时"
+      ],
+      "budget": [
+        "200",
+        "200元",
+        "门票200元",
+        "200块"
+      ],
+      "rating": [
+        "4.0",
+        "4.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4166",
+      "turn_idx": 6,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址在北京市西城区永安路175号前门建国饭店1楼（虎坊桥南侧）；周边餐馆有北京全聚德(王府井店)、护国寺小吃店（护国寺总店）等。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-227_2",
+    "query": "好，珍宝馆的地址在哪呢？周边有啥好吃的餐馆吗？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "珍宝馆",
+    "context": {
+      "spot_name": "珍宝馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区故宫博物院宁寿宫内；交通：灯市口地铁站A口；电话：010-85007938,010-85007421；评分：4.5分；周边景点：天安门广场、天坛、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "珍宝馆，地址是北京市东城区故宫博物院宁寿宫内。",
+    "expected_facts": {
+      "spot_name": [
+        "珍宝馆"
+      ],
+      "location": [
+        "北京市东城区故宫博物院宁寿宫内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-227",
+      "turn_idx": 2,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址在北京市东城区故宫博物院宁寿宫内，周边的餐馆有北京全聚德(王府井店), 姚记炒肝店（鼓楼店）。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4809_8",
+    "query": "很好啊。芳草地画廊的地址和电话分别是什么啊？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "芳草地画廊",
+    "context": {
+      "spot_name": "芳草地画廊",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区东大桥路9号侨福芳草地购物中心L2-27；交通：灯市口地铁站A口；电话：010-59788592；周边景点：簋街小吃、雍和宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "芳草地画廊，地址是北京市朝阳区东大桥路9号侨福芳草地购物中心L2-27。",
+    "expected_facts": {
+      "spot_name": [
+        "芳草地画廊"
+      ],
+      "location": [
+        "北京市朝阳区东大桥路9号侨福芳草地购物中心L2-27",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4809",
+      "turn_idx": 8,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是北京市朝阳区东大桥路9号侨福芳草地购物中心L2-27。电话是010-59788592。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-72_2",
+    "query": "我想去八达岭长城，地址在哪？可以玩多久呀？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "八达岭长城",
+    "context": {
+      "spot_name": "八达岭长城",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 4小时",
+      "budget": "35",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市延庆县京藏高速58号出口右转；电话：010-69121383,010-69121226；评分：4.6分；周边景点：八达岭野生动物世界、八达岭古长城（残长城）、中国长城博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "八达岭长城，地址是北京市延庆县京藏高速58号出口右转，建议游玩时间是3小时 - 4小时。",
+    "expected_facts": {
+      "spot_name": [
+        "八达岭长城"
+      ],
+      "location": [
+        "北京市延庆县京藏高速58号出口右转",
+        "北京市",
+        "北京",
+        "北京市延庆县"
+      ],
+      "duration": [
+        "3小时 - 4小时",
+        "3小时-4小时",
+        "3小时到4小时",
+        "3小时至4小时",
+        "3到4小时",
+        "3至4小时",
+        "3-4小时",
+        "3~4小时"
+      ],
+      "budget": [
+        "35",
+        "35元",
+        "门票35元",
+        "35块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-72",
+      "turn_idx": 2,
+      "requested_slots": [
+        "地址",
+        "游玩时间"
+      ],
+      "system_utterance": "地址在北京市延庆县京藏高速58号出口右转；能玩3小时 - 4小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2764_8",
+    "query": "收到，银山塔林这个景点的地址是多少？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "银山塔林",
+    "context": {
+      "spot_name": "银山塔林",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市昌平区兴寿镇西湖村；电话：010-89726426；评分：4.5分",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "银山塔林，地址是北京市昌平区兴寿镇西湖村。",
+    "expected_facts": {
+      "spot_name": [
+        "银山塔林"
+      ],
+      "location": [
+        "北京市昌平区兴寿镇西湖村",
+        "北京市",
+        "北京",
+        "北京市昌平区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2764",
+      "turn_idx": 8,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是北京市昌平区兴寿镇西湖村。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-911_8",
+    "query": "景点的地址在哪？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "红砖美术馆",
+    "context": {
+      "spot_name": "红砖美术馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "None",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北；交通：马泉营地铁站C口；电话：010-84576669；评分：5.0分；周边景点：民航博物馆、观复博物馆、中国铁道博物馆东郊馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "红砖美术馆，地址是北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北。",
+    "expected_facts": {
+      "spot_name": [
+        "红砖美术馆"
+      ],
+      "location": [
+        "北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "None"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-911",
+      "turn_idx": 8,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址在北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1149_20",
+    "query": "景点的地址是在哪啊？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "天坛",
+    "context": {
+      "spot_name": "天坛",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区天坛路甲1号；交通：崇文门地铁站A1口；电话：010-67012402,010-67013036,010-67028866；评分：4.5分；周边景点：前门大街、天安门广场、中国国家博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "天坛，地址是北京市东城区天坛路甲1号。",
+    "expected_facts": {
+      "spot_name": [
+        "天坛"
+      ],
+      "location": [
+        "北京市东城区天坛路甲1号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1149",
+      "turn_idx": 20,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是在北京市东城区天坛路甲1号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2675_4",
+    "query": "景点的地址是在哪啊？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "尚大·沃联褔农园",
+    "context": {
+      "spot_name": "尚大·沃联褔农园",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "190",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市房山区韩村河镇龙门口村龙门口水库西岸；电话：400-7788-111",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "尚大·沃联褔农园，地址是北京市房山区韩村河镇龙门口村龙门口水库西岸。",
+    "expected_facts": {
+      "spot_name": [
+        "尚大·沃联褔农园"
+      ],
+      "location": [
+        "北京市房山区韩村河镇龙门口村龙门口水库西岸",
+        "北京市",
+        "北京",
+        "北京市房山区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "190",
+        "190元",
+        "门票190元",
+        "190块"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2675",
+      "turn_idx": 4,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是在北京市房山区韩村河镇龙门口村龙门口水库西岸。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2735_4",
+    "query": "景点的地址是在哪啊？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "北京欢乐谷",
+    "context": {
+      "spot_name": "北京欢乐谷",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "195",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)；交通：劲松地铁站D口；电话：010-67389898,010-67383333,010-67201818；评分：4.5分；周边景点：潘家园、今日美术馆、首都图书馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京欢乐谷，地址是北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)。",
+    "expected_facts": {
+      "spot_name": [
+        "北京欢乐谷"
+      ],
+      "location": [
+        "北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "195",
+        "195元",
+        "门票195元",
+        "195块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2735",
+      "turn_idx": 4,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是在北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3598_2",
+    "query": "欢乐谷吧，听说不错，评分是多少，地址告诉我一下。",
+    "category": "CrossWOZ-地址",
+    "expected_id": "北京欢乐谷",
+    "context": {
+      "spot_name": "北京欢乐谷",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "195",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)；交通：劲松地铁站D口；电话：010-67389898,010-67383333,010-67201818；评分：4.5分；周边景点：潘家园、今日美术馆、首都图书馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京欢乐谷，地址是北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)，评分约4.5分。",
+    "expected_facts": {
+      "spot_name": [
+        "北京欢乐谷"
+      ],
+      "location": [
+        "北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "195",
+        "195元",
+        "门票195元",
+        "195块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3598",
+      "turn_idx": 2,
+      "requested_slots": [
+        "地址",
+        "评分"
+      ],
+      "system_utterance": "北京欢乐谷的评分为4.5分，地址在北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2263_6",
+    "query": "水立方嬉水乐园的地址在哪，周边酒店有哪些？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "水立方嬉水乐园",
+    "context": {
+      "spot_name": "水立方嬉水乐园",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "200",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区天辰东路11号国家游泳中心1层；交通：北沙滩地铁站B2口；电话：010-84378966,010-84378963；评分：5.0分；周边景点：水立方（国家游泳中心）、国家奥林匹克体育中心、中国科学技术馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "水立方嬉水乐园，地址是北京市朝阳区天辰东路11号国家游泳中心1层。",
+    "expected_facts": {
+      "spot_name": [
+        "水立方嬉水乐园"
+      ],
+      "location": [
+        "北京市朝阳区天辰东路11号国家游泳中心1层",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "200",
+        "200元",
+        "门票200元",
+        "200块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2263",
+      "turn_idx": 6,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "水立方嬉水乐园的地址在北京市朝阳区天辰东路11号国家游泳中心1层，周边的酒店有北京亚奥国际酒店、锦江之星(北京奥体中心店)、北京国家会议中心大酒店。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2620_2",
+    "query": "清华大学的地址在哪，周边还有哪些景点可以顺便逛逛吗？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "清华大学",
+    "context": {
+      "spot_name": "清华大学",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区双清路30号；交通：知春里地铁站B口；电话：010-62793001；评分：4.6分；周边景点：北京大学、圆明园、水立方（国家游泳中心）",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "清华大学，地址是北京市海淀区双清路30号。",
+    "expected_facts": {
+      "spot_name": [
+        "清华大学"
+      ],
+      "location": [
+        "北京市海淀区双清路30号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2620",
+      "turn_idx": 2,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "清华大学的地址在北京市海淀区双清路30号，周边的景点还有北京大学、圆明园、水立方（国家游泳中心）。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1194_10",
+    "query": "老舍茶馆的地址是多少啊？周边有什么酒店吗？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "老舍茶馆",
+    "context": {
+      "spot_name": "老舍茶馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区前门西大街正阳市场3号楼；交通：崇文门地铁站A1口；电话：010-63036830；评分：4.5分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "老舍茶馆，地址是北京市西城区前门西大街正阳市场3号楼。",
+    "expected_facts": {
+      "spot_name": [
+        "老舍茶馆"
+      ],
+      "location": [
+        "北京市西城区前门西大街正阳市场3号楼",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1194",
+      "turn_idx": 10,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "老舍茶馆的地址是北京市西城区前门西大街正阳市场3号楼，周边的酒店有北京首都宾馆、北京贵都大酒店和北京天伦王朝酒店。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-715_8",
+    "query": "行，那把故宫的地址发给我一下吧。",
+    "category": "CrossWOZ-地址",
+    "expected_id": "故宫",
+    "context": {
+      "spot_name": "故宫",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区景山前街4号；交通：灯市口地铁站A口；电话：010-85007938；评分：4.7分；周边景点：天安门广场、恭王府、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "故宫，地址是北京市东城区景山前街4号。",
+    "expected_facts": {
+      "spot_name": [
+        "故宫"
+      ],
+      "location": [
+        "北京市东城区景山前街4号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-715",
+      "turn_idx": 8,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是北京市东城区景山前街4号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-380_8",
+    "query": "这个景点的地址是在哪啊？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "梅兰芳大剧院",
+    "context": {
+      "spot_name": "梅兰芳大剧院",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区平安里西大街32号；交通：知春路地铁站B口；电话：010-58331288,010-58331388；评分：5.0分；周边景点：恭王府、故宫、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "梅兰芳大剧院，地址是北京市西城区平安里西大街32号。",
+    "expected_facts": {
+      "spot_name": [
+        "梅兰芳大剧院"
+      ],
+      "location": [
+        "北京市西城区平安里西大街32号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-380",
+      "turn_idx": 8,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是在北京市西城区平安里西大街32号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-842_24",
+    "query": "那好吧，麻烦你把首都博物馆的地址发给我下好吗？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "首都博物馆",
+    "context": {
+      "spot_name": "首都博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区复兴门外大街16号；交通：北京西站地铁站A口；电话：010-63370491,010-63370492；评分：4.7分；周边景点：天安门广场、故宫、前门大街",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "首都博物馆，地址是北京市西城区复兴门外大街16号。",
+    "expected_facts": {
+      "spot_name": [
+        "首都博物馆"
+      ],
+      "location": [
+        "北京市西城区复兴门外大街16号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-842",
+      "turn_idx": 24,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "当然可以了，地址是北京市西城区复兴门外大街16号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-317_14",
+    "query": "那它的地址是哪里。",
+    "category": "CrossWOZ-地址",
+    "expected_id": "天坛",
+    "context": {
+      "spot_name": "天坛",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区天坛路甲1号；交通：崇文门地铁站A1口；电话：010-67012402,010-67013036,010-67028866；评分：4.5分；周边景点：前门大街、天安门广场、中国国家博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "天坛，地址是北京市东城区天坛路甲1号。",
+    "expected_facts": {
+      "spot_name": [
+        "天坛"
+      ],
+      "location": [
+        "北京市东城区天坛路甲1号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-317",
+      "turn_idx": 14,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "地址是北京市东城区天坛路甲1号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-291_20",
+    "query": "颐和园在哪？",
+    "category": "CrossWOZ-地址",
+    "expected_id": "颐和园",
+    "context": {
+      "spot_name": "颐和园",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 6小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区新建宫门路19号；交通：中关村地铁站E口；电话：010-62881144；评分：4.7分；周边景点：圆明园、北京大学、清华大学",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "颐和园，地址是北京市海淀区新建宫门路19号。",
+    "expected_facts": {
+      "spot_name": [
+        "颐和园"
+      ],
+      "location": [
+        "北京市海淀区新建宫门路19号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时 - 6小时",
+        "3小时-6小时",
+        "3小时到6小时",
+        "3小时至6小时",
+        "3到6小时",
+        "3至6小时",
+        "3-6小时",
+        "3~6小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "location"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-291",
+      "turn_idx": 20,
+      "requested_slots": [
+        "地址"
+      ],
+      "system_utterance": "颐和园位于北京市海淀区新建宫门路19号。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-403_6",
+    "query": "中国古动物馆游玩时间是多少？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "中国古动物馆",
+    "context": {
+      "spot_name": "中国古动物馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区中国古动物馆；交通：大钟寺地铁站B口；电话：010-88369280,010-88369210,010-88369315；评分：4.8分；周边景点：恭王府、什刹海、北海公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国古动物馆，建议游玩时间是1小时。",
+    "expected_facts": {
+      "spot_name": [
+        "中国古动物馆"
+      ],
+      "location": [
+        "北京市西城区中国古动物馆",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-403",
+      "turn_idx": 6,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是1小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3179_0",
+    "query": "你好，我想去人民英雄纪念碑，请帮我查一下这个景点的游玩时间和电话。",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "人民英雄纪念碑",
+    "context": {
+      "spot_name": "人民英雄纪念碑",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区天安门广场中央；交通：灯市口地铁站A口；电话：010-63095745；评分：4.2分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "人民英雄纪念碑，建议游玩时间是1小时。",
+    "expected_facts": {
+      "spot_name": [
+        "人民英雄纪念碑"
+      ],
+      "location": [
+        "北京市东城区天安门广场中央",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.2",
+        "4.2分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3179",
+      "turn_idx": 0,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是1小时，电话是010-63095745。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-365_0",
+    "query": "你好，我想去名叫张裕爱斐堡国际酒庄的景点游玩，能帮我查一下这个景点的游玩时间吗？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "张裕爱斐堡国际酒庄",
+    "context": {
+      "spot_name": "张裕爱斐堡国际酒庄",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市密云县巨各庄镇东白岩（京承高速第十七出口左转300米即到）；电话：010-89092099；评分：4.7分；周边景点：冶仙塔旅游风景区、飞鸿世纪园、密云博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "张裕爱斐堡国际酒庄，建议游玩时间是2小时。",
+    "expected_facts": {
+      "spot_name": [
+        "张裕爱斐堡国际酒庄"
+      ],
+      "location": [
+        "北京市密云县巨各庄镇东白岩（京承高速第十七出口左转300米即到）",
+        "北京市",
+        "北京",
+        "北京市密云县"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-365",
+      "turn_idx": 0,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是2小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2114_0",
+    "query": "你好，我最近听朋友说北京自然博物馆很不错，想去游玩，但是在游玩之前，我想知道这个酒店的游玩时间和它的周边餐馆有哪些。",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "北京自然博物馆",
+    "context": {
+      "spot_name": "北京自然博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：东城区天桥南大街126号；交通：崇文门地铁站A1口；电话：010-67024431；评分：4.6分；周边景点：天坛、前门大街、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京自然博物馆，建议游玩时间是2小时 - 3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "北京自然博物馆"
+      ],
+      "location": [
+        "东城区天桥南大街126号",
+        "东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2114",
+      "turn_idx": 0,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是2小时-3小时，周边餐馆有北京全聚德和北京全聚德(王府井店)，它们的特色菜都很美味，您可以去尝一尝。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-733_0",
+    "query": "你好，请问北京励志堂科举匾额博物馆的游玩时间是多久？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "北京励志堂科举匾额博物馆",
+    "context": {
+      "spot_name": "北京励志堂科举匾额博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区高碑店乡高碑店村东工业区（华夏民族园斜对面） ‎；交通：十里堡地铁站C口；电话：010-87739655；评分：4.3分；周边景点：北京卡通艺术博物馆、中国传媒大学、高碑店国际民俗旅游村",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京励志堂科举匾额博物馆，建议游玩时间是2小时 - 3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "北京励志堂科举匾额博物馆"
+      ],
+      "location": [
+        "北京市朝阳区高碑店乡高碑店村东工业区（华夏民族园斜对面） ‎",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-733",
+      "turn_idx": 0,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "这个博物馆的游玩时间是2小时 - 3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-319_8",
+    "query": "北京古代建筑博物馆游玩多长时间好呢？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "北京古代建筑博物馆",
+    "context": {
+      "spot_name": "北京古代建筑博物馆",
+      "city": "",
+      "district": "",
+      "duration": "0.3小时 - 0.5小时",
+      "budget": "15",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区东经路21号；交通：菜市口地铁站D口；电话：010-63172150；评分：5.0分；周边景点：天坛、前门大街、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京古代建筑博物馆，建议游玩时间是0.3小时 - 0.5小时。",
+    "expected_facts": {
+      "spot_name": [
+        "北京古代建筑博物馆"
+      ],
+      "location": [
+        "北京市西城区东经路21号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "0.3小时 - 0.5小时",
+        "0.3小时-0.5小时",
+        "0.3小时到0.5小时",
+        "0.3小时至0.5小时",
+        "0.3到0.5小时",
+        "0.3至0.5小时",
+        "0.3-0.5小时",
+        "0.3~0.5小时"
+      ],
+      "budget": [
+        "15",
+        "15元",
+        "门票15元",
+        "15块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-319",
+      "turn_idx": 8,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "建议您游玩0.3小时 - 0.5小时就可以。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-220_6",
+    "query": "北京野生动物园适合游玩多长时间？附近有啥好吃的餐馆？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "北京野生动物园",
+    "context": {
+      "spot_name": "北京野生动物园",
+      "city": "",
+      "district": "",
+      "duration": "4小时 - 6小时",
+      "budget": "150",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市大兴区榆垡镇万亩森林；电话：010-89216606,010-89216666；评分：4.6分；周边景点：梦幻紫海香草庄园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京野生动物园，建议游玩时间是4小时 - 6小时。",
+    "expected_facts": {
+      "spot_name": [
+        "北京野生动物园"
+      ],
+      "location": [
+        "北京市大兴区榆垡镇万亩森林",
+        "北京市",
+        "北京",
+        "北京市大兴区"
+      ],
+      "duration": [
+        "4小时 - 6小时",
+        "4小时-6小时",
+        "4小时到6小时",
+        "4小时至6小时",
+        "4到6小时",
+        "4至6小时",
+        "4-6小时",
+        "4~6小时"
+      ],
+      "budget": [
+        "150",
+        "150元",
+        "门票150元",
+        "150块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-220",
+      "turn_idx": 6,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是4-6小时，附近的餐馆是北京野生动物园表演场餐厅。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3036_10",
+    "query": "哦，这么惨啊，那这里的游玩时间是多久啊？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "密云人间花海薰衣草庄园",
+    "context": {
+      "spot_name": "密云人间花海薰衣草庄园",
+      "city": "",
+      "district": "",
+      "duration": "4小时 - 5小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市密云区太师屯镇车道峪村；电话：13910138775；评分：4.5分；周边景点：仙居谷、九龙十八潭",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "密云人间花海薰衣草庄园，建议游玩时间是4小时 - 5小时。",
+    "expected_facts": {
+      "spot_name": [
+        "密云人间花海薰衣草庄园"
+      ],
+      "location": [
+        "北京市密云区太师屯镇车道峪村",
+        "北京市",
+        "北京",
+        "北京市密云区"
+      ],
+      "duration": [
+        "4小时 - 5小时",
+        "4小时-5小时",
+        "4小时到5小时",
+        "4小时至5小时",
+        "4到5小时",
+        "4至5小时",
+        "4-5小时",
+        "4~5小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3036",
+      "turn_idx": 10,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "4小时 - 5小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-932_16",
+    "query": "嗯，记下了，该景点的游玩时间是多久呀？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "养心殿",
+    "context": {
+      "spot_name": "养心殿",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区故宫博物院内；交通：灯市口地铁站A口；电话：010-85007422；评分：5.0分；周边景点：天安门广场、故宫、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "养心殿，建议游玩时间是1小时。",
+    "expected_facts": {
+      "spot_name": [
+        "养心殿"
+      ],
+      "location": [
+        "北京市东城区故宫博物院内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-932",
+      "turn_idx": 16,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "不算太长，1小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-502_8",
+    "query": "嗯，那我选择北京杜莎夫人蜡像馆，它的游玩时间是多久。",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "北京杜莎夫人蜡像馆",
+    "context": {
+      "spot_name": "北京杜莎夫人蜡像馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "145",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街18号；交通：崇文门地铁站A1口；电话：010-87559666；评分：4.8分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京杜莎夫人蜡像馆，建议游玩时间是2小时 - 3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "北京杜莎夫人蜡像馆"
+      ],
+      "location": [
+        "北京市东城区前门大街18号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "145",
+        "145元",
+        "门票145元",
+        "145块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-502",
+      "turn_idx": 8,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "它的游玩时间是2小时 - 3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4791_2",
+    "query": "好呀，大概能玩多长时间？顺便把景点电话发给我吧。",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "天安门广场",
+    "context": {
+      "spot_name": "天安门广场",
+      "city": "",
+      "district": "",
+      "duration": "0.5小时 - 1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区长安街（天安门和正阳门之间）；交通：灯市口地铁站A口；电话：010-65666606；评分：4.7分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "天安门广场，建议游玩时间是0.5小时 - 1小时。",
+    "expected_facts": {
+      "spot_name": [
+        "天安门广场"
+      ],
+      "location": [
+        "北京市东城区长安街（天安门和正阳门之间）",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "0.5小时 - 1小时",
+        "0.5小时-1小时",
+        "0.5小时到1小时",
+        "0.5小时至1小时",
+        "0.5到1小时",
+        "0.5至1小时",
+        "0.5-1小时",
+        "0.5~1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4791",
+      "turn_idx": 2,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "可以游玩0.5小时 - 1小时，电话是010-65666606。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-503_14",
+    "query": "好的，可以游玩多长时间？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "恭王府",
+    "context": {
+      "spot_name": "恭王府",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 4小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区柳荫街甲14号；交通：灯市口地铁站A口；电话：010-83288149；评分：4.5分；周边景点：故宫、天安门广场、中国国家博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "恭王府，建议游玩时间是2小时 - 4小时。",
+    "expected_facts": {
+      "spot_name": [
+        "恭王府"
+      ],
+      "location": [
+        "北京市西城区柳荫街甲14号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时 - 4小时",
+        "2小时-4小时",
+        "2小时到4小时",
+        "2小时至4小时",
+        "2到4小时",
+        "2至4小时",
+        "2-4小时",
+        "2~4小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-503",
+      "turn_idx": 14,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "2小时 - 4小时哦。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4918_12",
+    "query": "好的，吃完饭我想去中国儿童中心剧院玩，您能告诉我一下它的营业时间吗？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "中国儿童中心剧院",
+    "context": {
+      "spot_name": "中国儿童中心剧院",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京西城区平安里西大街43号院内；交通：知春路地铁站B口；电话：010-66176321；评分：5.0分；周边景点：恭王府、故宫、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国儿童中心剧院，建议游玩时间是2小时 - 3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "中国儿童中心剧院"
+      ],
+      "location": [
+        "北京西城区平安里西大街43号院内",
+        "北京西城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4918",
+      "turn_idx": 12,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "它的游玩时间是2小时 - 3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3219_10",
+    "query": "好的，多谢亲。那请问景点能玩多久呢？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "中国国家博物馆",
+    "context": {
+      "spot_name": "中国国家博物馆",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区东长安街16号天安门广场东侧；交通：灯市口地铁站A口；电话：010-65116400；评分：4.7分；周边景点：故宫、天坛、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国国家博物馆，建议游玩时间是3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "中国国家博物馆"
+      ],
+      "location": [
+        "北京市东城区东长安街16号天安门广场东侧",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3219",
+      "turn_idx": 10,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "能玩上3小时呢，我觉得不长不短刚刚好。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4662_10",
+    "query": "好的，这里的游玩时间是多久呢？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "观复博物馆",
+    "context": {
+      "spot_name": "观复博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "100",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区大山子张万坟金南路18号；交通：马泉营地铁站C口；电话：010-64338887；评分：4.7分；周边景点：中国铁道博物馆东郊馆、白盒子艺术馆、红砖美术馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "观复博物馆，建议游玩时间是2小时。",
+    "expected_facts": {
+      "spot_name": [
+        "观复博物馆"
+      ],
+      "location": [
+        "北京市朝阳区大山子张万坟金南路18号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "100",
+        "100元",
+        "门票100元",
+        "100块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4662",
+      "turn_idx": 10,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是2小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-484_6",
+    "query": "宋庆龄故居能玩多久，周边还有其他景点吗？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "宋庆龄故居",
+    "context": {
+      "spot_name": "宋庆龄故居",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：西城区后海北沿46号；交通：灯市口地铁站A口；电话：010-64044205；评分：4.3分；周边景点：故宫、天安门城楼、什刹海",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "宋庆龄故居，建议游玩时间是1小时 - 2小时。",
+    "expected_facts": {
+      "spot_name": [
+        "宋庆龄故居"
+      ],
+      "location": [
+        "西城区后海北沿46号",
+        "西城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-484",
+      "turn_idx": 6,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "宋庆龄故居建议游玩时间是1小时 - 2小时，周边的景点还有故宫、天安门城楼、什刹海等等。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2260_2",
+    "query": "就去故宫吧，景点电话是多少？能玩多长时间？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "故宫",
+    "context": {
+      "spot_name": "故宫",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区景山前街4号；交通：灯市口地铁站A口；电话：010-85007938；评分：4.7分；周边景点：天安门广场、恭王府、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "故宫，建议游玩时间是12小时 - 3天。",
+    "expected_facts": {
+      "spot_name": [
+        "故宫"
+      ],
+      "location": [
+        "北京市东城区景山前街4号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2260",
+      "turn_idx": 2,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "电话是010-85007938；游玩时间：12小时 - 3天。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-661_2",
+    "query": "恩。八大处公园的游玩时间是？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "八大处公园",
+    "context": {
+      "spot_name": "八大处公园",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 6小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市石景山区西山风景区南麓八大处公园；交通：苹果园地铁站C口；电话：010-88964661;010-88961812；评分：4.5分；周边景点：香山公园、北京植物园、法海寺",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "八大处公园，建议游玩时间是2小时 - 6小时。",
+    "expected_facts": {
+      "spot_name": [
+        "八大处公园"
+      ],
+      "location": [
+        "北京市石景山区西山风景区南麓八大处公园",
+        "北京市",
+        "北京",
+        "北京市石景山区"
+      ],
+      "duration": [
+        "2小时 - 6小时",
+        "2小时-6小时",
+        "2小时到6小时",
+        "2小时至6小时",
+        "2到6小时",
+        "2至6小时",
+        "2-6小时",
+        "2~6小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-661",
+      "turn_idx": 2,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是2小时 - 6小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4822_0",
+    "query": "您好，我要去北京铁矿博物馆游玩，请问这个景点可以玩多久呢？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "北京铁矿博物馆",
+    "context": {
+      "spot_name": "北京铁矿博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "68",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市密云区巨各庄镇豆各庄村，首云国家矿山公园内；电话：010-61039585；周边景点：首云铁矿公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京铁矿博物馆，建议游玩时间是2小时 - 3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "北京铁矿博物馆"
+      ],
+      "location": [
+        "北京市密云区巨各庄镇豆各庄村，首云国家矿山公园内",
+        "北京市",
+        "北京",
+        "北京市密云区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "68",
+        "68元",
+        "门票68元",
+        "68块"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4822",
+      "turn_idx": 0,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间在2小时 - 3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3238_2",
+    "query": "我们还是去北京杜莎夫人蜡像馆吧，这里有空调，他家的游玩时间是多长啊？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "北京杜莎夫人蜡像馆",
+    "context": {
+      "spot_name": "北京杜莎夫人蜡像馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "145",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街18号；交通：崇文门地铁站A1口；电话：010-87559666；评分：4.8分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京杜莎夫人蜡像馆，建议游玩时间是2小时 - 3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "北京杜莎夫人蜡像馆"
+      ],
+      "location": [
+        "北京市东城区前门大街18号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "145",
+        "145元",
+        "门票145元",
+        "145块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3238",
+      "turn_idx": 2,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时长为2小时 - 3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4441_12",
+    "query": "收到，这个景点的游玩时间是多久你知道吗？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "中国动物博物馆",
+    "context": {
+      "spot_name": "中国动物博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区北辰西路1号院5号；交通：安贞门地铁站A口；电话：010-64807975；评分：3.3分；周边景点：水立方（国家游泳中心）、水立方嬉水乐园、中国科学技术馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国动物博物馆，建议游玩时间是2小时 - 3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "中国动物博物馆"
+      ],
+      "location": [
+        "北京市朝阳区北辰西路1号院5号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": [
+        "3.3",
+        "3.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4441",
+      "turn_idx": 12,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "是的，游玩时间是2小时 - 3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4445_2",
+    "query": "景点的游玩时间是多久？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "八达岭长城",
+    "context": {
+      "spot_name": "八达岭长城",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 4小时",
+      "budget": "35",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市延庆县京藏高速58号出口右转；电话：010-69121383,010-69121226；评分：4.6分；周边景点：八达岭野生动物世界、八达岭古长城（残长城）、中国长城博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "八达岭长城，建议游玩时间是3小时 - 4小时。",
+    "expected_facts": {
+      "spot_name": [
+        "八达岭长城"
+      ],
+      "location": [
+        "北京市延庆县京藏高速58号出口右转",
+        "北京市",
+        "北京",
+        "北京市延庆县"
+      ],
+      "duration": [
+        "3小时 - 4小时",
+        "3小时-4小时",
+        "3小时到4小时",
+        "3小时至4小时",
+        "3到4小时",
+        "3至4小时",
+        "3-4小时",
+        "3~4小时"
+      ],
+      "budget": [
+        "35",
+        "35元",
+        "门票35元",
+        "35块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4445",
+      "turn_idx": 2,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "景点的游玩时间是3小时 - 4小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2156_12",
+    "query": "景点的游玩时间是？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "明十三陵",
+    "context": {
+      "spot_name": "明十三陵",
+      "city": "",
+      "district": "",
+      "duration": "4小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市昌平区十三陵镇；交通：昌平地铁站A口；电话：010-60761424,010-60761888,010-60763104；评分：4.2分；周边景点：明皇文化艺术馆、明昭陵、蟒山国家森林公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "明十三陵，建议游玩时间是4小时。",
+    "expected_facts": {
+      "spot_name": [
+        "明十三陵"
+      ],
+      "location": [
+        "北京市昌平区十三陵镇",
+        "北京市",
+        "北京",
+        "北京市昌平区"
+      ],
+      "duration": [
+        "4小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.2",
+        "4.2分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2156",
+      "turn_idx": 12,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是4小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-500_2",
+    "query": "游玩时间是多久呢？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "什刹海",
+    "context": {
+      "spot_name": "什刹海",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 4小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区东起地安门外大街北侧、南至新街口北大街、西至新街口豁口、北至钟、鼓楼的区域；交通：灯市口地铁站A口；电话：010-84018677；评分：4.4分；周边景点：故宫、中国国家博物馆、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "什刹海，建议游玩时间是2小时 - 4小时。",
+    "expected_facts": {
+      "spot_name": [
+        "什刹海"
+      ],
+      "location": [
+        "北京市西城区东起地安门外大街北侧、南至新街口北大街、西至新街口豁口、北至钟、鼓楼的区域",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时 - 4小时",
+        "2小时-4小时",
+        "2小时到4小时",
+        "2小时至4小时",
+        "2到4小时",
+        "2至4小时",
+        "2-4小时",
+        "2~4小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-500",
+      "turn_idx": 2,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间大概是2小时 - 4小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3464_2",
+    "query": "珍宝馆电话是多少，能够游玩多久呢？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "珍宝馆",
+    "context": {
+      "spot_name": "珍宝馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区故宫博物院宁寿宫内；交通：灯市口地铁站A口；电话：010-85007938,010-85007421；评分：4.5分；周边景点：天安门广场、天坛、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "珍宝馆，建议游玩时间是1小时。",
+    "expected_facts": {
+      "spot_name": [
+        "珍宝馆"
+      ],
+      "location": [
+        "北京市东城区故宫博物院宁寿宫内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3464",
+      "turn_idx": 2,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "珍宝馆的电话是010-85007938或010-85007421，大概能游玩1小时左右。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-384_12",
+    "query": "看来我的选择机会还挺多的呢，吃过饭我要出去走走了，你知道淳亲王府这个地方吗？这里的游玩时长是多久啊？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "淳亲王府",
+    "context": {
+      "spot_name": "淳亲王府",
+      "city": "",
+      "district": "",
+      "duration": "0.3小时 - 0.3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区正义路5号院；交通：灯市口地铁站A口；电话：010-64044205；周边景点：故宫、天坛、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "淳亲王府，建议游玩时间是0.3小时 - 0.3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "淳亲王府"
+      ],
+      "location": [
+        "北京市东城区正义路5号院",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "0.3小时 - 0.3小时",
+        "0.3小时-0.3小时",
+        "0.3小时到0.3小时",
+        "0.3小时至0.3小时",
+        "0.3到0.3小时",
+        "0.3至0.3小时",
+        "0.3-0.3小时",
+        "0.3~0.3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-384",
+      "turn_idx": 12,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "我知道这个景点，这里的游玩时长是0.3小时 - 0.3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-132_10",
+    "query": "真没去过呢，这里可以玩多久呢？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "华韵·一金学社",
+    "context": {
+      "spot_name": "华韵·一金学社",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市前门大街82号-83号；交通：崇文门地铁站A1口；电话：67015775；评分：5.0分；周边景点：天安门广场、天坛、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "华韵·一金学社，建议游玩时间是3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "华韵·一金学社"
+      ],
+      "location": [
+        "北京市前门大街82号-83号",
+        "北京市",
+        "北京"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-132",
+      "turn_idx": 10,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "可以玩3小左右。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-181_14",
+    "query": "请问这家景点的游玩时间是多久？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "故宫",
+    "context": {
+      "spot_name": "故宫",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区景山前街4号；交通：灯市口地铁站A口；电话：010-85007938；评分：4.7分；周边景点：天安门广场、恭王府、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "故宫，建议游玩时间是12小时 - 3天。",
+    "expected_facts": {
+      "spot_name": [
+        "故宫"
+      ],
+      "location": [
+        "北京市东城区景山前街4号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-181",
+      "turn_idx": 14,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是12小时 - 3天。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-94_8",
+    "query": "这个景点的游玩时间是多久啊？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "水立方嬉水乐园",
+    "context": {
+      "spot_name": "水立方嬉水乐园",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "200",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区天辰东路11号国家游泳中心1层；交通：北沙滩地铁站B2口；电话：010-84378966,010-84378963；评分：5.0分；周边景点：水立方（国家游泳中心）、国家奥林匹克体育中心、中国科学技术馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "水立方嬉水乐园，建议游玩时间是3小时。",
+    "expected_facts": {
+      "spot_name": [
+        "水立方嬉水乐园"
+      ],
+      "location": [
+        "北京市朝阳区天辰东路11号国家游泳中心1层",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "200",
+        "200元",
+        "门票200元",
+        "200块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-94",
+      "turn_idx": 8,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是3小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4938_20",
+    "query": "这个景点的游玩时间是？",
+    "category": "CrossWOZ-游玩时间",
+    "expected_id": "观复博物馆",
+    "context": {
+      "spot_name": "观复博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "100",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区大山子张万坟金南路18号；交通：马泉营地铁站C口；电话：010-64338887；评分：4.7分；周边景点：中国铁道博物馆东郊馆、白盒子艺术馆、红砖美术馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "观复博物馆，建议游玩时间是2小时。",
+    "expected_facts": {
+      "spot_name": [
+        "观复博物馆"
+      ],
+      "location": [
+        "北京市朝阳区大山子张万坟金南路18号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "100",
+        "100元",
+        "门票100元",
+        "100块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "duration"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4938",
+      "turn_idx": 20,
+      "requested_slots": [
+        "游玩时间"
+      ],
+      "system_utterance": "游玩时间是2小时。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4519_2",
+    "query": "798艺术区的评分是多少？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "798艺术区",
+    "context": {
+      "spot_name": "798艺术区",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区酒仙桥路2号；交通：望京南地铁站A口；电话：010-59789114；评分：4.4分；周边景点：尤伦斯当代艺术中心、白盒子艺术馆、观复博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "798艺术区，评分约4.4分。",
+    "expected_facts": {
+      "spot_name": [
+        "798艺术区"
+      ],
+      "location": [
+        "北京市朝阳区酒仙桥路2号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4519",
+      "turn_idx": 2,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "798艺术区的评分是4.4分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4708_4",
+    "query": "不错啊，那景点评分高吗？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "北京展览馆",
+    "context": {
+      "spot_name": "北京展览馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区西直门外大街135号；交通：大钟寺地铁站B口；电话：010-57960055；评分：4.3分；周边景点：什刹海、恭王府、北海公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京展览馆，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "北京展览馆"
+      ],
+      "location": [
+        "北京市西城区西直门外大街135号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4708",
+      "turn_idx": 4,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.3分，还可以。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-422_10",
+    "query": "可以的，我想知道这个景点的评分是多少呢？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "祈年殿",
+    "context": {
+      "spot_name": "祈年殿",
+      "city": "",
+      "district": "",
+      "duration": "0.3小时 - 0.5小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区天坛内东里7号天坛公园内；交通：崇文门地铁站A1口；电话：010-67028866;010-67013036;010-67012402；评分：4.3分；周边景点：天坛、前门大街、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "祈年殿，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "祈年殿"
+      ],
+      "location": [
+        "北京市东城区天坛内东里7号天坛公园内",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "0.3小时 - 0.5小时",
+        "0.3小时-0.5小时",
+        "0.3小时到0.5小时",
+        "0.3小时至0.5小时",
+        "0.3到0.5小时",
+        "0.3至0.5小时",
+        "0.3-0.5小时",
+        "0.3~0.5小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-422",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.3分，口碑也很不错哦~"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1794_2",
+    "query": "嗯呢。梅兰芳纪念馆这个景点的评分是多少？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "梅兰芳纪念馆",
+    "context": {
+      "spot_name": "梅兰芳纪念馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区护国寺街9号；交通：灯市口地铁站A口；电话：010-83223598；评分：4.3分；周边景点：故宫、天安门广场、前门大街",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "梅兰芳纪念馆，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "梅兰芳纪念馆"
+      ],
+      "location": [
+        "北京市西城区护国寺街9号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1794",
+      "turn_idx": 2,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.3分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-240_4",
+    "query": "在这些周边的景点当中，有能玩3小时 - 4小时的地方吗，评分咋样？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "大观园",
+    "context": {
+      "spot_name": "大观园",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：西城区南菜园街12号；交通：菜市口地铁站D口；电话：010-83552933；评分：4.3分；周边景点：前门大街、天坛、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "大观园，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "大观园"
+      ],
+      "location": [
+        "西城区南菜园街12号",
+        "西城区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-240",
+      "turn_idx": 4,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "天坛、大观园、龙潭公园这些景点都可以玩3小时左右。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-66_8",
+    "query": "天安门城楼的评分怎么样？周围有比较不错的饭店吗？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "天安门城楼",
+    "context": {
+      "spot_name": "天安门城楼",
+      "city": "",
+      "district": "",
+      "duration": "0.5小时 - 1小时",
+      "budget": "15",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：东城区东长安街天安门广场北侧；交通：崇文门地铁站A1口；电话：010-63095630,010-63095745,010-63095718；评分：4.6分；周边景点：天坛、天安门广场、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "天安门城楼，评分约4.6分。",
+    "expected_facts": {
+      "spot_name": [
+        "天安门城楼"
+      ],
+      "location": [
+        "东城区东长安街天安门广场北侧",
+        "东城区"
+      ],
+      "duration": [
+        "0.5小时 - 1小时",
+        "0.5小时-1小时",
+        "0.5小时到1小时",
+        "0.5小时至1小时",
+        "0.5到1小时",
+        "0.5至1小时",
+        "0.5-1小时",
+        "0.5~1小时"
+      ],
+      "budget": [
+        "15",
+        "15元",
+        "门票15元",
+        "15块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-66",
+      "turn_idx": 8,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分非常高，4.6分，周边美食也很多，您可以去北京全聚德(王府井店)、护国寺小吃店（护国寺总店）、海底捞火锅(白纸坊店)。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-43_10",
+    "query": "太好了，知道这个景点的评分是多少吗？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "北京大学",
+    "context": {
+      "spot_name": "北京大学",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区颐和园路5号；交通：苏州街地铁站D口；电话：010-62754070,010-62756110；评分：4.5分；周边景点：圆明园、清华大学、颐和园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京大学，评分约4.5分。",
+    "expected_facts": {
+      "spot_name": [
+        "北京大学"
+      ],
+      "location": [
+        "北京市海淀区颐和园路5号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-43",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.5分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3326_10",
+    "query": "太好了，这回吃喝不愁了，这个餐馆的评分高吗？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "历代帝王庙",
+    "context": {
+      "spot_name": "历代帝王庙",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：西城区阜成门内大街131号；交通：灯市口地铁站A口；电话：010-66120186；评分：3.9分；周边景点：恭王府、故宫、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "历代帝王庙，评分约3.9分。",
+    "expected_facts": {
+      "spot_name": [
+        "历代帝王庙"
+      ],
+      "location": [
+        "西城区阜成门内大街131号",
+        "西城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "3.9",
+        "3.9分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3326",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "他家评分为3.9分，你看还行吗？"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4275_10",
+    "query": "好。这个景点的评分是几分啊？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "中华女子学院",
+    "context": {
+      "spot_name": "中华女子学院",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：朝阳区育慧东路1号；交通：安贞门地铁站A口；电话：（010）84659299；评分：4.5分；周边景点：鸟巢（国家体育场）、中国科学技术馆、水立方（国家游泳中心）",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中华女子学院，评分约4.5分。",
+    "expected_facts": {
+      "spot_name": [
+        "中华女子学院"
+      ],
+      "location": [
+        "朝阳区育慧东路1号",
+        "朝阳区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4275",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.5分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-421_6",
+    "query": "好吧，那它的评分是？周边还有什么别的景点吗？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "故宫",
+    "context": {
+      "spot_name": "故宫",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区景山前街4号；交通：灯市口地铁站A口；电话：010-85007938；评分：4.7分；周边景点：天安门广场、恭王府、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "故宫，评分约4.7分。",
+    "expected_facts": {
+      "spot_name": [
+        "故宫"
+      ],
+      "location": [
+        "北京市东城区景山前街4号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-421",
+      "turn_idx": 6,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "这个景点评分是4.7分，周边景点有天安门广场, 恭王府。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3992_2",
+    "query": "它的评分是多少，还有电话也告诉我一下。",
+    "category": "CrossWOZ-评分",
+    "expected_id": "潭柘寺",
+    "context": {
+      "spot_name": "潭柘寺",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 4小时",
+      "budget": "55",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：门头沟区潭柘寺镇；电话：010-60862244;010-60862505；评分：4.5分；周边景点：八奇洞、定都阁",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "潭柘寺，评分约4.5分。",
+    "expected_facts": {
+      "spot_name": [
+        "潭柘寺"
+      ],
+      "location": [
+        "门头沟区潭柘寺镇",
+        "门头沟区"
+      ],
+      "duration": [
+        "3小时 - 4小时",
+        "3小时-4小时",
+        "3小时到4小时",
+        "3小时至4小时",
+        "3到4小时",
+        "3至4小时",
+        "3-4小时",
+        "3~4小时"
+      ],
+      "budget": [
+        "55",
+        "55元",
+        "门票55元",
+        "55块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3992",
+      "turn_idx": 2,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "它的评分为4.5分，然后电话010-60862244;010-60862505。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-712_10",
+    "query": "小汤山镇评分是多少，周边有哪些酒店呢？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "小汤山镇",
+    "context": {
+      "spot_name": "小汤山镇",
+      "city": "",
+      "district": "",
+      "duration": "3天",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：昌平区小汤山镇；电话：010-61781012,010-61781357；评分：5.0分；周边景点：中国航空博物馆、百丰农场、小汤山现代农业科技示范园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "小汤山镇，评分约5.0分。",
+    "expected_facts": {
+      "spot_name": [
+        "小汤山镇"
+      ],
+      "location": [
+        "昌平区小汤山镇",
+        "昌平区"
+      ],
+      "duration": [
+        "3天"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-712",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是5分，周边没有酒店。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4951_10",
+    "query": "景点的评分多少？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "北京野生动物园",
+    "context": {
+      "spot_name": "北京野生动物园",
+      "city": "",
+      "district": "",
+      "duration": "4小时 - 6小时",
+      "budget": "150",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市大兴区榆垡镇万亩森林；电话：010-89216606,010-89216666；评分：4.6分；周边景点：梦幻紫海香草庄园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京野生动物园，评分约4.6分。",
+    "expected_facts": {
+      "spot_name": [
+        "北京野生动物园"
+      ],
+      "location": [
+        "北京市大兴区榆垡镇万亩森林",
+        "北京市",
+        "北京",
+        "北京市大兴区"
+      ],
+      "duration": [
+        "4小时 - 6小时",
+        "4小时-6小时",
+        "4小时到6小时",
+        "4小时至6小时",
+        "4到6小时",
+        "4至6小时",
+        "4-6小时",
+        "4~6小时"
+      ],
+      "budget": [
+        "150",
+        "150元",
+        "门票150元",
+        "150块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4951",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "4.6分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1208_18",
+    "query": "最后我还想了解一下月坛公园的评分是多少？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "月坛公园",
+    "context": {
+      "spot_name": "月坛公园",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "1",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区月坛北街甲6号；交通：菜市口地铁站D口；电话：010-68020940,13701194651；评分：4.3分；周边景点：恭王府、故宫、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "月坛公园，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "月坛公园"
+      ],
+      "location": [
+        "北京市西城区月坛北街甲6号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "1",
+        "1元",
+        "门票1元",
+        "1块"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1208",
+      "turn_idx": 18,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "是4.3分，亲。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-100_10",
+    "query": "知道景点的评分是几分吗，这个景点的周边还有没有酒店呢？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "香山公园",
+    "context": {
+      "spot_name": "香山公园",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 4小时",
+      "budget": "5",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：海淀区买卖街40号 ‎；交通：香山地铁站；电话：010-62599886,010-62591264；评分：4.3分；周边景点：北京植物园、八大处公园、卧佛寺",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "香山公园，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "香山公园"
+      ],
+      "location": [
+        "海淀区买卖街40号 ‎",
+        "海淀区"
+      ],
+      "duration": [
+        "2小时 - 4小时",
+        "2小时-4小时",
+        "2小时到4小时",
+        "2小时至4小时",
+        "2到4小时",
+        "2至4小时",
+        "2-4小时",
+        "2~4小时"
+      ],
+      "budget": [
+        "5",
+        "5元",
+        "门票5元",
+        "5块"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-100",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.3分，周边的酒店有北京世纪金源香山商旅酒店, 北京四季御园国际大酒店。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2745_6",
+    "query": "行啊，评分是多少？周边还有景点吗？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "颐和园",
+    "context": {
+      "spot_name": "颐和园",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 6小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区新建宫门路19号；交通：中关村地铁站E口；电话：010-62881144；评分：4.7分；周边景点：圆明园、北京大学、清华大学",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "颐和园，评分约4.7分。",
+    "expected_facts": {
+      "spot_name": [
+        "颐和园"
+      ],
+      "location": [
+        "北京市海淀区新建宫门路19号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时 - 6小时",
+        "3小时-6小时",
+        "3小时到6小时",
+        "3小时至6小时",
+        "3到6小时",
+        "3至6小时",
+        "3-6小时",
+        "3~6小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2745",
+      "turn_idx": 6,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分4.7分；周边景点有圆明园、北京大学等。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-851_8",
+    "query": "行，周边的景点里我想找一个票价是150-200元的、能玩1小时 - 2小时的，带领导去转转，有吗？评分是多少？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "国子监",
+    "context": {
+      "spot_name": "国子监",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "30",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区国子监街15号；交通：灯市口地铁站A口；电话：010-64075259；评分：4.4分；周边景点：恭王府、什刹海、故宫",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "国子监，评分约4.4分。",
+    "expected_facts": {
+      "spot_name": [
+        "国子监"
+      ],
+      "location": [
+        "北京市东城区国子监街15号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "30",
+        "30元",
+        "门票30元",
+        "30块"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-851",
+      "turn_idx": 8,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "为您推荐国子监景点，票价是30元，评分4.4分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3082_6",
+    "query": "评分怎么样呢？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "清华大学",
+    "context": {
+      "spot_name": "清华大学",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区双清路30号；交通：知春里地铁站B口；电话：010-62793001；评分：4.6分；周边景点：北京大学、圆明园、水立方（国家游泳中心）",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "清华大学，评分约4.6分。",
+    "expected_facts": {
+      "spot_name": [
+        "清华大学"
+      ],
+      "location": [
+        "北京市海淀区双清路30号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3082",
+      "turn_idx": 6,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.6分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3933_22",
+    "query": "请问中国国家博物馆的评分是多少，周边有哪些景点？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "中国国家博物馆",
+    "context": {
+      "spot_name": "中国国家博物馆",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区东长安街16号天安门广场东侧；交通：灯市口地铁站A口；电话：010-65116400；评分：4.7分；周边景点：故宫、天坛、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国国家博物馆，评分约4.7分。",
+    "expected_facts": {
+      "spot_name": [
+        "中国国家博物馆"
+      ],
+      "location": [
+        "北京市东城区东长安街16号天安门广场东侧",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3933",
+      "turn_idx": 22,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "中国国家博物馆的评分是4.7分，周边景点有故宫，什刹海。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-675_14",
+    "query": "这个景点周边都有哪些餐馆？景点评分多少？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "北京杜莎夫人蜡像馆",
+    "context": {
+      "spot_name": "北京杜莎夫人蜡像馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "145",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街18号；交通：崇文门地铁站A1口；电话：010-87559666；评分：4.8分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京杜莎夫人蜡像馆，评分约4.8分。",
+    "expected_facts": {
+      "spot_name": [
+        "北京杜莎夫人蜡像馆"
+      ],
+      "location": [
+        "北京市东城区前门大街18号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "145",
+        "145元",
+        "门票145元",
+        "145块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-675",
+      "turn_idx": 14,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "周边的餐馆有北京全聚德(王府井店), 护国寺小吃店（护国寺总店），景点评分是4.8分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1422_8",
+    "query": "这个景点的评分多少啊？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "前门大街",
+    "context": {
+      "spot_name": "前门大街",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街；交通：崇文门地铁站A1口；电话：010-67060009；评分：4.3分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "前门大街，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "前门大街"
+      ],
+      "location": [
+        "北京市东城区前门大街",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1422",
+      "turn_idx": 8,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.3分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1776_6",
+    "query": "这个景点的评分多少啊？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "北京杜莎夫人蜡像馆",
+    "context": {
+      "spot_name": "北京杜莎夫人蜡像馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "145",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街18号；交通：崇文门地铁站A1口；电话：010-87559666；评分：4.8分；周边景点：天坛、故宫、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京杜莎夫人蜡像馆，评分约4.8分。",
+    "expected_facts": {
+      "spot_name": [
+        "北京杜莎夫人蜡像馆"
+      ],
+      "location": [
+        "北京市东城区前门大街18号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "145",
+        "145元",
+        "门票145元",
+        "145块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1776",
+      "turn_idx": 6,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.8分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2367_6",
+    "query": "这个景点的评分是多少啊？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "798艺术区",
+    "context": {
+      "spot_name": "798艺术区",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区酒仙桥路2号；交通：望京南地铁站A口；电话：010-59789114；评分：4.4分；周边景点：尤伦斯当代艺术中心、白盒子艺术馆、观复博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "798艺术区，评分约4.4分。",
+    "expected_facts": {
+      "spot_name": [
+        "798艺术区"
+      ],
+      "location": [
+        "北京市朝阳区酒仙桥路2号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2367",
+      "turn_idx": 6,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.4分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3877_8",
+    "query": "这个景点的评分是多少啊？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "前门大街",
+    "context": {
+      "spot_name": "前门大街",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街；交通：崇文门地铁站A1口；电话：010-67060009；评分：4.3分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "前门大街，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "前门大街"
+      ],
+      "location": [
+        "北京市东城区前门大街",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3877",
+      "turn_idx": 8,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.3分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-316_12",
+    "query": "这个景点评分多少啊？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "中国国家博物馆",
+    "context": {
+      "spot_name": "中国国家博物馆",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区东长安街16号天安门广场东侧；交通：灯市口地铁站A口；电话：010-65116400；评分：4.7分；周边景点：故宫、天坛、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国国家博物馆，评分约4.7分。",
+    "expected_facts": {
+      "spot_name": [
+        "中国国家博物馆"
+      ],
+      "location": [
+        "北京市东城区东长安街16号天安门广场东侧",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-316",
+      "turn_idx": 12,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4.7分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4923_2",
+    "query": "这个景点评分是？周边都有什么景点？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "前门大街",
+    "context": {
+      "spot_name": "前门大街",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街；交通：崇文门地铁站A1口；电话：010-67060009；评分：4.3分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "前门大街，评分约4.3分。",
+    "expected_facts": {
+      "spot_name": [
+        "前门大街"
+      ],
+      "location": [
+        "北京市东城区前门大街",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4923",
+      "turn_idx": 2,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "这个景点评分是4.3分，周边景点有故宫, 天坛。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4418_12",
+    "query": "这样啊，也行，那你帮我查一下天坛的评分是多少吧？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "天坛",
+    "context": {
+      "spot_name": "天坛",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区天坛路甲1号；交通：崇文门地铁站A1口；电话：010-67012402,010-67013036,010-67028866；评分：4.5分；周边景点：前门大街、天安门广场、中国国家博物馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "天坛，评分约4.5分。",
+    "expected_facts": {
+      "spot_name": [
+        "天坛"
+      ],
+      "location": [
+        "北京市东城区天坛路甲1号",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4418",
+      "turn_idx": 12,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分4.5分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-502_2",
+    "query": "那它的评分是多少。",
+    "category": "CrossWOZ-评分",
+    "expected_id": "摩登家庭农场",
+    "context": {
+      "spot_name": "摩登家庭农场",
+      "city": "",
+      "district": "",
+      "duration": "3天",
+      "budget": "150",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市通州区觅西路路口西侧1千米(近天下第一城)；电话：010-67628189；评分：4.5分",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "摩登家庭农场，评分约4.5分。",
+    "expected_facts": {
+      "spot_name": [
+        "摩登家庭农场"
+      ],
+      "location": [
+        "北京市通州区觅西路路口西侧1千米(近天下第一城)",
+        "北京市",
+        "北京",
+        "北京市通州区"
+      ],
+      "duration": [
+        "3天"
+      ],
+      "budget": [
+        "150",
+        "150元",
+        "门票150元",
+        "150块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-502",
+      "turn_idx": 2,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "4.5分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-658_10",
+    "query": "那我去黄花城水长城吧，这个听起来不错，这个景点的网评是几分啊？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "黄花城水长城",
+    "context": {
+      "spot_name": "黄花城水长城",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 4小时",
+      "budget": "25",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市怀柔区九渡河镇西水峪；电话：010-61651111,010-61651818；评分：4.8分；周边景点：鳞龙山、延寿寺",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "黄花城水长城，评分约4.8分。",
+    "expected_facts": {
+      "spot_name": [
+        "黄花城水长城"
+      ],
+      "location": [
+        "北京市怀柔区九渡河镇西水峪",
+        "北京市",
+        "北京",
+        "北京市怀柔区"
+      ],
+      "duration": [
+        "3小时 - 4小时",
+        "3小时-4小时",
+        "3小时到4小时",
+        "3小时至4小时",
+        "3到4小时",
+        "3至4小时",
+        "3-4小时",
+        "3~4小时"
+      ],
+      "budget": [
+        "25",
+        "25元",
+        "门票25元",
+        "25块"
+      ],
+      "rating": [
+        "4.8",
+        "4.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-658",
+      "turn_idx": 10,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "这里的评分达到4.8分，怎么样，可以吗？"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-383_2",
+    "query": "鸟巢空中走廊的评分是几分呢？",
+    "category": "CrossWOZ-评分",
+    "expected_id": "鸟巢空中走廊",
+    "context": {
+      "spot_name": "鸟巢空中走廊",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区国家体育场南路1号；交通：奥林匹克公园地铁站E口；电话：010-84373008；评分：4.0分；周边景点：中国科学技术馆、鸟巢（国家体育场）、水立方（国家游泳中心）",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "鸟巢空中走廊，评分约4.0分。",
+    "expected_facts": {
+      "spot_name": [
+        "鸟巢空中走廊"
+      ],
+      "location": [
+        "北京市朝阳区国家体育场南路1号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": [
+        "4.0",
+        "4.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "rating"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-383",
+      "turn_idx": 2,
+      "requested_slots": [
+        "评分"
+      ],
+      "system_utterance": "评分是4分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-427_10",
+    "query": "中国印刷博物馆门票是多少，电话呢？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "中国印刷博物馆",
+    "context": {
+      "spot_name": "中国印刷博物馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市大兴区黄村兴华北路25号；交通：清源路地铁站B口；电话：010-60261237；010-60261988；评分：5.0分；周边景点：中国影视大乐园、念坛公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中国印刷博物馆，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "中国印刷博物馆"
+      ],
+      "location": [
+        "北京市大兴区黄村兴华北路25号",
+        "北京市",
+        "北京",
+        "北京市大兴区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-427",
+      "turn_idx": 10,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "中国印刷博物馆免费餐馆，电话是010-60261237、010-60261988。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4363_8",
+    "query": "中央广播电视塔要门票不，电话给我一下。",
+    "category": "CrossWOZ-门票",
+    "expected_id": "中央广播电视塔",
+    "context": {
+      "spot_name": "中央广播电视塔",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "90",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：海淀区西三环中路11号；交通：北京西站地铁站A口；电话：010-68450715；评分：4.2分；周边景点：北京天文馆、首都博物馆、北京动物园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中央广播电视塔，门票大致是90元。",
+    "expected_facts": {
+      "spot_name": [
+        "中央广播电视塔"
+      ],
+      "location": [
+        "海淀区西三环中路11号",
+        "海淀区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "90",
+        "90元",
+        "门票90元",
+        "90块"
+      ],
+      "rating": [
+        "4.2",
+        "4.2分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4363",
+      "turn_idx": 8,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "中央广播电视塔的门票价格是90元，联系电话：010-68450715。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-9_6",
+    "query": "前门大街门票多少钱？周边还有其它景点吗？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "前门大街",
+    "context": {
+      "spot_name": "前门大街",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街；交通：崇文门地铁站A1口；电话：010-67060009；评分：4.3分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "前门大街，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "前门大街"
+      ],
+      "location": [
+        "北京市东城区前门大街",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-9",
+      "turn_idx": 6,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "前门大街门票免费；周边景点：故宫、天坛、恭王府、天安门广场、北海公园 。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-85_10",
+    "query": "嗯，这个建议我真的很满意。北京外国语大学是免费进出吧？不会要门票吧？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "北京外国语大学",
+    "context": {
+      "spot_name": "北京外国语大学",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区西三环北路2号；交通：知春路地铁站B口；电话：010-88816215；评分：4.7分；周边景点：北京动物园、北京海洋馆、北京天文馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京外国语大学，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "北京外国语大学"
+      ],
+      "location": [
+        "北京市海淀区西三环北路2号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-85",
+      "turn_idx": 10,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "当然不要门票，是开放的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-668_8",
+    "query": "好的。听说海淀公共安全馆挺好的，我想去看看，请问这个景点门票多少？周边还有什么景点？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "海淀公共安全馆",
+    "context": {
+      "spot_name": "海淀公共安全馆",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区新建宫门路2号；交通：苏州街地铁站D口；电话：010-62887787；周边景点：北京大学、颐和园、圆明园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "海淀公共安全馆，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "海淀公共安全馆"
+      ],
+      "location": [
+        "北京市海淀区新建宫门路2号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-668",
+      "turn_idx": 8,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "这个景点是免费的呢，周边景点还有北京大学、颐和园等。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4837_4",
+    "query": "好的，中华世纪坛的门票是多少呢？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "中华世纪坛",
+    "context": {
+      "spot_name": "中华世纪坛",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区复兴路甲9号中华世纪坛•纪念广场（近军事博物馆之间）；交通：北京西站地铁站A口；电话：010-84187900；评分：3.8分；周边景点：北京天文馆、北京动物园、北京海洋馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "中华世纪坛，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "中华世纪坛"
+      ],
+      "location": [
+        "北京市海淀区复兴路甲9号中华世纪坛•纪念广场（近军事博物馆之间）",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "3.8",
+        "3.8分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4837",
+      "turn_idx": 4,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "没有门票费。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4778_4",
+    "query": "好的，另外我听说有个神仙院挺有意思，要门票不，想去看看。",
+    "category": "CrossWOZ-门票",
+    "expected_id": "神仙院",
+    "context": {
+      "spot_name": "神仙院",
+      "city": "",
+      "district": "",
+      "duration": "0.5小时 - 1小时",
+      "budget": "40",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市延庆县古城村北龙庆峡景区内；电话：010-69191034；周边景点：平北抗日战争纪念馆、镇山如来、龙庆峡",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "神仙院，门票大致是40元。",
+    "expected_facts": {
+      "spot_name": [
+        "神仙院"
+      ],
+      "location": [
+        "北京市延庆县古城村北龙庆峡景区内",
+        "北京市",
+        "北京",
+        "北京市延庆县"
+      ],
+      "duration": [
+        "0.5小时 - 1小时",
+        "0.5小时-1小时",
+        "0.5小时到1小时",
+        "0.5小时至1小时",
+        "0.5到1小时",
+        "0.5至1小时",
+        "0.5-1小时",
+        "0.5~1小时"
+      ],
+      "budget": [
+        "40",
+        "40元",
+        "门票40元",
+        "40块"
+      ],
+      "rating": []
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4778",
+      "turn_idx": 4,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "神仙院要门票，40元，不太贵。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4953_32",
+    "query": "好的，这个景点的门票是多少？这些信息我们需要提前问好。",
+    "category": "CrossWOZ-门票",
+    "expected_id": "前门大街",
+    "context": {
+      "spot_name": "前门大街",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街；交通：崇文门地铁站A1口；电话：010-67060009；评分：4.3分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "前门大街，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "前门大街"
+      ],
+      "location": [
+        "北京市东城区前门大街",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4953",
+      "turn_idx": 32,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "它的门票是免费的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-130_28",
+    "query": "好的，门票是多少钱？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "欢乐水魔方水上乐园",
+    "context": {
+      "spot_name": "欢乐水魔方水上乐园",
+      "city": "",
+      "district": "",
+      "duration": "3天 - 15天",
+      "budget": "None",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市丰台区小屯路11号；交通：五棵松地铁站D1口；电话：010-51666619；评分：4.0分；周边景点：北京国际雕塑公园、石景山游乐园、卢沟桥",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "欢乐水魔方水上乐园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "欢乐水魔方水上乐园"
+      ],
+      "location": [
+        "北京市丰台区小屯路11号",
+        "北京市",
+        "北京",
+        "北京市丰台区"
+      ],
+      "duration": [
+        "3天 - 15天",
+        "3天-15天",
+        "3天到15天",
+        "3天至15天"
+      ],
+      "budget": [
+        "None"
+      ],
+      "rating": [
+        "4.0",
+        "4.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-130",
+      "turn_idx": 28,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "抱歉，没有查到相关信息。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4357_14",
+    "query": "对呗，留着备用，知道景点的门票是多钱吗？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "圆明园",
+    "context": {
+      "spot_name": "圆明园",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 6小时",
+      "budget": "10",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区清华西路28号；交通：圆明园地铁站C口；电话：010-62628501；评分：4.4分；周边景点：北京大学、清华大学、颐和园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "圆明园，门票大致是10元。",
+    "expected_facts": {
+      "spot_name": [
+        "圆明园"
+      ],
+      "location": [
+        "北京市海淀区清华西路28号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时 - 6小时",
+        "3小时-6小时",
+        "3小时到6小时",
+        "3小时至6小时",
+        "3到6小时",
+        "3至6小时",
+        "3-6小时",
+        "3~6小时"
+      ],
+      "budget": [
+        "10",
+        "10元",
+        "门票10元",
+        "10块"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4357",
+      "turn_idx": 14,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "才10元，就跟不花钱一样。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4311_18",
+    "query": "就去颐和园吧，帮我查一下这儿的门票和电话。",
+    "category": "CrossWOZ-门票",
+    "expected_id": "颐和园",
+    "context": {
+      "spot_name": "颐和园",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 6小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区新建宫门路19号；交通：中关村地铁站E口；电话：010-62881144；评分：4.7分；周边景点：圆明园、北京大学、清华大学",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "颐和园，门票大致是20元。",
+    "expected_facts": {
+      "spot_name": [
+        "颐和园"
+      ],
+      "location": [
+        "北京市海淀区新建宫门路19号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时 - 6小时",
+        "3小时-6小时",
+        "3小时到6小时",
+        "3小时至6小时",
+        "3到6小时",
+        "3至6小时",
+        "3-6小时",
+        "3~6小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4311",
+      "turn_idx": 18,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "可以，门票是20元，电话是010-62881144。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-134_0",
+    "query": "您好，我要去地坛这个景点游玩，请帮我查下它的门票价格。",
+    "category": "CrossWOZ-门票",
+    "expected_id": "地坛",
+    "context": {
+      "spot_name": "地坛",
+      "city": "",
+      "district": "",
+      "duration": "2小时",
+      "budget": "2",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区安定门外大街东侧；交通：灯市口地铁站A口；电话：010-84257506,010-64214657；评分：5.0分；周边景点：簋街小吃、什刹海、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "地坛，门票大致是2元。",
+    "expected_facts": {
+      "spot_name": [
+        "地坛"
+      ],
+      "location": [
+        "北京市东城区安定门外大街东侧",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "2小时"
+      ],
+      "budget": [
+        "2",
+        "2元",
+        "门票2元",
+        "2块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-134",
+      "turn_idx": 0,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "它的门票价格是2元。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3617_2",
+    "query": "我觉得定湖公园很不错，这里门票多少钱？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "人定湖公园",
+    "context": {
+      "spot_name": "人定湖公园",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区安德路六铺炕街25号；交通：大钟寺地铁站B口；电话：010-62023200；评分：5.0分；周边景点：什刹海、恭王府、北海公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "人定湖公园，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "人定湖公园"
+      ],
+      "location": [
+        "北京市西城区安德路六铺炕街25号",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3617",
+      "turn_idx": 2,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "定湖公园门票是0元。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3977_12",
+    "query": "是吗，那这个景点门票多少钱啊？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "什刹海酒吧街",
+    "context": {
+      "spot_name": "什刹海酒吧街",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区地安门西大街；交通：灯市口地铁站A口；电话：010-84018677,010-84038677；评分：4.5分；周边景点：故宫、天安门广场、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "什刹海酒吧街，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "什刹海酒吧街"
+      ],
+      "location": [
+        "北京市西城区地安门西大街",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3977",
+      "turn_idx": 12,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "门票免费。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2309_10",
+    "query": "景点的门票是多少，周边有什么景点吗？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "前门大街",
+    "context": {
+      "spot_name": "前门大街",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区前门大街；交通：崇文门地铁站A1口；电话：010-67060009；评分：4.3分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "前门大街，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "前门大街"
+      ],
+      "location": [
+        "北京市东城区前门大街",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.3",
+        "4.3分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2309",
+      "turn_idx": 10,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "这是一个免费的景点，周边的景点有故宫，天坛，恭王府。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2822_16",
+    "query": "玉渊潭公园的门票是多少钱？附近有啥餐馆呢？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "玉渊潭公园",
+    "context": {
+      "spot_name": "玉渊潭公园",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 4小时",
+      "budget": "None",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区西三环中路10号玉渊潭公园东湖北码头；交通：北京西站地铁站A口；电话：010-88653800,010-88653775；评分：4.5分；周边景点：北京天文馆、北京动物园、北京海洋馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "玉渊潭公园，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "玉渊潭公园"
+      ],
+      "location": [
+        "北京市海淀区西三环中路10号玉渊潭公园东湖北码头",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "2小时 - 4小时",
+        "2小时-4小时",
+        "2小时到4小时",
+        "2小时至4小时",
+        "2到4小时",
+        "2至4小时",
+        "2-4小时",
+        "2~4小时"
+      ],
+      "budget": [
+        "None"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2822",
+      "turn_idx": 16,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "没有门票费，周边的餐馆有海碗居北京菜(增光路总店), 海底捞火锅(西单店)。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-377_6",
+    "query": "琉璃厂古玩字画一条街要门票吗？周边有酒店可以住宿吗？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "琉璃厂古玩字画一条街",
+    "context": {
+      "spot_name": "琉璃厂古玩字画一条街",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 4小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市西城区和平门外（近南新华街）；交通：菜市口地铁站D口；电话：010-63024929；评分：4.7分；周边景点：天安门广场、故宫、天坛",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "琉璃厂古玩字画一条街，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "琉璃厂古玩字画一条街"
+      ],
+      "location": [
+        "北京市西城区和平门外（近南新华街）",
+        "北京市",
+        "北京",
+        "北京市西城区"
+      ],
+      "duration": [
+        "1小时 - 4小时",
+        "1小时-4小时",
+        "1小时到4小时",
+        "1小时至4小时",
+        "1到4小时",
+        "1至4小时",
+        "1-4小时",
+        "1~4小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-377",
+      "turn_idx": 6,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "琉璃厂古玩字画一条街不要门票，周边的酒店还是有几家，其中包括北京贵都大酒店、北京首都宾馆、北京天伦王朝酒店。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4456_4",
+    "query": "票价是多少，贵不贵？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "北京海洋馆",
+    "context": {
+      "spot_name": "北京海洋馆",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "165",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区高粱桥斜街乙18号；交通：大钟寺地铁站B口；电话：010-62176655；评分：4.5分；周边景点：什刹海、恭王府、北海公园",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京海洋馆，门票大致是165元。",
+    "expected_facts": {
+      "spot_name": [
+        "北京海洋馆"
+      ],
+      "location": [
+        "北京市海淀区高粱桥斜街乙18号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "165",
+        "165元",
+        "门票165元",
+        "165块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4456",
+      "turn_idx": 4,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "票价是165元，还是很值得一去的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-857_14",
+    "query": "行，北京远通维景国际大酒店附近的景点里，帮我找找评分是5分的。",
+    "category": "CrossWOZ-门票",
+    "expected_id": "北京外国语大学",
+    "context": {
+      "spot_name": "北京外国语大学",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区西三环北路2号；交通：知春路地铁站B口；电话：010-88816215；评分：4.7分；周边景点：北京动物园、北京海洋馆、北京天文馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京外国语大学，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "北京外国语大学"
+      ],
+      "location": [
+        "北京市海淀区西三环北路2号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-857",
+      "turn_idx": 14,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "抱歉，没能找到评分是5分的，给您找到北京外国语大学，评分4.7分。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1071_20",
+    "query": "该景点的门票多少钱啊？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "民航博物馆",
+    "context": {
+      "spot_name": "民航博物馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区首都机场辅路民航200号；交通：国展地铁站D口；电话：010-84323666；评分：4.0分；周边景点：观复博物馆、郁金香摩锐水世界、中国铁道博物馆东郊馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "民航博物馆，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "民航博物馆"
+      ],
+      "location": [
+        "北京市朝阳区首都机场辅路民航200号",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.0",
+        "4.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1071",
+      "turn_idx": 20,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "门票是免费的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4573_16",
+    "query": "请问天安门广场的门票多少钱？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "天安门广场",
+    "context": {
+      "spot_name": "天安门广场",
+      "city": "",
+      "district": "",
+      "duration": "0.5小时 - 1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市东城区长安街（天安门和正阳门之间）；交通：灯市口地铁站A口；电话：010-65666606；评分：4.7分；周边景点：故宫、天坛、恭王府",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "天安门广场，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "天安门广场"
+      ],
+      "location": [
+        "北京市东城区长安街（天安门和正阳门之间）",
+        "北京市",
+        "北京",
+        "北京市东城区"
+      ],
+      "duration": [
+        "0.5小时 - 1小时",
+        "0.5小时-1小时",
+        "0.5小时到1小时",
+        "0.5小时至1小时",
+        "0.5到1小时",
+        "0.5至1小时",
+        "0.5-1小时",
+        "0.5~1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4573",
+      "turn_idx": 16,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "天安门广场门票是免费的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3860_2",
+    "query": "这个景点的门票价格是多少钱啊？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "水立方嬉水乐园",
+    "context": {
+      "spot_name": "水立方嬉水乐园",
+      "city": "",
+      "district": "",
+      "duration": "3小时",
+      "budget": "200",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区天辰东路11号国家游泳中心1层；交通：北沙滩地铁站B2口；电话：010-84378966,010-84378963；评分：5.0分；周边景点：水立方（国家游泳中心）、国家奥林匹克体育中心、中国科学技术馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "水立方嬉水乐园，门票大致是200元。",
+    "expected_facts": {
+      "spot_name": [
+        "水立方嬉水乐园"
+      ],
+      "location": [
+        "北京市朝阳区天辰东路11号国家游泳中心1层",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "3小时"
+      ],
+      "budget": [
+        "200",
+        "200元",
+        "门票200元",
+        "200块"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3860",
+      "turn_idx": 2,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "门票是200元。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-538_14",
+    "query": "这个景点的门票是多少钱啊？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "红砖美术馆",
+    "context": {
+      "spot_name": "红砖美术馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "None",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北；交通：马泉营地铁站C口；电话：010-84576669；评分：5.0分；周边景点：民航博物馆、观复博物馆、中国铁道博物馆东郊馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "红砖美术馆，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "红砖美术馆"
+      ],
+      "location": [
+        "北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "None"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-538",
+      "turn_idx": 14,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "门票是免费的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-211_20",
+    "query": "这个评分可以的，请告诉我一下它的门票价格与电话。",
+    "category": "CrossWOZ-门票",
+    "expected_id": "十三陵水库",
+    "context": {
+      "spot_name": "十三陵水库",
+      "city": "",
+      "district": "",
+      "duration": "1小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市昌平区昌平县十三陵盆地东南部；交通：北邵洼地铁站B口；电话：010-60713399；评分：4.4分；周边景点：蟒山国家森林公园、明十三陵、定陵",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "十三陵水库，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "十三陵水库"
+      ],
+      "location": [
+        "北京市昌平区昌平县十三陵盆地东南部",
+        "北京市",
+        "北京",
+        "北京市昌平区"
+      ],
+      "duration": [
+        "1小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.4",
+        "4.4分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-211",
+      "turn_idx": 20,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "它是免费的，然后电话010-60713399。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-4746_2",
+    "query": "那的门票是多少钱？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "北京欢乐谷",
+    "context": {
+      "spot_name": "北京欢乐谷",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 3天",
+      "budget": "195",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)；交通：劲松地铁站D口；电话：010-67389898,010-67383333,010-67201818；评分：4.5分；周边景点：潘家园、今日美术馆、首都图书馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京欢乐谷，门票大致是195元。",
+    "expected_facts": {
+      "spot_name": [
+        "北京欢乐谷"
+      ],
+      "location": [
+        "北京市朝阳区金蝉西路东四环小武基北路(四方桥东南)",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "12小时 - 3天",
+        "12小时-3天",
+        "12小时到3天",
+        "12小时至3天"
+      ],
+      "budget": [
+        "195",
+        "195元",
+        "门票195元",
+        "195块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-4746",
+      "turn_idx": 2,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "门票是195元。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-2103_14",
+    "query": "门票价格多少钱啊？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "红砖美术馆",
+    "context": {
+      "spot_name": "红砖美术馆",
+      "city": "",
+      "district": "",
+      "duration": "1小时 - 2小时",
+      "budget": "None",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北；交通：马泉营地铁站C口；电话：010-84576669；评分：5.0分；周边景点：民航博物馆、观复博物馆、中国铁道博物馆东郊馆",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "红砖美术馆，这是一个适合游览的景点。",
+    "expected_facts": {
+      "spot_name": [
+        "红砖美术馆"
+      ],
+      "location": [
+        "北京市朝阳区崔各庄乡何各庄村顺白路马泉营西路路口西100米路北",
+        "北京市",
+        "北京",
+        "北京市朝阳区"
+      ],
+      "duration": [
+        "1小时 - 2小时",
+        "1小时-2小时",
+        "1小时到2小时",
+        "1小时至2小时",
+        "1到2小时",
+        "1至2小时",
+        "1-2小时",
+        "1~2小时"
+      ],
+      "budget": [
+        "None"
+      ],
+      "rating": [
+        "5.0",
+        "5.0分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-2103",
+      "turn_idx": 14,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "门票是免费的。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-1717_6",
+    "query": "门票多少钱？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "北京自然博物馆",
+    "context": {
+      "spot_name": "北京自然博物馆",
+      "city": "",
+      "district": "",
+      "duration": "2小时 - 3小时",
+      "budget": "0",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：东城区天桥南大街126号；交通：崇文门地铁站A1口；电话：010-67024431；评分：4.6分；周边景点：天坛、前门大街、天安门广场",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "北京自然博物馆，门票大致是0元。",
+    "expected_facts": {
+      "spot_name": [
+        "北京自然博物馆"
+      ],
+      "location": [
+        "东城区天桥南大街126号",
+        "东城区"
+      ],
+      "duration": [
+        "2小时 - 3小时",
+        "2小时-3小时",
+        "2小时到3小时",
+        "2小时至3小时",
+        "2到3小时",
+        "2至3小时",
+        "2-3小时",
+        "2~3小时"
+      ],
+      "budget": [
+        "0",
+        "0元",
+        "免费",
+        "免门票",
+        "不用门票",
+        "无需门票"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-1717",
+      "turn_idx": 6,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "北京自然博物馆门票是免费的哦！"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-validation-432_8",
+    "query": "门票多钱？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "雁栖湖",
+    "context": {
+      "spot_name": "雁栖湖",
+      "city": "",
+      "district": "",
+      "duration": "12小时 - 6天",
+      "budget": "45",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：怀柔区怀北镇雁水路3号；电话：010-69661696,010-69661194；评分：4.6分；周边景点：红螺寺",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "雁栖湖，门票大致是45元。",
+    "expected_facts": {
+      "spot_name": [
+        "雁栖湖"
+      ],
+      "location": [
+        "怀柔区怀北镇雁水路3号",
+        "怀柔区"
+      ],
+      "duration": [
+        "12小时 - 6天",
+        "12小时-6天",
+        "12小时到6天",
+        "12小时至6天"
+      ],
+      "budget": [
+        "45",
+        "45元",
+        "门票45元",
+        "45块"
+      ],
+      "rating": [
+        "4.6",
+        "4.6分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-validation-432",
+      "turn_idx": 8,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "45元哦。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-train-3708_18",
+    "query": "门票是多少钱呢？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "密云人间花海薰衣草庄园",
+    "context": {
+      "spot_name": "密云人间花海薰衣草庄园",
+      "city": "",
+      "district": "",
+      "duration": "4小时 - 5小时",
+      "budget": "60",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市密云区太师屯镇车道峪村；电话：13910138775；评分：4.5分；周边景点：仙居谷、九龙十八潭",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "密云人间花海薰衣草庄园，门票大致是60元。",
+    "expected_facts": {
+      "spot_name": [
+        "密云人间花海薰衣草庄园"
+      ],
+      "location": [
+        "北京市密云区太师屯镇车道峪村",
+        "北京市",
+        "北京",
+        "北京市密云区"
+      ],
+      "duration": [
+        "4小时 - 5小时",
+        "4小时-5小时",
+        "4小时到5小时",
+        "4小时至5小时",
+        "4到5小时",
+        "4至5小时",
+        "4-5小时",
+        "4~5小时"
+      ],
+      "budget": [
+        "60",
+        "60元",
+        "门票60元",
+        "60块"
+      ],
+      "rating": [
+        "4.5",
+        "4.5分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-train-3708",
+      "turn_idx": 18,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "门票是60元。"
+    }
+  },
+  {
+    "case_id": "crosswoz_crosswoz-test-451_8",
+    "query": "颐和园要门票吗？周边还有其他的景点可以玩吗？",
+    "category": "CrossWOZ-门票",
+    "expected_id": "颐和园",
+    "context": {
+      "spot_name": "颐和园",
+      "city": "",
+      "district": "",
+      "duration": "3小时 - 6小时",
+      "budget": "20",
+      "tags": [
+        "景点"
+      ],
+      "content_summary": "地址：北京市海淀区新建宫门路19号；交通：中关村地铁站E口；电话：010-62881144；评分：4.7分；周边景点：圆明园、北京大学、清华大学",
+      "source": "CrossWOZ"
+    },
+    "reference_answer": "颐和园，门票大致是20元。",
+    "expected_facts": {
+      "spot_name": [
+        "颐和园"
+      ],
+      "location": [
+        "北京市海淀区新建宫门路19号",
+        "北京市",
+        "北京",
+        "北京市海淀区"
+      ],
+      "duration": [
+        "3小时 - 6小时",
+        "3小时-6小时",
+        "3小时到6小时",
+        "3小时至6小时",
+        "3到6小时",
+        "3至6小时",
+        "3-6小时",
+        "3~6小时"
+      ],
+      "budget": [
+        "20",
+        "20元",
+        "门票20元",
+        "20块"
+      ],
+      "rating": [
+        "4.7",
+        "4.7分"
+      ]
+    },
+    "required_keys": [
+      "spot_name",
+      "budget"
+    ],
+    "source_reference": {
+      "dialogue_id": "crosswoz-test-451",
+      "turn_idx": 8,
+      "requested_slots": [
+        "门票"
+      ],
+      "system_utterance": "颐和园的门票是20元，周边的景点还有圆明园、北京大学、清华大学等等。"
+    }
+  }
+]
