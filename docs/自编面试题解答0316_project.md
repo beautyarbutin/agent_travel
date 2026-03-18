@@ -707,6 +707,79 @@ LoRA 的核心假设是：
 
 **rank 决定 LoRA 更新子空间的容量，alpha 决定更新幅度，target module 决定你到底改模型的哪一部分能力。8、16 这类值不是玄学，而是容量、泛化、显存三者之间的工程折中；alpha 设成 rank 的两倍也不是定律，而是常见且相对稳定的经验值。**
 
+
+### 4.10 lora代码
+class loralayer(nn.module):
+    def _init_(self,in_dim,out_dim,rank=8,alpha=8):
+        super()._init_()
+        # 低质矩阵A 高斯随机初始化 、 B 全0初始化 初始不改变原模型输出 又不阻断训练梯度 让 LoRA 从 0 增量开始，稳定地学出有效更新
+        # 为什么？B=0 前向确实没有增量，反向传播后B会先收到非零梯度，更新完后B不再是0。先从不扰动原模型开始，再逐渐长出更新量
+        self.A = nn.Linear(rank,in_dim,bias=False)
+        self.B = nn.Linear(out_dim,rank,bias=False)
+        nn.init.normal_(self.A.weight,std=1e-5)
+        nn.init.zeros_(self.B.weight)
+        # 缩放因子 saclefactor
+        self.scaling = alpha/rank
+        self.dropout = nn.Dropout(0.1)
+
+   def forward(self,x):
+       lora_out = self.B(self.A(self.dropout(x))) * self.scaling
+       return lora_out
+       
+#封装带lora的Transformer模型
+class loramodel(nn.module):
+   def _init_(self,model_name="bert-base-uncased",rank=8,alpha=8):
+      super()._init_()
+      # 加载预训练模型并冻结权重
+      self.base_model = Automodel.from_pretrained(model_name)
+      for param in self.base_model.parameters():
+         param.requires_grad = false
+      # 为注意力层的q/v投影层加lora
+      self.lora_rank = rank
+      self.lora_alpha = alpha
+      self._inject_lora(rank,alpha)
+
+def _inject_lora(self,rank,alpha):
+   遍历模型模块 为q/v层插入lora
+   for name,module in self.base_model.named_modules():
+      if isinstance(module,nn.Linear) and ("query" in name or "value" in name):
+         # 保存原线形层
+         original_linear=module
+         # 定义融合lora的新层
+         class loraWrappedLinear(nn.module):
+            def._init_(self,original,lora):
+               super()._init_()
+               self.original=original
+               self.lora=lora
+            def forward(self,x):
+               #原输出+lora输出 核心：前向相加
+               return self.original(x)+self.lora(x)
+
+            #实例化lora层并替换原层
+            lora_layer=loraLayer(
+               in_dim=original_linear.in_features;
+               out_dim=orignial_linear.out_features;
+               rank=rank;
+               alpha=alpha;
+            )
+            
+
+def forward(self,input_ids,attention_mask=None):
+   return self.base_model(input_ids=input_ids,attention_mask=attention_mask)
+#推理阶段 可合并lora权重
+def merge_lora_weights(self,model):
+   for name,module in model.named_modules():
+      if hasattr(module,"lora")
+         original_weight=module.original.weight
+         lora_A=module.lora.A.weight
+         lora_B=module.lora.B.weight
+         scaling=module.lora.scaling
+         merged_weight=original_weight+(lora_B @ lora_A)*scaling
+         module.original.weight=nn.Parameter(merged_weight)
+
+         delattr(module,"lora")
+   return model
+
 ---
 
 ## 5. 为什么加了个东西，模型效果反而变差？Spot LoRA 为什么有指标下降？问题出在哪，怎么改？
@@ -1410,7 +1483,7 @@ embedding 是把文本映射到低维连续向量空间：
 
 所以最准确的说法必须是：
 
-**你这个项目用了 BM25-like / BM25 风格词法打分，但没有实现标准 BM25 检索器。**
+**这个项目用了 BM25-like / BM25 风格词法打分，但没有实现标准 BM25 检索器。**
 
 ### 6.6 用没用 rerank
 
@@ -1425,14 +1498,13 @@ embedding 是把文本映射到低维连续向量空间：
 
 所以如果面试官问“有没有 rerank”，我会说：
 
-**严格意义上没有上单独的神经重排序模型，也没有 cross-encoder rerank。现在更像是“向量分 + 词法分 + bonus”的融合排序，而不是标准两阶段 rerank。**
+**这个项目没有独立的 rerank 模型，也没有 cross-encoder rerank。现在更像是“FAISS 向量召回分 + 查询时现算的 BM25-like 补分 + bonus”的融合排序，而不是标准两阶段 rerank。**
 
 如果说得再细一点：
 
 - **广义上**，最终把多路分数合并再排序，你也可以说它做了“工程上的重排”
 - **严格意义上**，它没有单独的 reranker 模块，没有 `bi-encoder 召回 -> cross-encoder 复排` 这种结构
 
-所以面试时最好不要把它吹成“用了 rerank 模型”，那不准确。
 
 ### 6.7 Hybrid RAG 具体混合了什么
 
