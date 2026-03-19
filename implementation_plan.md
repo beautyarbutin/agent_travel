@@ -82,7 +82,7 @@
 
 ```diff
  config:
-   model_name: "glm-4.7"
+   model_name: "local-qwen"
 +  tools:
 +    - name: "get_driving_route"
 +      description: "当用户询问两地之间的交通路线、怎么走、开车路线时调用。获取真实的驾车路线、距离和耗时。"

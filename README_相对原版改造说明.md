@@ -113,13 +113,15 @@
 
 ### 4.2 当前景点知识库
 
-`data/spots_knowledge.json` 当前共 `15240` 条，来源构成为：
+`data/spots_knowledge.json` / `storage/doecment.json` 当前共 `15723` 条，来源构成为：
 
 | 来源 | 条数 |
 | --- | ---: |
 | `Kaggle/去哪儿网` | 14581 |
+| `CrossWOZ景点库` | 465 |
 | `独家手写攻略` | 347 |
 | `China312地理数据集` | 312 |
+| `香港旅游指南QA` | 18 |
 
 相关文件：
 
@@ -129,6 +131,10 @@
 - `data/datasets_rag/`
 - `data/datasets_lora/`
 - `data/lora_ready/`
+
+完整的 RAG 专题总览、演进、检索公式、评测结果和技术债，见：
+
+- `docs/RAG_全量工作总览_2026-03-18.md`
 
 ### 4.3 向量索引与记忆文件
 

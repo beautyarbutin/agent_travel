@@ -10,14 +10,10 @@ from openagents.models.event_context import EventContext
 logger = logging.getLogger(__name__)
 
 
-class SpotFallbackAgent(CollaboratorAgent):
-    """Spot agent with a narrow fallback for direct-response message loss."""
+class PlanFallbackAgent(CollaboratorAgent):
+    """Plan agent with a narrow fallback when the model forgets to send a channel reply."""
 
-    _SPOT_TOOL_SUFFIXES = (
-        "search_spots",
-        "search_local_knowledge",
-        "search_combined",
-    )
+    _PLAN_TOOL_SUFFIXES = ("get_driving_route",)
     _MESSAGE_TOOL_NAMES = {"send_channel_message", "reply_channel_message"}
 
     async def run_agent(
@@ -53,19 +49,21 @@ class SpotFallbackAgent(CollaboratorAgent):
     ) -> None:
         if not self._is_router_direct_message(context):
             return
-        if not self._has_successful_spot_tool_call(trajectory):
+        if not self._has_successful_plan_tool_call(trajectory):
             return
         if self._has_message_tool_call(trajectory):
             return
 
         response_text = self._extract_direct_response_text(trajectory)
         if not response_text:
+            response_text = self._build_route_summary_from_tool_result(trajectory)
+        if not response_text:
             return
 
         messaging_adapter = self._get_messaging_adapter()
         if messaging_adapter is None:
             logger.warning(
-                "[%s] Spot fallback skipped: messaging adapter not available",
+                "[%s] Plan fallback skipped: messaging adapter not available",
                 self.agent_id,
             )
             return
@@ -74,7 +72,7 @@ class SpotFallbackAgent(CollaboratorAgent):
             channel="general", text=response_text
         )
         logger.info(
-            "[%s] Spot fallback sent direct-response content to #general",
+            "[%s] Plan fallback sent response to #general",
             self.agent_id,
         )
 
@@ -83,7 +81,7 @@ class SpotFallbackAgent(CollaboratorAgent):
         event_name = context.incoming_event.event_name or ""
         return source_name == "travel_router" and "direct_message" in event_name
 
-    def _has_successful_spot_tool_call(self, trajectory: AgentTrajectory) -> bool:
+    def _has_successful_plan_tool_call(self, trajectory: AgentTrajectory) -> bool:
         for action in trajectory.actions:
             if action.action_type != AgentActionType.CALL_TOOL:
                 continue
@@ -91,7 +89,7 @@ class SpotFallbackAgent(CollaboratorAgent):
             status = action.payload.get("status")
             if status != "success":
                 continue
-            if tool_name.endswith(self._SPOT_TOOL_SUFFIXES):
+            if tool_name.endswith(self._PLAN_TOOL_SUFFIXES):
                 return True
         return False
 
@@ -115,6 +113,19 @@ class SpotFallbackAgent(CollaboratorAgent):
             cleaned = self._strip_think_blocks(response_text)
             if cleaned:
                 return cleaned
+        return ""
+
+    def _build_route_summary_from_tool_result(self, trajectory: AgentTrajectory) -> str:
+        for action in reversed(trajectory.actions):
+            if action.action_type != AgentActionType.CALL_TOOL:
+                continue
+            tool_name = str(action.payload.get("tool_name", ""))
+            if not tool_name.endswith(self._PLAN_TOOL_SUFFIXES):
+                continue
+            result = str(action.payload.get("result", "")).strip()
+            if not result:
+                continue
+            return "🗺️ 已为您查询到驾车路线信息：\n\n" + result
         return ""
 
     def _get_messaging_adapter(self):

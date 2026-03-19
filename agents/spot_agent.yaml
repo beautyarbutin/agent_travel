@@ -1,8 +1,12 @@
-type: "openagents.agents.collaborator_agent.CollaboratorAgent"
+type: "spot_agent_runner.SpotFallbackAgent"
 agent_id: "spot_agent"
 
 config:
-  model_name: "local-qwen"
+  model_name: "spot-qwen35-lora"
+
+  provider: "openai"
+  api_base: "http://localhost:1234/v1"
+  api_key: "lm-studio"
 
   mcps:
     - name: "travel_mcp_server"
@@ -11,6 +15,12 @@ config:
 
   instruction: |
     你是"景点助手"，专门回答景点相关问题。
+
+    ## 路由隔离规则
+    - 你只处理来自 travel_router 的 direct message
+    - 如果发送者不是 travel_router，立即 finish，不回复
+    - 回复时统一使用 send_channel_message(channel="general", text=...)
+    - 不要跨域引导，不要顺带推荐其他助手的能力
 
     ## 混合检索规则 (API + RAG)
 
@@ -65,22 +75,55 @@ config:
     1. **防拥堵**：节假日东门人非常多，强烈建议您直接导航至【南门】入园！
     2. **特色美食**：游玩结束后，一定要尝一下周边的特色【烤鸭蛋】，味道非常赞！
     (提取自本地深度攻略)"
-    
-  react_to_all_messages: true
-  react_keywords:
-    - "景点"
-    - "好玩"
-    - "推荐"
-    - "旅游"
-    - "逛"
-    - "玩"
-    - "去哪"
-    - "哪里好"
-    - "值得去"
-    - "攻略"
-    - "美食"
-    - "特色"
-    - "好吃"
+
+  user_prompt_template: |
+    <conversation>
+        {% for thread_id, thread in context.event_threads.items() %}
+        {% if thread_id == context.incoming_thread_id %}
+        <thread id="{{ thread_id }}">
+            {% for event in thread.events[-6:] %}
+            <message sender="{{ event.source_id }}" event_id="{{ event.event_id }}">
+                {% if event.text_representation %}
+                <content>{{ event.text_representation }}</content>
+                {% elif event.payload.text %}
+                <content>{{ event.payload.text }}</content>
+                {% else %}
+                <content>{{ event.payload }}</content>
+                {% endif %}
+            </message>
+            {% endfor %}
+        </thread>
+        {% endif %}
+        {% endfor %}
+
+        <current_interaction>
+            <incoming_thread_id>{{ context.incoming_thread_id }}</incoming_thread_id>
+            <incoming_message sender="{{ context.incoming_event.source_id }}" event_id="{{ context.incoming_event.event_id }}">
+                {% if context.incoming_event.text_representation %}
+                <content>{{ context.incoming_event.text_representation }}</content>
+                {% elif context.incoming_event.payload.text %}
+                <content>{{ context.incoming_event.payload.text }}</content>
+                {% else %}
+                <content>{{ context.incoming_event.payload }}</content>
+                {% endif %}
+            </incoming_message>
+        </current_interaction>
+    </conversation>
+
+    你是景点助手，只能通过工具行动。
+
+    关键执行规则：
+    - 先调用 get_context 读取上下文
+    - 景点推荐优先组合使用 search_local_knowledge 与 search_spots
+    - 对用户回复时，只能使用 send_channel_message 或 reply_channel_message
+    - 不要使用 finish
+    - 不要直接输出纯文本
+
+    你在每一步都必须通过工具行动，不能输出纯文本。
+
+  react_to_all_messages: false
+  triggers:
+    - event: "thread.direct_message.notification"
 
 mods:
   - name: "openagents.mods.workspace.messaging"
@@ -89,4 +132,3 @@ mods:
 connection:
   host: "localhost"
   port: 8700
-  transport: "grpc"

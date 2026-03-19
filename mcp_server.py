@@ -7,9 +7,12 @@
 """
 import os
 import sys
+import re
 import requests
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
+from tools.weather_tools import get_weather as query_weather_open_meteo
+from tools.weather_tools import get_weather_forecast as query_weather_forecast
 
 # 加载环境变量
 base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -17,6 +20,104 @@ load_dotenv(os.path.join(base_dir, '.env'))
 
 # 创建 MCP Server 实例
 mcp = FastMCP("TravelAssistant")
+
+
+def _normalize_road_name(name: str) -> str:
+    """Normalize road labels returned by AMap for cleaner summaries."""
+    if not name:
+        return ""
+    normalized = re.sub(r"\s+", "", str(name)).strip()
+    return normalized
+
+
+def _road_priority(name: str) -> int:
+    """Score road names so trunk highways/bridges rank ahead of local fragments."""
+    if not name:
+        return -1
+
+    low_priority_keywords = ("入口", "出口", "匝道", "辅路", "掉头", "收费站")
+    if any(keyword in name for keyword in low_priority_keywords):
+        return 0
+
+    high_priority_keywords = (
+        "高速",
+        "高架",
+        "快速路",
+        "快速",
+        "国道",
+        "省道",
+        "立交",
+        "大桥",
+        "隧道",
+    )
+    if any(keyword in name for keyword in high_priority_keywords):
+        return 3
+
+    if re.search(r"\b[GS]\d+\b", name, flags=re.I):
+        return 3
+
+    if re.search(r"^[GS]\d+", name, flags=re.I):
+        return 3
+
+    if re.search(r"\d+国道|\d+省道", name):
+        return 3
+
+    if name.endswith(("路", "街", "大道", "公路")):
+        return 1
+
+    return 1
+
+
+def _summarize_route_roads(steps) -> str:
+    """Build a fuller, cleaner summary of major route roads."""
+    all_roads = []
+    seen = set()
+
+    for step in steps or []:
+        for candidate in (step.get("road", ""), step.get("instruction", "")):
+            text = str(candidate or "")
+            if not text:
+                continue
+
+            extracted = []
+            road_name = _normalize_road_name(step.get("road", ""))
+            if road_name:
+                extracted.append(road_name)
+
+            instruction_matches = re.findall(
+                r"([GS]\d+[^\s，。,；;、]*)|([^，。,；;、]*(?:高速|高架|快速路|国道|省道|大桥|隧道))",
+                text,
+            )
+            for match in instruction_matches:
+                merged = "".join(part for part in match if part)
+                merged = _normalize_road_name(merged)
+                if merged:
+                    extracted.append(merged)
+
+            if not extracted and road_name:
+                extracted.append(road_name)
+
+            for road in extracted:
+                if not road or road in seen:
+                    continue
+                seen.add(road)
+                all_roads.append(road)
+
+    if not all_roads:
+        return "详见导航"
+
+    major_roads = [road for road in all_roads if _road_priority(road) >= 3]
+    secondary_roads = [road for road in all_roads if road not in major_roads and _road_priority(road) > 0]
+
+    ordered = major_roads + secondary_roads
+    if not ordered:
+        ordered = all_roads
+
+    display = ordered[:12]
+    summary = " → ".join(display)
+    if len(ordered) > len(display):
+        summary += " → 等"
+    return summary
 
 
 # ============================================================
@@ -30,50 +131,31 @@ def get_weather(city: str) -> str:
     Args:
         city: 城市名称，例如"北京"、"上海"、"故城"
     """
-    api_key = os.getenv("OPENWEATHER_API_KEY")
-    if not api_key:
-        return "错误：未配置 OPENWEATHER_API_KEY"
+    return query_weather_open_meteo(city)
 
-    try:
-        url = "https://api.openweathermap.org/data/2.5/weather"
-        params = {
-            "q": f"{city},CN",
-            "appid": api_key,
-            "units": "metric",
-            "lang": "zh_cn"
-        }
-        response = requests.get(url, params=params, timeout=10)
-        data = response.json()
 
-        if data.get("cod") != 200:
-            return f"查询失败：{data.get('message', '未知错误')}"
+@mcp.tool()
+def get_weather_forecast(
+    city: str,
+    start_date: str = "",
+    end_date: str = "",
+    days: int = 0,
+) -> str:
+    """
+    获取指定城市未来几天或指定日期区间的天气预报。
 
-        temp = data["main"]["temp"]
-        feels_like = data["main"]["feels_like"]
-        humidity = data["main"]["humidity"]
-        weather_desc = data["weather"][0]["description"]
-        wind_speed = data["wind"]["speed"]
-
-        # 穿衣建议
-        if temp < 5:
-            clothing = "🧥 天气寒冷，建议穿着：羽绒服或厚外套、毛衣保暖层、围巾和手套、注意保暖防寒！"
-        elif temp < 15:
-            clothing = "🧶 天气较凉，建议穿着：外套或夹克、长袖衬衫、可备薄围巾"
-        elif temp < 25:
-            clothing = "👕 天气舒适，建议穿着：长袖或薄外套、休闲装即可"
-        else:
-            clothing = "☀️ 天气炎热，建议穿着：短袖、短裤、注意防晒补水"
-
-        return (
-            f"📍 {city}今天天气情况：\n"
-            f"🌡️ 温度：{temp}°C（体感 {feels_like}°C）\n"
-            f"☁️ 天气：{weather_desc}\n"
-            f"💨 风速：{wind_speed} km/h\n"
-            f"💧 湿度：{humidity}%\n"
-            f"👔 穿衣建议：{clothing}"
-        )
-    except Exception as e:
-        return f"查询天气时发生错误：{str(e)}"
+    Args:
+        city: 城市名称，例如"宁波"、"鄞州区"
+        start_date: 起始日期，支持"2026-03-21"、"3月21日"、"明天"
+        end_date: 结束日期，支持"2026-03-24"、"3月24日"
+        days: 未来天数，例如 3 表示未来三天
+    """
+    return query_weather_forecast(
+        city=city,
+        start_date=start_date,
+        end_date=end_date,
+        days=days,
+    )
 
 
 # ============================================================
@@ -251,14 +333,7 @@ def get_driving_route(origin: str, destination: str) -> str:
         distance_km = round(int(path.get("distance", 0)) / 1000, 1)
         duration_min = round(int(path.get("duration", 0)) / 60)
 
-        roads = []
-        for step in path.get("steps", []):
-            road = step.get("road", "")
-            instruction = step.get("instruction", "")
-            if road and road not in roads:
-                roads.append(road)
-
-        roads_str = " → ".join(roads[:8]) if roads else "详见导航"
+        roads_str = _summarize_route_roads(path.get("steps", []))
 
         return (
             f"🚗 从 {origin} 到 {destination} 的驾车路线：\n"
@@ -277,26 +352,44 @@ def get_driving_route(origin: str, destination: str) -> str:
 @mcp.tool()
 def save_context(
     current_city: str = "",
+    origin_city: str = "",
+    destination_city: str = "",
     current_spot: str = "",
     travel_party: str = "",
     preferences: str = "",
+    departure_time: str = "",
+    trip_days: str = "",
     notes: str = "",
 ) -> str:
     """
     保存/更新用户对话上下文到本地记忆文件（增量更新，只覆盖非空字段）。
-    当用户提到城市、景点、出行人员、偏好等关键信息时，调用此工具保存。
+    当用户提到城市、景点、跨城出发地/目的地、出行人员、偏好等关键信息时，调用此工具保存。
     
     Args:
         current_city: 当前讨论的城市名，例如"衡水"、"北京"
+        origin_city: 跨城行程中的出发地，例如"故城县"
+        destination_city: 跨城行程中的目的地，例如"如皋市"
         current_spot: 当前讨论的具体景点名，例如"衡水湖"、"故宫"
         travel_party: 出行人员情况，例如"带小孩"、"情侣"、"独自"
         preferences: 用户偏好，例如"不喜欢爬山，喜欢历史古迹"
+        departure_time: 出发时间，例如"今天出发"、"下周六"
+        trip_days: 行程天数，例如"三天"、"2天1晚"
         notes: 其他备注，例如"预算200以内"、"只有半天时间"
     """
     try:
         sys.path.insert(0, os.path.join(base_dir, 'tools'))
         from memory_tools import save_context as _save
-        return _save(current_city, current_spot, travel_party, preferences, notes)
+        return _save(
+            current_city=current_city,
+            origin_city=origin_city,
+            destination_city=destination_city,
+            current_spot=current_spot,
+            travel_party=travel_party,
+            preferences=preferences,
+            departure_time=departure_time,
+            trip_days=trip_days,
+            notes=notes,
+        )
     except Exception as e:
         return f"保存上下文时发生错误：{str(e)}"
 
@@ -323,7 +416,7 @@ def get_context() -> str:
 # ============================================================
 if __name__ == "__main__":
     print("🚀 旅游助手 MCP Server 启动中...")
-    print("📦 提供工具：get_weather, search_spots, get_driving_route, search_local_knowledge, save_context, get_context")
+    print("📦 提供工具：get_weather, get_weather_forecast, search_spots, get_driving_route, search_local_knowledge, save_context, get_context")
     print("🔌 使用 stdio 传输协议")
     mcp.run()
 
