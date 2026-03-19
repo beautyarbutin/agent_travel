@@ -23,54 +23,62 @@
 
 ### 2.1 多智能体协作架构
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      OpenAgents Network                       │
-│                      Messaging Channel                       │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              │ 用户发送消息
-                              ↓
-    ┌─────────────────────────────────────────────────────┐
-    │              消息广播到所有智能体                       │
-    │         每个智能体根据关键词判断是否回复                │
-    └─────────────────────────────────────────────────────┘
-                              │
-        ┌─────────────────────┼─────────────────────┐
-        │                     │                     │
-        ↓                     ↓                     ↓
-┌───────────────┐   ┌───────────────┐   ┌───────────────┐
-│travel_router  │   │weather_agent  │   │  spot_agent   │
-│   (接待员)     │   │  (天气助手)    │   │  (景点助手)    │
-│               │   │               │   │               │
-│- 打招呼回应   │   │- 天气查询     │   │- 景点推荐     │
-│- 功能介绍     │   │- 穿衣建议     │   │- 景点介绍     │
-│- 一般咨询     │   │               │   │               │
-└───────────────┘   └───────────────┘   └───────────────┘
-        │                     │                     │
-        │                     └─────────────────────┘
-        │                               │
-        ↓                               ↓
-┌───────────────┐               ┌───────────────┐
-│  plan_agent  │               │  Qwen3.5-4B  │
-│  (行程助手)   │               │   (LLM)       │
-│               │               │               │
-│- 行程规划     │               │  提供智能     │
-│- 路线安排     │               │  回复能力     │
-│- 时间建议     │               │               │
-└───────────────┘               └───────────────┘
+```mermaid
+%%{init: {'theme': 'base', 'flowchart': {'curve': 'linear'}}}%%
+flowchart TD
+    U["用户"]
+    N["OpenAgents Network<br/>#general"]
+    R["travel_router<br/>总控接待 / 串行路由<br/>get_context → 指代消解<br/>意图识别 → 分发<br/>闲聊自己回复"]
+
+    W["weather_agent<br/>只接 router DM<br/>get_weather"]
+    S["spot_agent<br/>只接 router DM<br/>search_spots + local RAG"]
+    P["plan_agent<br/>只接 router DM<br/>行程规划 + get_driving_route"]
+
+    RM["LoRA 1 路由模型<br/>Qwen3.5-4B + router_lora<br/>router-qwen35-lora"]
+    SM["LoRA 2 共享业务模型<br/>Qwen3.5-4B + spot_lora<br/>weather / spot / plan 共用"]
+    T["工具 / 记忆层<br/>memory_mcp:<br/>get_context / save_context<br/>travel_mcp:<br/>get_weather / search_spots<br/>search_local_knowledge<br/>get_driving_route"]
+
+    U -->|"发送消息"| N
+    N --> R
+    R -->|"天气"| W
+    R -->|"景点"| S
+    R -->|"行程 / 路线"| P
+    R --> RM
+    W --> SM
+    S --> SM
+    P --> SM
+    R -.-> T
+    W -.-> T
+    S -.-> T
+    P -.-> T
+
+    classDef box fill:#f7f9fc,stroke:#31506b,stroke-width:1.4px,color:#18222d,font-size:16px;
+    classDef layer fill:#eef4f8,stroke:#54728b,stroke-width:1.4px,color:#18222d,font-size:16px;
+    classDef actor fill:#fffaf0,stroke:#8a6d3b,stroke-width:1.2px,color:#3b2f1f,font-size:16px;
+    classDef model fill:#edf6ee,stroke:#4f7a57,stroke-width:1.4px,color:#18222d,font-size:16px;
+
+    class R,W,S,P box;
+    class N,T layer;
+    class RM,SM model;
+    class U actor;
 ```
 
 ### 2.2 协作机制
 
-**关键词触发机制**：每个智能体监听特定关键词，只有消息包含其关键词时才回复。
+**当前真实运行机制不是“广播抢答”，而是“router 串行分发”。**
 
-| 智能体 | 触发关键词 | 不回复的关键词 |
+| 组件 | 当前触发方式 | 当前模型 / 能力来源 |
 |--------|-----------|---------------|
-| `travel_router` | 你好、嗨、hello、能做什么 | 天气、景点、推荐、规划、日游 |
-| `weather_agent` | 天气、气温、温度、下雨、下雪、晴、阴、热、冷、穿衣、外套 | - |
-| `spot_agent` | 景点、推荐、好玩、旅游、逛、玩、去哪、哪里，或具体景点名 | - |
-| `plan_agent` | 规划、行程、安排、路线、游、日游、怎么玩，或天数 | - |
+| `travel_router` | 监听公共频道消息与 reply，统一接待、读写记忆、意图分发 | `router-qwen35-lora` |
+| `weather_agent` | 只处理 `travel_router` 发来的 direct message | `spot-qwen35-lora` + `get_weather` |
+| `spot_agent` | 只处理 `travel_router` 发来的 direct message | `spot-qwen35-lora` + `search_spots` + `search_local_knowledge` |
+| `plan_agent` | 只处理 `travel_router` 发来的 direct message | `spot-qwen35-lora` + `get_driving_route` |
+
+补充说明：
+
+- `travel_router` 当前单独挂载 `router_lora`
+- `weather_agent / spot_agent / plan_agent` 当前共用 `spot_lora`
+- 子 Agent 默认不再监听公共频道关键词，不直接参与广播式抢答
 
 ---
 

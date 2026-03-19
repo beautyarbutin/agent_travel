@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="980" viewBox="0 0 2200 980">
+<rect width="2200" height="980" fill="#FFFFFF"/>
+<text x="84" y="104" font-family="Microsoft YaHei, Arial" font-size="48" font-weight="700" fill="#0F4A95">RAG：从建库到在线回答</text>
+<text x="88" y="144" font-family="Microsoft YaHei, Arial" font-size="24" fill="#5A687A">适合放在答辩 PPT 的宽版流程图：左边说明离线建库，右边说明在线查询和融合回答。</text>
+<rect x="74" y="184" rx="28" ry="28" width="934" height="684" fill="#F9FBFE" stroke="#D6DFEB" stroke-width="3"/>
+<rect x="1090" y="184" rx="28" ry="28" width="1036" height="684" fill="#FFFCF1" stroke="#E8D9A9" stroke-width="3"/>
+<rect x="112" y="202" rx="16" ry="16" width="182" height="46" fill="#0F766E"/><text x="130" y="232" font-family="Microsoft YaHei, Arial" font-size="22" font-weight="700" fill="#FFFFFF">离线建库</text>
+<rect x="1128" y="202" rx="16" ry="16" width="182" height="46" fill="#C28B2C"/><text x="1146" y="232" font-family="Microsoft YaHei, Arial" font-size="22" font-weight="700" fill="#FFFFFF">在线查询</text>
+<rect x="118" y="276" rx="24" ry="24" width="220" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="144" y="322" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">多源数据</text>
+<text x="144" y="360" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">Kaggle / CrossWOZ</text>
+<text x="144" y="398" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">手写攻略 / China312 / HK QA</text>
+<rect x="370" y="276" rx="24" ry="24" width="210" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="396" y="322" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">统一 Schema</text>
+<text x="396" y="360" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">spots_knowledge.json</text>
+<rect x="612" y="276" rx="24" ry="24" width="210" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="638" y="322" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">向量构建</text>
+<text x="638" y="360" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">build_spot_vectors.py</text>
+<rect x="118" y="470" rx="24" ry="24" width="320" height="128" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="144" y="516" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">拼接文本</text>
+<text x="144" y="554" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">city + district + spot_name</text>
+<text x="144" y="592" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">+ tags + content</text>
+<rect x="476" y="470" rx="24" ry="24" width="240" height="128" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="502" y="516" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">Embedding</text>
+<text x="502" y="554" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">bge-small-zh-v1.5</text>
+<text x="502" y="592" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">512 维向量</text>
+<rect x="754" y="470" rx="24" ry="24" width="214" height="128" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="780" y="516" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">索引落盘</text>
+<text x="780" y="554" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">storage/doecment.json</text>
+<text x="780" y="592" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">storage/faiss_index.bin</text>
+<rect x="188" y="684" rx="24" ry="24" width="700" height="112" fill="#EDF6EE" stroke="#B7D6BD" stroke-width="3"/>
+<text x="214" y="730" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#0F766E">结果</text>
+<text x="214" y="768" font-family="Microsoft YaHei, Arial" font-size="20" fill="#162235">得到本地可运行的 CPU 版 Hybrid RAG 底座</text>
+<rect x="1136" y="276" rx="24" ry="24" width="206" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1162" y="322" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">用户问题</text>
+<text x="1162" y="360" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">景点推荐 / 攻略</text>
+<text x="1162" y="398" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">避坑 / 路线相关</text>
+<rect x="1380" y="276" rx="24" ry="24" width="220" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1406" y="322" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">travel_router</text>
+<text x="1406" y="360" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">识别为景点意图</text>
+<text x="1406" y="398" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">转发给 spot_agent</text>
+<rect x="1638" y="276" rx="24" ry="24" width="214" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1664" y="322" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">spot_agent</text>
+<text x="1664" y="360" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">通过 MCP 调工具</text>
+<rect x="1890" y="276" rx="24" ry="24" width="200" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1916" y="322" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">问题分流</text>
+<text x="1916" y="360" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">泛推荐 / 深问 / 都要</text>
+<rect x="1140" y="470" rx="24" ry="24" width="220" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1166" y="516" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">search_spots</text>
+<text x="1166" y="554" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">城市级泛推荐</text>
+<text x="1166" y="592" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">优先走高德 POI</text>
+<rect x="1400" y="470" rx="24" ry="24" width="230" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1426" y="516" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">search_local_knowledge</text>
+<text x="1426" y="554" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">具体景点深问</text>
+<text x="1426" y="592" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">走本地 RAG</text>
+<rect x="1670" y="470" rx="24" ry="24" width="200" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1696" y="516" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">search_combined</text>
+<text x="1696" y="554" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">深度攻略 + 实时 POI</text>
+<rect x="1910" y="470" rx="24" ry="24" width="180" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1936" y="516" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">高德 POI</text>
+<text x="1936" y="554" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">地址 / 电话</text>
+<text x="1936" y="592" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">实时候选</text>
+<rect x="1328" y="664" rx="24" ry="24" width="230" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1354" y="710" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">Hybrid RAG</text>
+<text x="1354" y="748" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">FAISS dense</text>
+<text x="1354" y="786" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">+ BM25-like</text>
+<text x="1354" y="824" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">+ 手写攻略 bonus</text>
+<rect x="1596" y="664" rx="24" ry="24" width="214" height="118" fill="#F6F8FB" stroke="#C8D2E1" stroke-width="3"/>
+<text x="1622" y="710" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#162235">融合排序</text>
+<text x="1622" y="748" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">5*dense + bm25 + bonus</text>
+<text x="1622" y="786" font-family="Microsoft YaHei, Arial" font-size="20" fill="#5A687A">输出 Top-5 文档</text>
+<rect x="1848" y="648" rx="24" ry="24" width="242" height="150" fill="#EDF6EE" stroke="#B7D6BD" stroke-width="3"/>
+<text x="1874" y="694" font-family="Microsoft YaHei, Arial" font-size="24" font-weight="700" fill="#0F766E">最终回答</text>
+<text x="1874" y="732" font-family="Microsoft YaHei, Arial" font-size="20" fill="#162235">POI 提供地址 / 电话</text>
+<text x="1874" y="770" font-family="Microsoft YaHei, Arial" font-size="20" fill="#162235">RAG 提供攻略 / 避坑</text>
+<text x="1874" y="808" font-family="Microsoft YaHei, Arial" font-size="20" fill="#162235">两类信息合并输出</text>
+<line x1="338" y1="335" x2="370" y2="335" stroke="#0F766E" stroke-width="5"/><polygon points="370,335 352,325 352,345" fill="#0F766E"/>
+<line x1="580" y1="335" x2="612" y2="335" stroke="#0F766E" stroke-width="5"/><polygon points="612,335 594,325 594,345" fill="#0F766E"/>
+<line x1="220" y1="394" x2="220" y2="470" stroke="#0F766E" stroke-width="5"/><polygon points="220,470 210,452 230,452" fill="#0F766E"/>
+<line x1="720" y1="394" x2="720" y2="470" stroke="#0F766E" stroke-width="5"/><polygon points="720,470 710,452 730,452" fill="#0F766E"/>
+<line x1="438" y1="534" x2="476" y2="534" stroke="#0F766E" stroke-width="5"/><polygon points="476,534 458,524 458,544" fill="#0F766E"/>
+<line x1="716" y1="534" x2="754" y2="534" stroke="#0F766E" stroke-width="5"/><polygon points="754,534 736,524 736,544" fill="#0F766E"/>
+<line x1="861" y1="598" x2="861" y2="684" stroke="#0F766E" stroke-width="5"/><polygon points="861,684 851,666 871,666" fill="#0F766E"/>
+<line x1="1342" y1="335" x2="1380" y2="335" stroke="#0F4A95" stroke-width="5"/><polygon points="1380,335 1362,325 1362,345" fill="#0F4A95"/>
+<line x1="1600" y1="335" x2="1638" y2="335" stroke="#0F4A95" stroke-width="5"/><polygon points="1638,335 1620,325 1620,345" fill="#0F4A95"/>
+<line x1="1852" y1="335" x2="1890" y2="335" stroke="#0F4A95" stroke-width="5"/><polygon points="1890,335 1872,325 1872,345" fill="#0F4A95"/>
+<line x1="1990" y1="394" x2="1990" y2="470" stroke="#C28B2C" stroke-width="5"/><polygon points="1990,470 1980,452 2000,452" fill="#C28B2C"/>
+<line x1="1990" y1="335" x2="1250" y2="470" stroke="#C28B2C" stroke-width="5"/><polygon points="1250,470 1268,460 1268,480" fill="#C28B2C"/>
+<line x1="1990" y1="335" x2="1510" y2="470" stroke="#C28B2C" stroke-width="5"/><polygon points="1510,470 1528,460 1528,480" fill="#C28B2C"/>
+<line x1="1990" y1="335" x2="1770" y2="470" stroke="#C28B2C" stroke-width="5"/><polygon points="1770,470 1788,460 1788,480" fill="#C28B2C"/>
+<line x1="1630" y1="588" x2="1443" y2="664" stroke="#2B6CB0" stroke-width="5"/><polygon points="1443,664 1461,654 1461,674" fill="#2B6CB0"/>
+<line x1="1870" y1="529" x2="1910" y2="529" stroke="#C28B2C" stroke-width="5"/><polygon points="1910,529 1892,519 1892,539" fill="#C28B2C"/>
+<line x1="1770" y1="588" x2="1770" y2="664" stroke="#2B6CB0" stroke-width="5"/><polygon points="1770,664 1760,646 1780,646" fill="#2B6CB0"/>
+<line x1="1558" y1="723" x2="1596" y2="723" stroke="#2B6CB0" stroke-width="5"/><polygon points="1596,723 1578,713 1578,733" fill="#2B6CB0"/>
+<line x1="1810" y1="723" x2="1848" y2="723" stroke="#2B6CB0" stroke-width="5"/><polygon points="1848,723 1830,713 1830,733" fill="#2B6CB0"/>
+<line x1="2090" y1="529" x2="2090" y2="684" stroke="#C28B2C" stroke-width="5"/><polygon points="2090,684 2080,666 2100,666" fill="#C28B2C"/>
+<text x="1138" y="836" font-family="Microsoft YaHei, Arial" font-size="22" font-weight="700" fill="#162235">核心结论：城市级泛问优先 POI，具体景点深问优先本地 RAG，需要两者时再做融合。</text>
+<text x="1138" y="872" font-family="Microsoft YaHei, Arial" font-size="18" fill="#5A687A">这样既保住了实时性和覆盖率，也保住了你项目里最有差异化价值的私域攻略内容。</text>
+</svg>
