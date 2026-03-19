@@ -517,3 +517,79 @@ codex 如果是 agent，还可以把失败经验写入 memory 或 case base。
   | `agents/plan_agent.yaml`    | 修改     | 增加 get_context + 偏好/预算感知规划               |
   | `storage/user_context.json` | 自动生成 | 运行时由 save_context 自动创建                     |
 
+
+
+  flowchart TD
+    U["用户消息<br/>general 频道"] --> R["Travel Router<br/>1. get_context<br/>2. 意图识别 + 指代消解<br/>3. send_direct_message 分发<br/>4. 按需 save_context"]
+
+    R -->|闲聊 / 功能介绍| RC["send_channel_message<br/>Router 自己回复"]
+    R -->|天气问题| W_IN["direct message -> weather_agent"]
+    R -->|景点问题| S_IN["direct message -> spot_agent"]
+    R -->|行程 / 路线 / 距离 / 耗时| P_IN["direct message -> plan_agent"]
+
+    MEM[("storage/user_context.json<br/>上下文记忆")]
+
+    R -.读取 / 写入.-> MEM
+
+    subgraph W["weather_agent"]
+        WG["get_context"]
+        WT["MCP: get_weather<br/>高德地理编码 + Open-Meteo"]
+        WO["send_channel_message<br/>回 general"]
+        WG --> WT --> WO
+    end
+
+    W_IN --> WG
+    WG -.读取.-> MEM
+
+    subgraph S["spot_agent"]
+        SG["get_context"]
+        SQ{"问题类型"}
+        SP["search_spots<br/>高德 POI"]
+        SL["search_local_knowledge<br/>本地 RAG"]
+        SC["search_combined<br/>RAG + 高德 POI 融合"]
+        SO["send_channel_message<br/>回 general"]
+
+        SG --> SQ
+        SQ -->|城市 / 区县泛推荐| SP
+        SQ -->|具体景点 / 攻略 / 避坑 / 美食 / 机位| SL
+        SQ -->|既要深度攻略又要实时信息| SC
+        SP --> SO
+        SL --> SO
+        SC --> SO
+    end
+
+    S_IN --> SG
+    SG -.读取.-> MEM
+
+    subgraph P["plan_agent"]
+        PG["get_context"]
+        PQ{"请求类型"}
+        PR["MCP: get_driving_route<br/>高德驾车路线"]
+        PI["结合记忆 + LLM<br/>生成多日游行程"]
+        PO["send_channel_message<br/>回 general"]
+
+        PG --> PQ
+        PQ -->|路线 / 距离 / 耗时 / 怎么走| PR
+        PQ -->|多日游 / 行程规划| PI
+        PR --> PO
+        PI --> PO
+    end
+
+    P_IN --> PG
+    PG -.读取.-> MEM
+
+    subgraph RG["本地景点 Hybrid RAG（spot_agent 使用）"]
+        B["BM25-like<br/>关键词 / 实体打分"]
+        F["FAISS 向量检索<br/>bge-small-zh-v1.5"]
+        M["加权融合排序"]
+        T["Top-5 文档片段"]
+
+        B --> M
+        F --> M
+        M --> T
+    end
+
+    SL -.调用.-> B
+    SC -.调用.-> B
+
+
