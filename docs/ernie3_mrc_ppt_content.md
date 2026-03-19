@@ -174,33 +174,50 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-    T["超长自然语言原始文本"]:::top
-    A["目标答案<br/>位于截断边缘"]:::answer
-
-    subgraph W[" "]
+    subgraph TOP["超长自然语言原始文本"]
         direction LR
-        W1["窗口1<br/>Max 512 Tokens"]:::win
-        S1["重叠步长<br/>doc_stride"]:::stride
-        W2["窗口2<br/>Max 512 Tokens"]:::win
-        S2["重叠步长<br/>doc_stride"]:::stride
-        W3["窗口3<br/>Max 512 Tokens"]:::win
-
-        W1 --> S1 --> W2 --> S2 --> W3
+        LP1[" "]:::ghost ~~~ A["目标答案<br/>位于截断边缘"]:::answer ~~~ RP1[" "]:::ghost
     end
 
-    T -. 长文本切分 .-> W1
-    T -. 长文本切分 .-> W2
-    T -. 长文本切分 .-> W3
-    A -. 答案在重叠区域继续保留 .-> W2
+    subgraph R1[" "]
+        direction LR
+        W1["窗口1<br/>Max 512 Tokens"]:::win ~~~ P11[" "]:::ghost ~~~ P12[" "]:::ghost
+    end
 
-    style W fill:none,stroke:none
+    subgraph R2[" "]
+        direction LR
+        P21[" "]:::ghost ~~~ W2["窗口2<br/>Max 512 Tokens"]:::win ~~~ P22[" "]:::ghost
+    end
+
+    subgraph R3[" "]
+        direction LR
+        P31[" "]:::ghost ~~~ P32[" "]:::ghost ~~~ W3["窗口3<br/>Max 512 Tokens"]:::win
+    end
+
+    S1["doc_stride<br/>重叠步长"]:::stride
+    S2["doc_stride<br/>重叠步长"]:::stride
+
+    A -. 答案位于窗口1截断边缘 .-> W1
+    A -. 在重叠区域内被窗口2继续覆盖 .-> W2
+
+    W1 --> W2 --> W3
+    W1 -. 与下一窗口重叠 .-> S1
+    S1 -.-> W2
+    W2 -. 与下一窗口重叠 .-> S2
+    S2 -.-> W3
+
+    style TOP fill:#ffffff,stroke:#2f6f9f,stroke-width:2px,color:#222
+    style R1 fill:none,stroke:none
+    style R2 fill:none,stroke:none
+    style R3 fill:none,stroke:none
     classDef top fill:#ffffff,stroke:#2f6f9f,stroke-width:2px,color:#222;
     classDef win fill:#ffffff,stroke:#2f6f9f,stroke-width:2px,color:#222;
     classDef answer fill:#c8f5ff,stroke:#00b7e8,stroke-width:3px,color:#222;
     classDef stride fill:#ffffff,stroke:#8aa1b1,stroke-width:1px,color:#222;
+    classDef ghost fill:none,stroke:none,color:transparent;
 ```
 
-> 这一版更适合答辩 PPT。如果你想更像原图，我下一步可以再给你一版“窗口位置错开”的 Mermaid 近似版。
+> 这一版用错位窗口近似表达重叠关系，更接近论文/PPT里的滑动窗口示意图。
 
 ### 4.4 数据预处理流程
 
