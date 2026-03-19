@@ -78,7 +78,7 @@ flowchart TB
     subgraph R1[" "]
         direction LR
         A["原始数据集<br/>DuReader-robust"] --> B["数据预处理"]
-        B --> C["Tokenizer 分词 + 滑动窗口切分<br/>max_seq_length=512<br/>doc_stride=128"]
+        B --> C["Tokenizer分词+滑动窗口切分<br/>max_seq_length=512<br/>doc_stride=128"]
         C --> D["生成训练特征<br/>input_ids / token_type_ids<br/>start_positions / end_positions"]
         D --> E["数据增强<br/>5% token ID 掩码"]
         E --> F["构造 DataLoader"]
