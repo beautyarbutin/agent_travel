@@ -164,6 +164,44 @@ flowchart TB
 
 由于很多 `context` 长度超过 512，因此不能直接截断，需要使用**滑动窗口**切分长文本。
 
+### 4.3.1 滑动窗口与重叠步长示意图
+
+下面这版把原图里过长、过乱的说明做了简化：
+
+- 去掉了顶部英文
+- 明确把 `doc_stride` 标成“重叠步长”
+- 保留“超长原文 + 多窗口 + 答案落在边缘”的核心表达
+
+```mermaid
+flowchart TB
+    T["超长自然语言原始文本"]:::top
+    A["目标答案<br/>位于截断边缘"]:::answer
+
+    subgraph W[" "]
+        direction LR
+        W1["窗口1<br/>Max 512 Tokens"]:::win
+        S1["重叠步长<br/>doc_stride"]:::stride
+        W2["窗口2<br/>Max 512 Tokens"]:::win
+        S2["重叠步长<br/>doc_stride"]:::stride
+        W3["窗口3<br/>Max 512 Tokens"]:::win
+
+        W1 --> S1 --> W2 --> S2 --> W3
+    end
+
+    T -. 长文本切分 .-> W1
+    T -. 长文本切分 .-> W2
+    T -. 长文本切分 .-> W3
+    A -. 答案在重叠区域继续保留 .-> W2
+
+    style W fill:none,stroke:none
+    classDef top fill:#ffffff,stroke:#2f6f9f,stroke-width:2px,color:#222;
+    classDef win fill:#ffffff,stroke:#2f6f9f,stroke-width:2px,color:#222;
+    classDef answer fill:#c8f5ff,stroke:#00b7e8,stroke-width:3px,color:#222;
+    classDef stride fill:#ffffff,stroke:#8aa1b1,stroke-width:1px,color:#222;
+```
+
+> 这一版更适合答辩 PPT。如果你想更像原图，我下一步可以再给你一版“窗口位置错开”的 Mermaid 近似版。
+
 ### 4.4 数据预处理流程
 
 1. 使用预训练模型对应的 `Tokenizer` 进行分词
