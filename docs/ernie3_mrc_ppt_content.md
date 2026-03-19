@@ -96,7 +96,10 @@ flowchart TB
         N --> O["Gradio 部署"]
     end
 
-    G --> H
+    R1 --> R2
+
+    style R1 fill:none,stroke:none
+    style R2 fill:none,stroke:none
 ```
 
 ---
