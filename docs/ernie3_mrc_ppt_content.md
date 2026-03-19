@@ -74,26 +74,29 @@ $$
 下面这份 Mermaid 流程图可直接放到 GitHub Markdown 或新 PPT 中。
 
 ```mermaid
-flowchart TD
-    A["原始数据集<br/>DuReader-robust"] --> B["数据预处理"]
-    B --> B1["Tokenizer 分词"]
-    B1 --> B2["滑动窗口切分长文本<br/>max_seq_length=512<br/>doc_stride=128"]
-    B2 --> B3["生成训练特征<br/>input_ids / token_type_ids / start_positions / end_positions"]
-    B3 --> B4["数据增强<br/>5% token ID 掩码"]
-    B4 --> C["构造 DataLoader"]
-    C --> D["加载预训练模型<br/>ERNIE-3.0-xbase-zh"]
-    D --> E["模型训练"]
-    E --> E1["损失函数<br/>softmax CE / focal loss"]
-    E1 --> E2["优化器<br/>AdamW / Lamb"]
-    E2 --> E3["对抗训练<br/>FGM / AWP"]
-    E3 --> F["开发集评估"]
-    F --> G["指标计算<br/>F1 / EM"]
-    G --> H["对比实验 + 消融实验"]
-    H --> I["确定最优方案<br/>ERNIE + 5% mask + softmax + FGM + AdamW"]
-    I --> J["保存最佳权重<br/>best.pdparams"]
-    J --> K["动态图转静态图"]
-    K --> L["Gradio 部署"]
-    L --> M["交互式中文问答系统"]
+flowchart TB
+    subgraph R1[" "]
+        direction LR
+        A["原始数据集<br/>DuReader-robust"] --> B["数据预处理"]
+        B --> C["Tokenizer 分词 + 滑动窗口切分<br/>max_seq_length=512<br/>doc_stride=128"]
+        C --> D["生成训练特征<br/>input_ids / token_type_ids<br/>start_positions / end_positions"]
+        D --> E["数据增强<br/>5% token ID 掩码"]
+        E --> F["构造 DataLoader"]
+        F --> G["加载预训练模型<br/>ERNIE-3.0-xbase-zh"]
+    end
+
+    subgraph R2[" "]
+        direction LR
+        H["模型训练"] --> I["训练策略设计<br/>softmax / focal<br/>AdamW / Lamb<br/>FGM / AWP"]
+        I --> J["开发集评估<br/>F1 / EM"]
+        J --> K["对比实验 + 消融实验"]
+        K --> L["确定最优方案<br/>ERNIE + 5% mask + softmax + FGM + AdamW"]
+        L --> M["保存最佳权重<br/>best.pdparams"]
+        M --> N["动态图转静态图"]
+        N --> O["Gradio 部署"]
+    end
+
+    G --> H
 ```
 
 ---
@@ -631,4 +634,3 @@ PPT 中展示了两个典型交互案例：
 ## 14. 最后一页总结可直接使用
 
 > 本文围绕中文片段抽取式机器阅读理解任务，基于 `DuReader-robust` 数据集完成了数据处理、模型训练、对比实验、消融实验与推理部署。实验结果表明，`ERNIE-3.0-xbase-zh` 在五种候选预训练模型中表现最佳；结合 `5% token ID 掩码`、`softmax 交叉熵`、`FGM 对抗训练` 与 `AdamW` 优化器后，模型在开发集上取得了 `F1=90.56`、`EM=78.62` 的结果。最终，项目基于 Gradio 构建了可交互式问答界面，验证了模型在中文阅读理解场景中的可用性。
-
