@@ -443,6 +443,38 @@ $$
 \min_{\theta} \; \mathbb{E}_{(x,y)\sim D} \left[L(x+\Delta x, y; \theta)\right]
 $$
 
+#### FGM 原理图（修正版）
+
+下面这版更符合代码真实流程，也更适合答辩时解释：
+
+```mermaid
+flowchart TB
+    X["输入样本"]:::io
+    F1["标准前向传播<br/>Embedding → ERNIE → Loss"]:::main
+    B1["第一次反向传播<br/>得到 Embedding 梯度 g"]:::main
+    P["计算扰动<br/>r_at = ε · g / ||g||"]:::adv
+    A["将扰动临时加到<br/>Embedding 参数"]:::adv
+    F2["对抗前向传播<br/>Embedding+r_at → ERNIE → Loss_adv"]:::main
+    B2["第二次反向传播<br/>对抗梯度累加到当前梯度"]:::main
+    R["恢复 Embedding 原始参数"]:::restore
+    U["Optimizer.step()<br/>更新模型参数"]:::update
+
+    X --> F1 --> B1 --> P --> A --> F2 --> B2 --> R --> U
+
+    N1["注意：FGM 扰动的是 Embedding 参数，不是原始文本"]:::note
+    N2["注意：两次 backward 之间通常不清空梯度"]:::note
+
+    P -.-> N1
+    B2 -.-> N2
+
+    classDef io fill:#eef5ff,stroke:#7d9ac8,stroke-width:2px,color:#222;
+    classDef main fill:#eaf6ea,stroke:#4da85d,stroke-width:2px,color:#222;
+    classDef adv fill:#fff2df,stroke:#ff9800,stroke-width:2px,color:#222;
+    classDef restore fill:#fff7d6,stroke:#d8a400,stroke-width:2px,color:#222;
+    classDef update fill:#e6f4ea,stroke:#3b8f56,stroke-width:2px,color:#222;
+    classDef note fill:#f8f8f8,stroke:#9aa0a6,stroke-dasharray: 4 4,color:#333;
+```
+
 说明：
 
 - FGM 直接对 embedding 施加微小扰动
