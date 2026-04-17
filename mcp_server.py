@@ -8,6 +8,8 @@
 import os
 import sys
 import re
+import io
+import contextlib
 import requests
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
@@ -118,6 +120,102 @@ def _summarize_route_roads(steps) -> str:
     if len(ordered) > len(display):
         summary += " → 等"
     return summary
+
+
+def _extract_region_hint(query: str) -> str:
+    """Extract a likely city/district token from a natural-language query."""
+    if not query:
+        return ""
+
+    patterns = [
+        r"([^\s，。！？；;、]{1,12}(?:市|区|县|镇|州))",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, query)
+        if match:
+            return match.group(1)
+    return ""
+
+
+def _search_poi_by_type(
+    query: str,
+    poi_type: str,
+    default_keywords: str,
+    item_label: str,
+) -> str:
+    """Generic AMap POI search helper for typed POI retrieval."""
+    api_key = os.getenv("AMAP_API_KEY")
+    if not api_key:
+        return "错误：未配置 AMAP_API_KEY"
+
+    try:
+        url = "https://restapi.amap.com/v3/place/text"
+        city_hint = _extract_region_hint(query)
+        params = {
+            "key": api_key,
+            "keywords": query,
+            "types": poi_type,
+            "city": city_hint,
+            "citylimit": "false",
+            "offset": 10,
+            "output": "json",
+            "extensions": "all",
+        }
+
+        response = requests.get(url, params=params, timeout=10)
+        data = response.json()
+
+        if data.get("status") != "1":
+            return f"高德 API 请求失败: {data.get('info', '未知错误')}"
+
+        pois = data.get("pois", [])
+        if not pois:
+            params["keywords"] = f"{query} {default_keywords}".strip()
+            response = requests.get(url, params=params, timeout=10)
+            data = response.json()
+            pois = data.get("pois", [])
+
+        if not pois and city_hint:
+            params["keywords"] = default_keywords
+            params["city"] = city_hint
+            response = requests.get(url, params=params, timeout=10)
+            data = response.json()
+            pois = data.get("pois", [])
+
+        if not pois:
+            return f"没有找到关于 '{query}' 的{item_label}信息。"
+
+        results = []
+        for i, poi in enumerate(pois, 1):
+            name = poi.get("name", "未知")
+            address = poi.get("address", "暂无地址")
+            pname = poi.get("pname", "")
+            cityname = poi.get("cityname", "")
+            adname = poi.get("adname", "")
+            location_str = " > ".join([p for p in [pname, cityname, adname] if p])
+
+            entry = f"{i}. 📍 {name}\n   📌 {location_str}\n   🏠 {address}"
+
+            biz_ext = poi.get("biz_ext", {}) or {}
+            rating = biz_ext.get("rating", "")
+            cost = biz_ext.get("cost", "")
+            tel = poi.get("tel", "")
+
+            if rating:
+                entry += f"\n   ⭐ 评分：{rating}"
+            if cost:
+                entry += f"\n   💰 参考消费：¥{cost}"
+            if tel and tel != "[]":
+                entry += f"\n   📞 {tel}"
+            results.append(entry)
+
+        total = data.get("count", len(pois))
+        return (
+            f"'{query}' 相关{item_label}（共{total}个，展示{len(pois)}个）：\n\n"
+            + "\n\n".join(results)
+        )
+    except Exception as e:
+        return f"搜索{item_label}时发生错误: {str(e)}"
 
 
 # ============================================================
@@ -231,6 +329,22 @@ def search_spots(query: str) -> str:
         return f"搜索景点时发生错误: {str(e)}"
 
 
+@mcp.tool()
+def search_hotels(query: str) -> str:
+    """
+    搜索指定城市/区域附近的酒店、住宿、宾馆或民宿信息。使用高德地图 POI API。
+
+    Args:
+        query: 用户问题，例如"鄞州区有距离浙江大学软件学院近的酒店推荐吗"、"宁波住哪里方便"
+    """
+    return _search_poi_by_type(
+        query=query,
+        poi_type="100000",
+        default_keywords="酒店 住宿 宾馆 民宿",
+        item_label="酒店/住宿",
+    )
+
+
 # ============================================================
 # Tool 4: 景点深度指南检索（RAG 知识库）
 # ============================================================
@@ -245,7 +359,8 @@ def search_local_knowledge(query: str) -> str:
     try:
         sys.path.insert(0, os.path.join(base_dir, 'tools'))
         from spot_tools import search_knowledge
-        return search_knowledge(query)
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            return search_knowledge(query)
     except Exception as e:
         return f"RAG检索知识库时发生错误：{str(e)}"
 
@@ -270,7 +385,8 @@ def search_combined(query: str) -> str:
     try:
         sys.path.insert(0, os.path.join(base_dir, 'tools'))
         from spot_tools import search_combined as _search_combined
-        return _search_combined(query)
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            return _search_combined(query)
     except Exception as e:
         return f"综合检索时发生错误：{str(e)}"
 
@@ -416,7 +532,7 @@ def get_context() -> str:
 # ============================================================
 if __name__ == "__main__":
     print("🚀 旅游助手 MCP Server 启动中...")
-    print("📦 提供工具：get_weather, get_weather_forecast, search_spots, get_driving_route, search_local_knowledge, save_context, get_context")
+    print("📦 提供工具：get_weather, get_weather_forecast, search_spots, search_hotels, get_driving_route, search_local_knowledge, save_context, get_context")
     print("🔌 使用 stdio 传输协议")
     mcp.run()
 

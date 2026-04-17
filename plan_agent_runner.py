@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class PlanFallbackAgent(CollaboratorAgent):
     """Plan agent with a narrow fallback when the model forgets to send a channel reply."""
 
-    _PLAN_TOOL_SUFFIXES = ("get_driving_route",)
+    _PLAN_TOOL_SUFFIXES = ("get_driving_route", "search_hotels")
     _MESSAGE_TOOL_NAMES = {"send_channel_message", "reply_channel_message"}
 
     async def run_agent(
@@ -125,6 +125,8 @@ class PlanFallbackAgent(CollaboratorAgent):
             result = str(action.payload.get("result", "")).strip()
             if not result:
                 continue
+            if tool_name.endswith("search_hotels"):
+                return "🏨 已为您整理到住宿建议：\n\n" + result
             return "🗺️ 已为您查询到驾车路线信息：\n\n" + result
         return ""
 

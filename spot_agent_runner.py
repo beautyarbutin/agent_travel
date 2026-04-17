@@ -15,10 +15,12 @@ class SpotFallbackAgent(CollaboratorAgent):
 
     _SPOT_TOOL_SUFFIXES = (
         "search_spots",
-        "search_local_knowledge",
-        "search_combined",
     )
     _MESSAGE_TOOL_NAMES = {"send_channel_message", "reply_channel_message"}
+    _DISABLED_TOOL_NAMES = {
+        "mcp_travel_mcp_server_search_local_knowledge",
+        "mcp_travel_mcp_server_search_combined",
+    }
 
     async def run_agent(
         self,
@@ -34,6 +36,7 @@ class SpotFallbackAgent(CollaboratorAgent):
         if not disable_mods:
             tools.extend(self._mod_tools)
         tools.extend(self._custom_tools)
+        tools = [tool for tool in tools if self._tool_name(tool) not in self._DISABLED_TOOL_NAMES]
 
         trajectory = await orchestrate_agent(
             context=context,
@@ -53,13 +56,24 @@ class SpotFallbackAgent(CollaboratorAgent):
     ) -> None:
         if not self._is_router_direct_message(context):
             return
-        if not self._has_successful_spot_tool_call(trajectory):
-            return
         if self._has_message_tool_call(trajectory):
             return
 
+        has_spot_tool_call = self._has_successful_spot_tool_call(trajectory)
         response_text = self._extract_direct_response_text(trajectory)
+        if not response_text and not has_spot_tool_call:
+            logger.info(
+                "[%s] Spot fallback skipped: no successful spot tool call and no direct-response text",
+                self.agent_id,
+            )
+            return
         if not response_text:
+            response_text = self._build_spot_summary_from_tool_result(trajectory)
+        if not response_text:
+            logger.info(
+                "[%s] Spot fallback skipped: spot tool call succeeded but no usable fallback text was available",
+                self.agent_id,
+            )
             return
 
         messaging_adapter = self._get_messaging_adapter()
@@ -77,6 +91,29 @@ class SpotFallbackAgent(CollaboratorAgent):
             "[%s] Spot fallback sent direct-response content to #general",
             self.agent_id,
         )
+
+    @staticmethod
+    def _tool_name(tool) -> str:
+        if isinstance(tool, dict):
+            if isinstance(tool.get("function"), dict):
+                return str(tool["function"].get("name", ""))
+            return str(tool.get("name", ""))
+
+        name = getattr(tool, "name", None)
+        if name:
+            return str(name)
+
+        tool_name = getattr(tool, "tool_name", None)
+        if tool_name:
+            return str(tool_name)
+
+        function = getattr(tool, "function", None)
+        if function is not None:
+            function_name = getattr(function, "name", None)
+            if function_name:
+                return str(function_name)
+
+        return ""
 
     def _is_router_direct_message(self, context: EventContext) -> bool:
         source_name = self._normalize_source_id(context.incoming_event.source_id)
@@ -115,6 +152,26 @@ class SpotFallbackAgent(CollaboratorAgent):
             cleaned = self._strip_think_blocks(response_text)
             if cleaned:
                 return cleaned
+        return ""
+
+    def _build_spot_summary_from_tool_result(self, trajectory: AgentTrajectory) -> str:
+        for action in reversed(trajectory.actions):
+            if action.action_type != AgentActionType.CALL_TOOL:
+                continue
+            payload = action.payload or {}
+            tool_name = str(payload.get("tool_name", ""))
+            status = payload.get("status")
+            if status != "success":
+                continue
+            if not tool_name.endswith(self._SPOT_TOOL_SUFFIXES):
+                continue
+
+            result = str(payload.get("result", "")).strip()
+            if not result:
+                continue
+            if "错误" in result:
+                return "很抱歉，景点检索工具当前返回错误：\n\n" + result
+            return "🏛️ 已为您整理到景点/攻略信息：\n\n" + result
         return ""
 
     def _get_messaging_adapter(self):

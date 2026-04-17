@@ -7,9 +7,15 @@
 import os
 import sys
 import json
+import logging
 import requests
 import numpy as np
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
+logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
+logging.getLogger("faiss").setLevel(logging.WARNING)
+logging.getLogger("faiss.loader").setLevel(logging.WARNING)
 
 # 加载 .env
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,9 +43,9 @@ def _load_rag_engine():
     try:
         with open(doc_path, 'r', encoding='utf-8') as f:
             _knowledge_docs = json.load(f)
-        print(f"✅ 加载结构化知识库: {len(_knowledge_docs)} 个条目")
+        logger.info("加载结构化知识库: %s 个条目", len(_knowledge_docs))
     except Exception as e:
-        print(f"⚠️ 加载知识库文档失败: {e}")
+        logger.warning("加载知识库文档失败: %s", e)
         _knowledge_docs = []
         return
     
@@ -50,14 +56,14 @@ def _load_rag_engine():
             from sentence_transformers import SentenceTransformer
             _faiss_index = faiss.read_index(faiss_path)
             _embed_model = SentenceTransformer("BAAI/bge-small-zh-v1.5")
-            print(f"✅ 加载 FAISS 索引: {_faiss_index.ntotal} 个向量")
-            print(f"✅ 加载 bge-small-zh-v1.5 Embedding 模型")
+            logger.info("加载 FAISS 索引: %s 个向量", _faiss_index.ntotal)
+            logger.info("加载 bge-small-zh-v1.5 Embedding 模型")
         except Exception as e:
-            print(f"⚠️ 加载 FAISS/Embedding 失败: {e}")
-            print("   将降级为纯关键词检索模式")
+            logger.warning("加载 FAISS/Embedding 失败: %s", e)
+            logger.warning("将降级为纯关键词检索模式")
     else:
-        print("⚠️ 未找到 FAISS 索引，将使用纯关键词检索模式")
-        print("   请先运行: python tools/build_spot_vectors.py")
+        logger.warning("未找到 FAISS 索引，将使用纯关键词检索模式")
+        logger.warning("请先运行: python tools/build_spot_vectors.py")
 
 
 def _bm25_score(query: str, spot: dict) -> float:
@@ -103,7 +109,7 @@ def search_knowledge(query: str) -> str:
         if not _knowledge_docs:
             return "抱歉，景点知识库尚未建立，无法检索。"
         
-        print(f"🧠 [Hybrid RAG] 检索: '{query}'")
+        logger.info("[Hybrid RAG] 检索: %s", query)
         
         n = len(_knowledge_docs)
         # 综合得分数组（每条文档一个分）
@@ -111,16 +117,20 @@ def search_knowledge(query: str) -> str:
         
         # ---- 路线1: FAISS 向量语义检索 ----
         if _faiss_index is not None and _embed_model is not None:
-            q_vec = _embed_model.encode([query], normalize_embeddings=True)
+            q_vec = _embed_model.encode(
+                [query],
+                normalize_embeddings=True,
+                show_progress_bar=False,
+            )
             q_vec = np.array(q_vec, dtype=np.float32)
             scores, indices = _faiss_index.search(q_vec, min(n, 5))
             for rank, (idx, score) in enumerate(zip(indices[0], scores[0])):
                 if idx >= 0 and idx < n:
                     # 向量相似度得分 * 权重
                     final_scores[idx] += score * 5.0
-            print(f"   🔍 向量检索完成 (FAISS top-5)")
+            logger.info("向量检索完成 (FAISS top-5)")
         else:
-            print(f"   ⚠️ 向量检索不可用，仅使用关键词")
+            logger.warning("向量检索不可用，仅使用关键词")
         
         # ---- 路线2: BM25 关键词检索 ----
         for i, spot in enumerate(_knowledge_docs):
@@ -132,7 +142,7 @@ def search_knowledge(query: str) -> str:
                 bm25 += 50.0
                 
             final_scores[i] += bm25
-        print(f"   🔍 关键词检索完成 (BM25)")
+        logger.info("关键词检索完成 (BM25)")
         
         # ---- 合并排序，取 Top-5 ----
         top_indices = final_scores.argsort()[::-1][:5]
@@ -167,7 +177,7 @@ def search_knowledge(query: str) -> str:
         
     except Exception as e:
         import traceback
-        traceback.print_exc()
+        logger.exception("检索知识库时发生错误")
         return f"检索知识库时发生错误: {str(e)}"
 
 

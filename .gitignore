@@ -63,3 +63,10 @@ install_log*.txt
 log.txt
 *.lnk
 *.pdf
+
+# 本地工作缓存与生成产物
+.codex_task/
+artifacts/
+tmp/
+agent_travel_master/
+tools/aria2/
